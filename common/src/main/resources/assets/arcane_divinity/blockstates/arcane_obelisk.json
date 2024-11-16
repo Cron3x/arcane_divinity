@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "arcane_divinity:block/arcane_obelisk_lower"
+    },
+    "half=upper": {
+      "model": "arcane_divinity:block/arcane_obelisk_upper"
+    }
+  }
+}

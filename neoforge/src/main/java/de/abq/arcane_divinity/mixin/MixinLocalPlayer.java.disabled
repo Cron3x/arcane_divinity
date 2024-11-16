@@ -1,0 +1,46 @@
+package de.abq.arcane_divinity.mixin;
+
+import com.llamalad7.mixinextras.sugar.Local;
+import com.mojang.authlib.GameProfile;
+import de.abq.arcane_divinity.common.item.ZItems;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.player.AbstractClientPlayer;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.network.protocol.game.ServerboundPlayerCommandPacket;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.Map;
+
+@Mixin(LocalPlayer.class)
+public abstract class MixinLocalPlayer extends AbstractClientPlayer {
+    public MixinLocalPlayer(ClientLevel p_250460_, GameProfile p_249912_) {
+        super(p_250460_, p_249912_);
+    }
+
+    @Inject(method = "aiStep()V", at = @At(
+            shift = At.Shift.BY,
+            by = 2,
+            value = "INVOKE",
+            target = "Lnet/minecraft/client/player/LocalPlayer;getItemBySlot(Lnet/minecraft/world/entity/EquipmentSlot;)Lnet/minecraft/world/item/ItemStack;"
+
+    ), cancellable = true)
+    protected void arcane_divinity$isFlyableArmor(CallbackInfo ci, @Local ItemStack itemstack){
+        if (itemstack.getItem() == ZItems.WINGS || itemstack.getItem() == Items.ELYTRA) ci.cancel();
+
+        LocalPlayer self = (LocalPlayer) (Object) this;
+
+        ICuriosItemHandler curiosInventory = CuriosApi.getCuriosInventory(self).get();
+        Map<String, ICurioStacksHandler> curios = curiosInventory.getCurios();
+        ICurioStacksHandler slotInventory = curios.get("wings");
+        itemstack = slotInventory.getStacks().getStackInSlot(0);
+        System.out.println(itemstack);
+        System.out.println(self);
+        self.connection.send(new ServerboundPlayerCommandPacket(self, ServerboundPlayerCommandPacket.Action.START_FALL_FLYING));
+        System.out.println(ci.toString());
+    }
+}

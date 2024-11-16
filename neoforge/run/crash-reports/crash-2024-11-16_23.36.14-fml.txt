@@ -1,0 +1,71 @@
+---- Minecraft Crash Report ----
+// Don't be sad, have a hug! <3
+
+Time: 2024-11-16 23:36:14
+Description: Mod loading failures have occurred; consult the issue messages for more details
+
+net.neoforged.neoforge.logging.CrashReportExtender$ModLoadingCrashException: Mod loading has failed
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Mod loading issue for: arcane_divinity --
+Details:
+	Mod file: /home/cx/dev/arcane_divinity/neoforge/build/classes/java/main/
+	Failure message: Mod arcane_divinity requires geckolib 21.3.7-beta or above
+		Currently, geckolib is 4.7.1
+		
+	Mod version: 21.3.10-beta
+	Mod issues URL: https://nonexist.ing
+	Exception message: <No associated exception found>
+
+-- System Details --
+Details:
+	Minecraft Version: 1.21.3
+	Minecraft Version ID: 1.21.3
+	Operating System: Linux (amd64) version 6.11.7-300.fc41.x86_64
+	Java Version: 21.0.5, Eclipse Adoptium
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Eclipse Adoptium
+	Memory: 472003192 bytes (450 MiB) / 809500672 bytes (772 MiB) up to 4007657472 bytes (3822 MiB)
+	CPUs: 12
+	Processor Vendor: AuthenticAMD
+	Processor Name: AMD Ryzen 5 7640U w/ Radeon 760M Graphics
+	Identifier: AuthenticAMD Family 25 Model 116 Stepping 1
+	Microarchitecture: Zen 3
+	Frequency (GHz): -0.00
+	Number of physical packages: 1
+	Number of physical CPUs: 6
+	Number of logical CPUs: 12
+	Graphics card #0 name: Phoenix1
+	Graphics card #0 vendor: Advanced Micro Devices, Inc. [AMD/ATI] (0x1002)
+	Graphics card #0 VRAM (MiB): 258.00
+	Graphics card #0 deviceId: 0x15bf
+	Graphics card #0 versionInfo: unknown
+	Virtual memory max (MiB): 15833.70
+	Virtual memory used (MiB): 13567.17
+	Swap memory total (MiB): 8192.00
+	Swap memory used (MiB): 1448.75
+	Space in storage for jna.tmpdir (MiB): <path not set>
+	Space in storage for org.lwjgl.system.SharedLibraryExtractPath (MiB): <path not set>
+	Space in storage for io.netty.native.workdir (MiB): <path not set>
+	Space in storage for java.io.tmpdir (MiB): available: 7638.05, total: 7641.71
+	Space in storage for workdir (MiB): available: 422183.00, total: 486761.00
+	JVM Flags: 0 total; 
+	ModLauncher: 11.0.4+main.d2e20e43
+	ModLauncher launch target: forgeclientuserdev
+	ModLauncher services: 
+		sponge-mixin-0.15.2+mixin.0.8.7.jar mixin PLUGINSERVICE 
+		loader-5.0.1.jar slf4jfixer PLUGINSERVICE 
+		loader-5.0.1.jar runtime_enum_extender PLUGINSERVICE 
+		at-modlauncher-11.0.1.jar accesstransformer PLUGINSERVICE 
+		loader-5.0.1.jar runtimedistcleaner PLUGINSERVICE 
+		modlauncher-11.0.4.jar mixin TRANSFORMATIONSERVICE 
+		modlauncher-11.0.4.jar fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		javafml@5.0
+		lowcodefml@5.0
+		minecraft@5.0
+	Mod List: 
+		neoforge-21.3.10-beta-minecraft.jar               |Minecraft                     |minecraft                     |1.21.3              |Manifest: NOSIGNATURE
+		neoforge-21.3.10-beta-minecraft.jar               |NeoForge                      |neoforge                      |21.3.10-beta        |Manifest: NOSIGNATURE

@@ -1,0 +1,42 @@
+modLoader="javafml"
+loaderVersion="${neoforge_loader_range}"
+issueTrackerURL="https://nonexist.ing"
+license="${mod_license}"
+
+[[mods]]
+    modId="${mod_id}"
+    version="${version}"
+    displayName="${mod_display_name}"
+    displayURL="http://nope.ee/"
+    logoFile="logo.png"
+    credits="${mod_authors}"
+    authors="${mod_authors}"
+    description='''
+${mod_description}
+'''
+
+[[mixins]]
+    config = "${mod_id}.mixins.json"
+[[mixins]]
+    config = "${mod_id}.neoforge.mixins.json"
+
+[[accessTransformers]]
+    file = "META-INF/accesstransformer-nf.cfg"
+
+[[dependencies.${mod_id}]]
+    modId="neoforge"
+    type="required"
+    versionRange="${neoforge_version_range}"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.${mod_id}]]
+    modId="minecraft"
+    type="required"
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.${mod_id}]]
+    modId="geckolib"
+    versionRange="${geckolib_range}"
+    ordering="NONE"
+    side="BOTH"

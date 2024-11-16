@@ -1,0 +1,21 @@
+{
+  "item.arcane_divinity.pedestal" : "Pedestal",
+  "block.arcane_divinity.pedestal" : "Pedestal",
+  "item.arcane_divinity.craftingaltar" : "Arcane Altar",
+  "block.arcane_divinity.craftingaltar" : "Arcane Altar",
+  "item.arcane_divinity.wooden_catalyst" : "Wooden Catalyst",
+  "key.etruscraft.switch_spell": "Cycle Spells",
+  "key.category.arcane_divinity.keybinds": "Arcane Divinity",
+
+  "item_group.arcane_divinity.creative_tab" : "Arcane Divinity Creative Tab",
+  "item.arcane_divinity.whetstone": "Whetstone",
+  "item.arcane_divinity.whetstone.none_nbt": "This Item doesn't contain any infusions for your sword",
+  "item.arcane_divinity.whetstone.level": "Level: ",
+  "item.arcane_divinity.whetstone.raw.description": "Removes Infusions from Tools",
+  "item.arcane_divinity.whetstone.fire.description": "Whetstone of Fire",
+  "item.arcane_divinity.whetstone.bleed.description": "Whetstone of Bleeding",
+  "item.arcane_divinity.whetstone.holy.description": "Holy Whetstone",
+  "item.arcane_divinity.whetstone.rot.description": "Rotten Whetstone",
+  "item.arcane_divinity.whetstone.lightning.description": "Whetstone of Lightning",
+  "item.arcane_divinity.whetstone.poison.description": "Whetstone of Poison"
+}
