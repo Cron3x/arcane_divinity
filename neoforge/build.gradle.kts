@@ -10,10 +10,10 @@ val parchmentMcVersion = libs.versions.parchment.minecraft.get()
 val parchmentVersion = libs.versions.parchment.asProvider().get()
 val neoforgeVersion = libs.versions.neoforge.asProvider().get()
 
-version = libs.versions.arcanedivinity.get()
+version = libs.versions.arcane.divinity.get()
 
 base {
-    archivesName = "arcane-divinity-neoforge-${mcVersion}"
+    archivesName = "arcane_divinity-neoforge-${mcVersion}"
 }
 
 neoForge {
@@ -53,9 +53,10 @@ repositories {
 }
 
 dependencies {
+    implementation ("software.bernie.geckolib:geckolib-neoforge-1.21.3:4.7.1") //TODO: Make Updatable
+
     compileOnly(project(":common"))
 
-    implementation ("software.bernie.geckolib:geckolib-neoforge-1.21.3:4.7.1") //TODO: Make Updatable
     // Only enable for testing as needed
     // Disable before publishing
     //implementation(libs.examplemod.neoforge)

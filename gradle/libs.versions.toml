@@ -1,6 +1,6 @@
 [versions]
 # Arcane Divinity
-arcanedivinity = "21.3.10-beta"
+arcane-divinity = "21.3.10-beta"
 
 # Common
 minecraft-range = "[1.21.3,)"

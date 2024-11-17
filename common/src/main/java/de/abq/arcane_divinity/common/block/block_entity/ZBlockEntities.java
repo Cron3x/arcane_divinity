@@ -24,7 +24,8 @@ public class ZBlockEntities {
     public static final BlockEntityType<ArcaneObeliskBlockEntity> ARCANE_OBELISK_BLOCK_ENTITY = assign(ZBlockNames.ARCANE_OBELISK, ArcaneObeliskBlockEntity::new, ZBlocks.arcaneObeliskBlock);
 
     private static <T extends BlockEntity> BlockEntityType<T> assign(ResourceLocation id, BiFunction<BlockPos, BlockState, T> fn, Block... blocks){
-        var ret = Services.PLATFORM.createBlockEntityType(fn, blocks);
+
+        BlockEntityType<T> ret = Services.PLATFORM.createBlockEntityType(fn, blocks);
         var old = ALL.put(id, ret);
         if (old != null) throw new IllegalArgumentException("ID duplicated" + id);
         return ret;

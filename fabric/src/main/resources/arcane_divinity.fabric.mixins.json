@@ -6,12 +6,14 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [],
   "client": [
-    "MixinLocalPlayer",
     "MixinTitleScreen"
   ],
   "server": [],
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "comment": [
+    "MixinLocalPlayer"
+  ]
 }
   

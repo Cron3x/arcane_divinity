@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.moddevgradle)
 }
 
-version = libs.versions.arcanedivinity.get()
+version = libs.versions.arcane.divinity.get()
 
 base {
     archivesName = "arcane_divinity-common-${libs.versions.minecraft.asProvider().get()}"

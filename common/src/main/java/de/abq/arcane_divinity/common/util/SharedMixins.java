@@ -1,20 +1,16 @@
 package de.abq.arcane_divinity.common.util;
 
-import de.abq.arcane_divinity.ArcaneDivinity;
-import de.abq.arcane_divinity.common.item.armor.WingsArmorRenderer;
+import de.abq.arcane_divinity.ArcaneDivinityCommon;
 import de.abq.arcane_divinity.config.CONFIG;
 import de.abq.arcane_divinity.platform.Services;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.network.protocol.game.ServerboundPlayerCommandPacket;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.Enchantments;
 
 public final class SharedMixins {
     public static Item fixElytraItemCheck(Item item, ItemStack itemStack){
         if (Services.PLATFORM.defaultItemBuilder() == null) {
-            ArcaneDivinity.LOG.error("Services.PLATFORM.defaultItemBuilder() == null");
+            ArcaneDivinityCommon.LOG.error("Services.PLATFORM.defaultItemBuilder() == null");
             return item;
         }
         if (CONFIG.ALLOWED_FLIGHT_ITEMS.contains( itemStack.getItem() )) return itemStack.getItem();

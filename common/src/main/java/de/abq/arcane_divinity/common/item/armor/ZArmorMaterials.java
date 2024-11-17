@@ -1,7 +1,6 @@
 package de.abq.arcane_divinity.common.item.armor;
 
-import de.abq.arcane_divinity.ArcaneDivinity;
-import de.abq.arcane_divinity.platform.Services;
+import de.abq.arcane_divinity.ArcaneDivinityCommon;
 import net.minecraft.Util;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.ItemTags;
@@ -9,7 +8,6 @@ import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
 
 import java.util.EnumMap;
-import java.util.function.Supplier;
 
 public class ZArmorMaterials {
     public static void init(){}
@@ -20,7 +18,7 @@ public class ZArmorMaterials {
         attribute.put(ArmorType.LEGGINGS, 7);
         attribute.put(ArmorType.BOOTS, 5);
         attribute.put(ArmorType.BODY, 11);
-    }), 16, SoundEvents.ARMOR_EQUIP_ELYTRA,2f, 0.7f, ItemTags.REPAIRS_LEATHER_ARMOR, ArcaneDivinity.defaultResourceLocation("wings"));
+    }), 16, SoundEvents.ARMOR_EQUIP_ELYTRA,2f, 0.7f, ItemTags.REPAIRS_LEATHER_ARMOR, ArcaneDivinityCommon.defaultResourceLocation("wings"));
 
     //**UNUSED**//
     /*

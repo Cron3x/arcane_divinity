@@ -1,42 +1,40 @@
-.gradle
-build/
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
+# eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
+mcmodsrepo
 
-### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
+# idea
+out
+*.ipr
 *.iws
 *.iml
-*.ipr
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
+.idea
+caches
+daemon
+wrapper
+native
 
-### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
+# gradle
+build
+.gradle
+logs
+# other
+eclipse
+run
+runs/
+key.properties
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# Files from Forge MDK
+forge*changelog.txt
+build.bat
+*.bat
 
-### VS Code ###
-.vscode/
-
-### Mac OS ###
-.DS_Store
+# allow gradlew
+!core/gradle/wrapper
+!core/gradlew.bat
+!gradle/wrapper
+!gradlew.bat

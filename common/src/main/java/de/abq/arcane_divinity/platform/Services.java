@@ -1,14 +1,14 @@
 package de.abq.arcane_divinity.platform;
 
-import de.abq.arcane_divinity.ArcaneDivinity;
-import de.abq.arcane_divinity.platform.services.ArcaneDivinityPlatformHelper;
+import de.abq.arcane_divinity.ArcaneDivinityCommon;
+import de.abq.arcane_divinity.platform.service.ArcaneDivinityPlatformHelper;
 
 import java.util.ServiceLoader;
 
 // Service loaders are a built-in Java feature that allow us to locate implementations of an interface that vary from one
 // environment to another. In the context of MultiLoader we use this feature to access a mock API in the common code that
 // is swapped out for the platform specific implementation at runtime.
-public class Services {
+public final class Services {
 
     // In this example we provide a platform helper which provides information about what platform the mod is running on.
     // For example this can be used to check if the code is running on Forge vs Fabric, or to ask the modloader if another
@@ -24,7 +24,7 @@ public class Services {
         final T loadedService = ServiceLoader.load(clazz)
                 .findFirst()
                 .orElseThrow(() -> new NullPointerException("Failed to load service for " + clazz.getName()));
-        ArcaneDivinity.LOG.debug("Loaded {} for service {}", loadedService, clazz);
+        ArcaneDivinityCommon.LOG.debug("Loaded {} for service {}", loadedService, clazz);
         return loadedService;
     }
 }

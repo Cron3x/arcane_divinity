@@ -17,8 +17,8 @@ Stacktrace:
 -- Mod loading issue for: arcane_divinity --
 Details:
 	Caused by 0: java.lang.ExceptionInInitializerError
-		at TRANSFORMER/arcane_divinity@21.3.10-beta/de.abq.arcane_divinity.ArcaneDivinity.init(ArcaneDivinity.java:24) ~[%23199!/:?] {re:mixin,re:classloading}
-		at TRANSFORMER/arcane_divinity@21.3.10-beta/de.abq.arcane_divinity.ArcaneDivinityNeo.<init>(ArcaneDivinityNF.java:51) ~[%23199!/:?] {re:classloading}
+		at TRANSFORMER/arcane_divinity@21.3.10-beta/de.abq.arcane_divinity.ArcaneDivinityCommon.init(ArcaneDivinity.java:24) ~[%23199!/:?] {re:mixin,re:classloading}
+		at TRANSFORMER/arcane_divinity@21.3.10-beta/de.abq.arcane_divinity.ArcaneDivinity.<init>(ArcaneDivinityNF.java:51) ~[%23199!/:?] {re:classloading}
 		at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62) ~[?:?] {}
 		at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502) ~[?:?] {}
 		at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486) ~[?:?] {}
@@ -39,14 +39,14 @@ Details:
 		java.lang.ExceptionInInitializerError: null
 	Mod version: 21.3.10-beta
 	Mod issues URL: https://nonexist.ing
-	Exception message: java.lang.NullPointerException: Failed to load service for de.abq.arcane_divinity.platform.services.ArcaneDivinityPlatformHelper
+	Exception message: java.lang.NullPointerException: Failed to load service for de.abq.arcane_divinity.platform.service.ArcaneDivinityPlatformHelper
 Stacktrace:
 	at TRANSFORMER/arcane_divinity@21.3.10-beta/de.abq.arcane_divinity.platform.Services.lambda$load$0(Services.java:26) ~[%23199!/:?] {re:classloading}
 	at java.base/java.util.Optional.orElseThrow(Optional.java:403) ~[?:?] {}
 	at TRANSFORMER/arcane_divinity@21.3.10-beta/de.abq.arcane_divinity.platform.Services.load(Services.java:26) ~[%23199!/:?] {re:classloading}
 	at TRANSFORMER/arcane_divinity@21.3.10-beta/de.abq.arcane_divinity.platform.Services.<clinit>(Services.java:16) ~[%23199!/:?] {re:classloading}
-	at TRANSFORMER/arcane_divinity@21.3.10-beta/de.abq.arcane_divinity.ArcaneDivinity.init(ArcaneDivinity.java:24) ~[%23199!/:?] {re:mixin,re:classloading}
-	at TRANSFORMER/arcane_divinity@21.3.10-beta/de.abq.arcane_divinity.ArcaneDivinityNeo.<init>(ArcaneDivinityNF.java:51) ~[%23199!/:?] {re:classloading}
+	at TRANSFORMER/arcane_divinity@21.3.10-beta/de.abq.arcane_divinity.ArcaneDivinityCommon.init(ArcaneDivinity.java:24) ~[%23199!/:?] {re:mixin,re:classloading}
+	at TRANSFORMER/arcane_divinity@21.3.10-beta/de.abq.arcane_divinity.ArcaneDivinity.<init>(ArcaneDivinityNF.java:51) ~[%23199!/:?] {re:classloading}
 	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62) ~[?:?] {}
 	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502) ~[?:?] {}
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486) ~[?:?] {}
