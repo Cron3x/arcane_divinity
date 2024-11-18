@@ -1,18 +1,12 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "magic",
+  "group": "magic",
   "ingredients": [
-    {
-      "item": "minecraft:wheat"
-    },
-    {
-      "item": "minecraft:red_mushroom"
-    },
-    {
-      "item": "minecraft:nether_wart"
-    },
-    {
-      "item": "minecraft:amethyst_shard"
-    }
+    "minecraft:wheat",
+    "minecraft:red_mushroom",
+    "minecraft:nether_wart",
+    "minecraft:amethyst_shard"
   ],
   "result": {
     "id": "arcane_divinity:hallucinogenic_grass",

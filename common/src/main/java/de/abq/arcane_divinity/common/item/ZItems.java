@@ -22,9 +22,14 @@ public class ZItems {
     private static final ResourceLocation HALLUCINOGENIC_GRASS_RL = ResourceLocation.fromNamespaceAndPath(ArcaneDivinityCommon.MOD_ID, "hallucinogenic_grass");
     public static final Item HALLUCINOGENIC_GRASS = new Item(Services.PLATFORM.defaultItemBuilder().setId(ResourceKey.create(Registries.ITEM, HALLUCINOGENIC_GRASS_RL)));
 
+    private static final ResourceLocation ASH_RL = ResourceLocation.fromNamespaceAndPath(ArcaneDivinityCommon.MOD_ID, "ash");
+    public static final Item ASH = new Item(Services.PLATFORM.defaultItemBuilder().setId(ResourceKey.create(Registries.ITEM, ASH_RL)));
+
+
     public static void registerItems(BiConsumer<Item, ResourceLocation> register){
         register.accept(WINGS, WINGS_RL);
         register.accept(MAGIC_MUSHROOM, MAGIC_MUSHROOM_RL);
         register.accept(HALLUCINOGENIC_GRASS, HALLUCINOGENIC_GRASS_RL);
+        register.accept(ASH, ASH_RL);
     }
 }

@@ -5,6 +5,6 @@
   "experience": 0.35,
   "ingredient": "arcane_divinity:hallucinogenic_grass",
   "result": {
-    "id": "minecraft:air"
+    "id": "arcane_divinity:ash"
   }
 }
