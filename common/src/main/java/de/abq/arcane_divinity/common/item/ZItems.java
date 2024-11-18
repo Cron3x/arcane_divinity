@@ -9,7 +9,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.component.Consumables;
 
 import java.util.function.BiConsumer;
 
@@ -20,8 +19,12 @@ public class ZItems {
     private static final ResourceLocation MAGIC_MUSHROOM_RL = ResourceLocation.fromNamespaceAndPath(ArcaneDivinityCommon.MOD_ID, "magic_mushroom");
     public static final Item MAGIC_MUSHROOM = new Item(Services.PLATFORM.defaultItemBuilder().food(Foods.DRIED_KELP, ZConsumables.MAGIC_MUSHROOM).setId(ResourceKey.create(Registries.ITEM, MAGIC_MUSHROOM_RL)));
 
+    private static final ResourceLocation HALLUCINOGENIC_GRASS_RL = ResourceLocation.fromNamespaceAndPath(ArcaneDivinityCommon.MOD_ID, "hallucinogenic_grass");
+    public static final Item HALLUCINOGENIC_GRASS = new Item(Services.PLATFORM.defaultItemBuilder().setId(ResourceKey.create(Registries.ITEM, HALLUCINOGENIC_GRASS_RL)));
+
     public static void registerItems(BiConsumer<Item, ResourceLocation> register){
         register.accept(WINGS, WINGS_RL);
         register.accept(MAGIC_MUSHROOM, MAGIC_MUSHROOM_RL);
+        register.accept(HALLUCINOGENIC_GRASS, HALLUCINOGENIC_GRASS_RL);
     }
 }

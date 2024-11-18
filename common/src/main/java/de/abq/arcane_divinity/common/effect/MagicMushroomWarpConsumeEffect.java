@@ -3,6 +3,7 @@ package de.abq.arcane_divinity.common.effect;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import de.abq.arcane_divinity.ArcaneDivinityCommon;
+import de.abq.arcane_divinity.common.item.ZItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -45,7 +46,7 @@ public record MagicMushroomWarpConsumeEffect(float diameter) implements ConsumeE
         int radius = (int) (this.diameter / 2); //TODO: make this more beautiful
         int rSquared = radius * radius;
 
-        boolean isMagic = false;
+        int grassCount = 0;
 
         for (int x = -radius; x <= radius; x++) {
             for (int y = -radius; y <= radius; y++) {
@@ -57,9 +58,8 @@ public record MagicMushroomWarpConsumeEffect(float diameter) implements ConsumeE
 
 
                             for (ItemStack onFire : campfireBlockEntity.getItems()) {
-                                if (onFire.getItem().equals(Items.PORKCHOP)) {
-                                    isMagic = true;
-                                    break;
+                                if (onFire.getItem().equals(ZItems.HALLUCINOGENIC_GRASS)) {
+                                    grassCount++;
                                 }
                             }
                         }
@@ -68,10 +68,12 @@ public record MagicMushroomWarpConsumeEffect(float diameter) implements ConsumeE
             }
         }
 
-        if (!isMagic) return isMagic;
+        if (grassCount < 4) return false;
 
         user.addEffect(new MobEffectInstance(MobEffects.JUMP, 10, 5));
 
-        return isMagic;
+        //TODO: Implement wierd vision
+
+        return true;
     }
 }
