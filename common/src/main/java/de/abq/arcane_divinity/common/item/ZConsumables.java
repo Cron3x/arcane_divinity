@@ -2,8 +2,6 @@ package de.abq.arcane_divinity.common.item;
 
 import de.abq.arcane_divinity.common.effect.MagicMushroomWarpConsumeEffect;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.item.ItemUseAnimation;
-import net.minecraft.world.item.component.Consumable;
 
 public class ZConsumables {
     public static final Consumable MAGIC_MUSHROOM = defaultConsumable().onConsume(

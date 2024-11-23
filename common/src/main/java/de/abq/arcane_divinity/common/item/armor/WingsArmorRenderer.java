@@ -1,13 +1,13 @@
 package de.abq.arcane_divinity.common.item.armor;
 
 import de.abq.arcane_divinity.ArcaneDivinityCommon;
-import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.LivingEntity;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.cache.object.GeoBone;
 import software.bernie.geckolib.model.DefaultedItemGeoModel;
-import software.bernie.geckolib.object.Color;
 import software.bernie.geckolib.renderer.specialty.DyeableGeoArmorRenderer;
+import software.bernie.geckolib.util.Color;
 
 
 public class WingsArmorRenderer extends DyeableGeoArmorRenderer<WingsArmorItem> {
@@ -16,10 +16,11 @@ public class WingsArmorRenderer extends DyeableGeoArmorRenderer<WingsArmorItem> 
         //addRenderLayer(new AutoGlowingGeoLayer<>(this));
     }
 
+
     @Override
-    public void setupAnim(HumanoidRenderState p_361833_) {
+    public void setupAnim(LivingEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         System.out.printf("setupanim");
-        super.setupAnim(p_361833_);
+        super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
     }
 
     @Override

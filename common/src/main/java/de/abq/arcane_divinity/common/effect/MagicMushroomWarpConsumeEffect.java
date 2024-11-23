@@ -4,10 +4,12 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import de.abq.arcane_divinity.ArcaneDivinityCommon;
 import de.abq.arcane_divinity.common.item.ZItems;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -56,7 +58,6 @@ public record MagicMushroomWarpConsumeEffect(float diameter) implements ConsumeE
                         if (level.getBlockState(pos).is(Blocks.CAMPFIRE)) {
                             CampfireBlockEntity campfireBlockEntity = (CampfireBlockEntity) level.getBlockEntity(pos);
 
-
                             for (ItemStack onFire : campfireBlockEntity.getItems()) {
                                 if (onFire.getItem().equals(ZItems.HALLUCINOGENIC_GRASS)) {
                                     grassCount++;
@@ -71,6 +72,10 @@ public record MagicMushroomWarpConsumeEffect(float diameter) implements ConsumeE
         if (grassCount < 4) return false;
 
         user.addEffect(new MobEffectInstance(MobEffects.JUMP, 10, 5));
+
+        if (level.isClientSide){
+            ResourceLocation shaderLocation = ArcaneDivinityCommon.defaultResourceLocation("shaders/post/example.json");
+        }
 
         //TODO: Implement wierd vision
 

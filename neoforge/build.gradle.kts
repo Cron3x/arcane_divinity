@@ -49,17 +49,20 @@ repositories {
             includeGroup("software.bernie.geckolib")
         }
     }
+    maven {
+        name = "BlameJared Maven (CrT / Bookshelf)"
+        url = uri("https://maven.blamejared.com")
+    }
     mavenLocal()
 }
 
 dependencies {
-    implementation ("software.bernie.geckolib:geckolib-neoforge-1.21.3:4.7.1") //TODO: Make Updatable
+    implementation( "software.bernie.geckolib:geckolib-neoforge-${libs.versions.minecraft.asProvider().get()}:${libs.versions.geckolib.asProvider().get()}")
+    implementation("foundry.veil:veil-neoforge-${libs.versions.veil.minecraft.get()}:${libs.versions.veil.asProvider().get()}") {
+        exclude("maven.modrinth")
+    }
 
     compileOnly(project(":common"))
-
-    // Only enable for testing as needed
-    // Disable before publishing
-    //implementation(libs.examplemod.neoforge)
 }
 
 tasks.withType<Test>().configureEach {

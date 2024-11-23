@@ -46,6 +46,10 @@ pluginManagement {
                 includeGroup("software.bernie.geckolib")
             }
         }
+        maven {
+            name = "BlameJared Maven (CrT / Bookshelf)"
+            url = uri("https://maven.blamejared.com")
+        }
     }
 }
 
@@ -56,5 +60,5 @@ plugins {
 rootProject.name = "arcane_divinity"
 
 include("common")
-include("fabric")
+//include("fabric")
 include("neoforge")

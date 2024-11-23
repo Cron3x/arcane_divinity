@@ -3,14 +3,12 @@ package de.abq.arcane_divinity.common.item.armor;
 import de.abq.arcane_divinity.common.util.VelocityUtil;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.equipment.ArmorType;
-import net.minecraft.world.item.equipment.EquipmentModel;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
@@ -21,7 +19,6 @@ import software.bernie.geckolib.animatable.instance.SingletonAnimatableInstanceC
 import software.bernie.geckolib.animation.*;
 import software.bernie.geckolib.constant.DataTickets;
 import software.bernie.geckolib.constant.DefaultAnimations;
-//import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 import java.util.function.Consumer;
 
@@ -61,7 +58,7 @@ public final class WingsArmorItem extends ArmorItem implements GeoItem {
     }
 
     public WingsArmorItem(Properties properties) {
-        super(ZArmorMaterials.WINGS, ArmorType.CHESTPLATE, properties);
+        super(ArmorMaterials.TURTLE, Type.CHESTPLATE, properties);//TODO: Add own Armor Material
     }
 
     @Override
@@ -96,12 +93,11 @@ public final class WingsArmorItem extends ArmorItem implements GeoItem {
             private WingsArmorRenderer renderer;
 
             @Override
-            public @Nullable <E extends LivingEntity, S extends HumanoidRenderState> HumanoidModel<?> getGeoArmorRenderer(@Nullable E livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, EquipmentModel.LayerType type, HumanoidModel<S> original) {
-                //return GeoRenderProvider.super.getGeoArmorRenderer(livingEntity, itemStack, equipmentSlot, type, original);
+            public @Nullable <T extends LivingEntity> HumanoidModel<?> getGeoArmorRenderer(@Nullable T livingEntity, ItemStack itemStack, @Nullable EquipmentSlot equipmentSlot, @Nullable HumanoidModel<T> original) {
                 if (this.renderer == null)
                     this.renderer = new WingsArmorRenderer();
                 // Defer creation of our renderer then cache it so that it doesn't get instantiated too early
-                return this.renderer;
+                return renderer;
             }
         });
     }
