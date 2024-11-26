@@ -1,6 +1,7 @@
 package de.abq.arcane_divinity.platform.service;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.datafixers.types.Type;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.texture.AbstractTexture;
 import net.minecraft.client.resources.model.BakedModel;
@@ -54,7 +55,7 @@ public interface ArcaneDivinityPlatformHelper {
 
     Item.Properties defaultItemBuilder();
 
-    <T extends BlockEntity> BlockEntityType<T> createBlockEntityType(BiFunction<BlockPos, BlockState, T> fn, Block... blocks);
+    <T extends BlockEntity> BlockEntityType<T> createBlockEntityType(BiFunction<BlockPos, BlockState, T> fn, Type<?> type, Block... blocks);
 
     default Item.Properties defaultItemBuilderWithCustomDamageOnFabric(){
         return defaultItemBuilder();

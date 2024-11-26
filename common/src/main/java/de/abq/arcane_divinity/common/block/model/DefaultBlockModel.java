@@ -19,14 +19,15 @@ public class DefaultBlockModel<T extends AbstractGeoBlockEntity> extends GeoMode
     }
 
     @Override
-    public ResourceLocation getModelResource(T animatable, @Nullable GeoRenderer<T> renderer) {
+    public ResourceLocation getModelResource(T animatable) {
         return ResourceLocation.fromNamespaceAndPath(ArcaneDivinityCommon.MOD_ID, "geo/block/%s.geo.json".formatted(id));
     }
 
     @Override
-    public ResourceLocation getTextureResource(T animatable, @Nullable GeoRenderer<T> renderer) {
+    public ResourceLocation getTextureResource(T animatable) {
         return ResourceLocation.fromNamespaceAndPath(ArcaneDivinityCommon.MOD_ID, "textures/block/%s.png".formatted(id));
     }
+
 
     @Override
     public ResourceLocation getAnimationResource(T animatable) {

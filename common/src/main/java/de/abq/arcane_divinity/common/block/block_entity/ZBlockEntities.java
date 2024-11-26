@@ -1,10 +1,13 @@
 package de.abq.arcane_divinity.common.block.block_entity;
 
+import com.mojang.datafixers.types.Type;
 import de.abq.arcane_divinity.common.block.ZBlockNames;
 import de.abq.arcane_divinity.common.block.ZBlocks;
 import de.abq.arcane_divinity.platform.Services;
+import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.datafix.fixes.References;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -25,7 +28,8 @@ public class ZBlockEntities {
 
     private static <T extends BlockEntity> BlockEntityType<T> assign(ResourceLocation id, BiFunction<BlockPos, BlockState, T> fn, Block... blocks){
 
-        BlockEntityType<T> ret = Services.PLATFORM.createBlockEntityType(fn, blocks);
+        Type<?> type = Util.fetchChoiceType(References.BLOCK_ENTITY, id.getPath());
+        BlockEntityType<T> ret = Services.PLATFORM.createBlockEntityType(fn, type, blocks);
         var old = ALL.put(id, ret);
         if (old != null) throw new IllegalArgumentException("ID duplicated" + id);
         return ret;

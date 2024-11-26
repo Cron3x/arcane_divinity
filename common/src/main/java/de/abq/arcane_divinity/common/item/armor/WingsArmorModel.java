@@ -8,12 +8,12 @@ import software.bernie.geckolib.renderer.GeoRenderer;
 
 public class WingsArmorModel extends GeoModel<WingsArmorItem> {
     @Override
-    public ResourceLocation getModelResource(WingsArmorItem animatable, @Nullable GeoRenderer<WingsArmorItem> renderer) {
+    public ResourceLocation getModelResource(WingsArmorItem animatable) {
         return ResourceLocation.fromNamespaceAndPath(ArcaneDivinityCommon.MOD_ID, "armor/wings.geo.json");
     }
 
     @Override
-    public ResourceLocation getTextureResource(WingsArmorItem animatable, @Nullable GeoRenderer<WingsArmorItem> renderer) {
+    public ResourceLocation getTextureResource(WingsArmorItem animatable) {
         return ResourceLocation.fromNamespaceAndPath(ArcaneDivinityCommon.MOD_ID, "armor/wings.png");
     }
 

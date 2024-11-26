@@ -3,6 +3,7 @@
   "minVersion": "0.8",
   "package": "de.abq.arcane_divinity.mixin",
   "compatibilityLevel": "JAVA_21",
+  "plugin": "foundry.veil.forge.VeilMixinPlugin",
   "mixins": [
   ],
   "client": [

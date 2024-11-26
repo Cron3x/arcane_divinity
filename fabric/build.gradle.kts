@@ -33,6 +33,7 @@ repositories {
             includeGroup("software.bernie.geckolib")
         }
     }
+
     mavenCentral()
 }
 
@@ -76,6 +77,7 @@ loom {
 }
 
 tasks.withType<JavaCompile>().configureEach {
+    options.release = 17
     source(project(":common").sourceSets.getByName("main").allSource)
 }
 
@@ -90,6 +92,16 @@ tasks.withType<Javadoc>().configureEach {
 tasks.withType<ProcessResources>().configureEach {
     from(project(":common").sourceSets.getByName("main").resources)
     exclude("**/accesstransformer-nf.cfg")
+}
+
+java {
+    // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
+    // if it is present.
+    // If you remove this line, sources will not be generated.
+    withSourcesJar()
+
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 publishing {

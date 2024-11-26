@@ -23,7 +23,7 @@ dependencies {
     compileOnly(libs.mixin)
     compileOnly(libs.mixinextras.common)
 
-    implementation( "software.bernie.geckolib:geckolib-common-${libs.versions.minecraft.asProvider().get()}:${libs.versions.geckolib.asProvider().get()}") //TODO: Make Updatable
+    implementation( "software.bernie.geckolib:geckolib-common-${libs.versions.minecraft.asProvider().get()}:${libs.versions.geckolib.asProvider().get()}")
 
     implementation("foundry.veil:veil-common-${libs.versions.veil.minecraft.get()}:${libs.versions.veil.asProvider().get()}") {
         exclude("maven.modrinth")
@@ -31,6 +31,7 @@ dependencies {
 }
 
 repositories {
+    mavenLocal()
     maven {
         name = "GeckoLib"
         url = uri("https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/")
@@ -42,7 +43,17 @@ repositories {
         name = "BlameJared Maven (CrT / Bookshelf)"
         url = uri("https://maven.blamejared.com")
     }
-    mavenLocal()
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = uri("https://api.modrinth.com/maven")
+            }
+        }
+        filter {
+            includeGroup( "maven.modrinth")
+        }
+    }
 }
 
 publishing {

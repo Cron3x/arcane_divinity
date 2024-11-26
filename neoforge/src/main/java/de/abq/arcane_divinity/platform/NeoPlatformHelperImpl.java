@@ -1,6 +1,7 @@
 package de.abq.arcane_divinity.platform;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.datafixers.types.Type;
 import de.abq.arcane_divinity.platform.service.ArcaneDivinityPlatformHelper;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.texture.AbstractTexture;
@@ -15,6 +16,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLLoader;
 
+import java.util.Arrays;
 import java.util.function.BiFunction;
 
 public final class NeoPlatformHelperImpl implements ArcaneDivinityPlatformHelper {
@@ -47,8 +49,8 @@ public final class NeoPlatformHelperImpl implements ArcaneDivinityPlatformHelper
     }
 
     @Override
-    public <T extends BlockEntity> BlockEntityType<T> createBlockEntityType(BiFunction<BlockPos, BlockState, T> fn, Block... blocks) {
-        return new BlockEntityType<>(fn::apply, blocks);
+    public <T extends BlockEntity> BlockEntityType<T> createBlockEntityType(BiFunction<BlockPos, BlockState, T> fn, Type<?> type, Block ...blocks) {
+        return BlockEntityType.Builder.of(fn::apply, blocks).build(type);
     }
 
     @Override

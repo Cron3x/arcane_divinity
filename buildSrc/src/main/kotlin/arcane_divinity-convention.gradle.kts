@@ -43,6 +43,7 @@ val fabricVersionRange = libs.get().findVersion("fabric.range").get()
 val neoforgeVersionRange = libs.get().findVersion("neoforge.range").get()
 val neoforgeLoaderVersionRange = libs.get().findVersion("neoforge.loader.range").get()
 val geckolibRange = libs.get().findVersion("geckolib.range").get()
+val veilVersion = "1.0.0.21" //find out how to make this work with veils versions
 
 tasks.withType<Jar>().configureEach {
     from(rootProject.file("LICENSE")) {
@@ -88,7 +89,8 @@ tasks.withType<ProcessResources>().configureEach {
             "mod_description" to modDescription,
             "neoforge_version_range" to neoforgeVersionRange,
             "neoforge_loader_range" to neoforgeLoaderVersionRange,
-            "geckolib_range" to geckolibRange
+            "geckolib_range" to geckolibRange,
+            "veil_version" to veilVersion
     )
 
     filesMatching(listOf("pack.mcmeta", "fabric.mod.json", "META-INF/neoforge.mods.toml", "META-INF/mods.toml", "*.mixins.json")) {

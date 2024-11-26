@@ -1,4 +1,7 @@
+import net.neoforged.moddevgradle.tasks.JarJar
+
 plugins {
+    id ("java-library")
     id("arcane_divinity-convention")
 
     alias(libs.plugins.moddevgradle)
@@ -14,6 +17,16 @@ version = libs.versions.arcane.divinity.get()
 
 base {
     archivesName = "arcane_divinity-neoforge-${mcVersion}"
+}
+
+configurations {
+    val shade by creating
+    implementation {
+        extendsFrom(shade)
+    }
+    additionalRuntimeClasspath {
+        extendsFrom(shade)
+    }
 }
 
 neoForge {
@@ -42,6 +55,7 @@ neoForge {
 }
 
 repositories {
+    mavenLocal()
     maven {
         name = "GeckoLib"
         url = uri("https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/")
@@ -53,20 +67,35 @@ repositories {
         name = "BlameJared Maven (CrT / Bookshelf)"
         url = uri("https://maven.blamejared.com")
     }
-    mavenLocal()
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = uri("https://api.modrinth.com/maven")
+            }
+        }
+        filter {
+            includeGroup( "maven.modrinth")
+        }
+    }
 }
 
 dependencies {
-    implementation( "software.bernie.geckolib:geckolib-neoforge-${libs.versions.minecraft.asProvider().get()}:${libs.versions.geckolib.asProvider().get()}")
     implementation("foundry.veil:veil-neoforge-${libs.versions.veil.minecraft.get()}:${libs.versions.veil.asProvider().get()}") {
         exclude("maven.modrinth")
     }
-
+    jarJar("foundry.veil:veil-neoforge-${libs.versions.veil.minecraft.get()}:${libs.versions.veil.asProvider().get()}")
+    implementation( "software.bernie.geckolib:geckolib-neoforge-${libs.versions.minecraft.asProvider().get()}:${libs.versions.geckolib.asProvider().get()}"){
+    }
     compileOnly(project(":common"))
 }
 
 tasks.withType<Test>().configureEach {
     enabled = false;
+}
+
+tasks.withType<JarJar>().configureEach{
+    enabled = true;
 }
 
 tasks.named<JavaCompile>("compileJava").configure {
