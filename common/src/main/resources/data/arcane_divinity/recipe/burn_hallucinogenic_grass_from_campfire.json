@@ -1,9 +1,12 @@
 {
   "type": "minecraft:campfire_cooking",
   "category": "magic",
+  "group": "magic",
   "cookingtime": 800,
   "experience": 0.35,
-  "ingredient": "arcane_divinity:hallucinogenic_grass",
+  "ingredient": {
+    "item": "arcane_divinity:hallucinogenic_grass"
+  },
   "result": {
     "id": "arcane_divinity:ash"
   }

@@ -1,9 +1,17 @@
 {
     "type": "minecraft:crafting_shapeless",
+    "group": "magic",
+    "category": "magic",
     "ingredients": [
-        "minecraft:red_mushroom",
-        "minecraft:fermented_spider_eye",
-        "minecraft:redstone"
+        {
+            "item": "minecraft:red_mushroom"
+        },
+        {
+            "item":"minecraft:fermented_spider_eye"
+        },
+        {
+            "item": "minecraft:redstone"
+        }
     ],
     "result": {
         "id": "arcane_divinity:magic_mushroom",
