@@ -1,10 +1,9 @@
 package de.abq.arcane_divinity;
 
-import de.abq.arcane_divinity.common.item.armor.ZArmorMaterials;
-import de.abq.arcane_divinity.platform.Services;
-import net.minecraft.core.registries.BuiltInRegistries;
+import foundry.veil.Veil;
+import foundry.veil.api.client.render.shader.program.ShaderProgram;
+import foundry.veil.platform.VeilEventPlatform;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Items;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,20 +19,20 @@ public final class ArcaneDivinityCommon {
     public static final String MOD_NAME = "arcane_divinity";
     public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
 
+    private static final ResourceLocation CUSTOM_POST_PIPELINE = Veil.veilPath("test_pipeline");
+    private static final ResourceLocation CUSTOM_POST_SHADER = Veil.veilPath("test_post_shader");
+
+
     public static void init() {
-        /*LOG.info("Hello from Common init on {}! we are currently in a {} environment!", Services.PLATFORM.getPlatformName(), Services.PLATFORM.getEnvironmentName());
-        LOG.info("The ID for diamonds is {}", BuiltInRegistries.ITEM.getKey(Items.DIAMOND));
 
-        // It is common for all supported loaders to provide a similar feature that can not be used directly in the
-        // common code. A popular way to get around this is using Java's built-in service loader feature to create
-        // your own abstraction layer. You can learn more about this in our provided services class. In this example
-        // we have an interface in the common code and use a loader specific implementation to delegate our call to
-        // the platform specific approach.
-        if (Services.PLATFORM.isModLoaded("geckolib")) {
-            LOG.info("Hello to geckolib");
-        }
-
-        //ZArmorMaterials.init();*/
+        VeilEventPlatform.INSTANCE.preVeilPostProcessing((pipelineName, pipeline, context) -> {
+            if (CUSTOM_POST_PIPELINE.equals(pipelineName)) {
+                ShaderProgram shader = context.getShader(CUSTOM_POST_SHADER);
+                if (shader != null) {
+                    shader.setInt("Secret", 42);
+                }
+            }
+        });
     }
 
     public static ResourceLocation defaultResourceLocation(String name){

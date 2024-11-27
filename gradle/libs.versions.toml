@@ -3,8 +3,8 @@
 arcane-divinity = "0.0.1"
 
 # Common
-minecraft-range = "[1.21,)"
-minecraft = "1.21"
+minecraft-range = "[1.21.1,)"
+minecraft = "1.21.1"
 parchment-minecraft = "1.21"
 parchment = "2024.11.10"
 neoform = "1.21-20240613.152323"
@@ -24,16 +24,16 @@ forge-mc = "1.21.3-53.0.7"
 # Neoforge
 neoforge-loader-range = "[4,)"
 neoforge-range = "[21.0.167,)"
-neoforge = "21.0.167"#"21.1.80"
+neoforge = "21.1.80"#"21.0.167"
 
 # Dependencies
 mixin = "0.8.5"
 mixinextras = "0.3.5"
 mixinextras-range = "[0.3.5,)"
-geckolib = "4.5.8"#"4.7"
+geckolib = "4.7"#"4.5.8"
 geckolib-range = "[4.5.8,)"
-veil = "1.0.0.24"
-veil-minecraft = "1.21"
+veil = "1.0.0.28"
+veil-minecraft = "1.21.1"
 
 # Plugins
 plugin-moddevgradle = "2.0.47-beta"
