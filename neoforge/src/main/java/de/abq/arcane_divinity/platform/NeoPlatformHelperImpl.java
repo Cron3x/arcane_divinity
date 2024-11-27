@@ -58,20 +58,4 @@ public final class NeoPlatformHelperImpl implements ArcaneDivinityPlatformHelper
                                 int overlay) {
         System.out.println("UNIMPLEMENTED: tesselationBlock (NeoForgePlatform)");
     }
-
-    @Override
-    public void restoreLastFilter(AbstractTexture texture) {
-        System.out.println("UNIMPLEMENTED: resoreLastFilter (NeoForgePlatform)");
-    }
-
-    @Override
-    public BakedModel wrapPlatformModel(BakedModel original) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public void setFilterSave(AbstractTexture texture, boolean filter, boolean mipmap) {
-        // TODO Auto-generated method stub
-    }
 }

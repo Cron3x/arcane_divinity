@@ -1,5 +1,6 @@
 package de.abq.arcane_divinity.common.item;
 
+import de.abq.arcane_divinity.ArcaneDivinity;
 import de.abq.arcane_divinity.common.effect.ZMobEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -22,7 +23,7 @@ public class MagicMushroomItem extends Item {
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity user) {
         ItemStack returnStack = super.finishUsingItem(stack, level, user);
         if (!level.isClientSide){
-            int radius = (int) (this.diameter / 2); //TODO: make this more beautiful
+            int radius = (this.diameter / 2); //TODO: make this more beautiful
             int rSquared = radius * radius;
 
             int grassCount = 0;
@@ -46,11 +47,14 @@ public class MagicMushroomItem extends Item {
                 }
             }
 
-            if (grassCount < 4) return returnStack;
+            ArcaneDivinity.LOG.debug("->üüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüü");
 
-            user.addEffect(new MobEffectInstance(ZMobEffects.MAGIC_MUSHROOM_WARP_VISION, 50*20, grassCount));
+            if (user.addEffect(new MobEffectInstance(ZMobEffects.MAGIC_MUSHROOM_WARP_VISION_EFFECT, 365*20, grassCount, false, true), user)){
+                ArcaneDivinity.LOG.debug("psst");
+            } else {
+                ArcaneDivinity.LOG.debug("wierd");
+            }
         }
-        //TODO: Implement wierd vision
 
         return returnStack;
     }

@@ -1,6 +1,7 @@
 package de.abq.arcane_divinity.common.effect;
 
-import net.minecraft.client.Minecraft;
+import de.abq.arcane_divinity.ArcaneDivinity;
+import de.abq.arcane_divinity.client.WarpingRenderer;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -15,8 +16,18 @@ public class MagicMushroomMobEffect extends MobEffect {
     public void onEffectAdded(LivingEntity livingEntity, int amplifier) {
         super.onEffectAdded(livingEntity, amplifier);
 
-        if (Minecraft.getInstance().level == null || !Minecraft.getInstance().level.isClientSide) return;
+        ArcaneDivinity.LOG.debug("asdf-asdfsödfjölaskjföalsdfjöasldfjöalsdjflösajfdlsajdf");
 
-
+        if (livingEntity.level().isClientSide) {
+            ArcaneDivinity.LOG.debug("qwer-asdfsödfjölaskjföalsdfjöasldfjöalsdjflösajfdlsajdf");
+            WarpingRenderer.render();
+        }
     }
+
+    @Override
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
+        return true;
+    }
+
+
 }

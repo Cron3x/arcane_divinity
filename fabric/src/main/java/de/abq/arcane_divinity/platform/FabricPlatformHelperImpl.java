@@ -49,21 +49,6 @@ public class FabricPlatformHelperImpl implements ArcaneDivinityPlatformHelper {
     }
 
     @Override
-    public BakedModel wrapPlatformModel(BakedModel original) {
-        return null;
-    }
-
-    @Override
-    public void setFilterSave(AbstractTexture texture, boolean filter, boolean mipmap) {
-
-    }
-
-    @Override
-    public void restoreLastFilter(AbstractTexture texture) {
-
-    }
-
-    @Override
     public void tessellateBlock(Level level, BlockState state, BlockPos pos, PoseStack ps, MultiBufferSource buffers, int overlay) {
 
     }

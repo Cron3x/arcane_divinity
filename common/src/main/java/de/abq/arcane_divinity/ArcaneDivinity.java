@@ -1,5 +1,7 @@
 package de.abq.arcane_divinity;
 
+import de.abq.arcane_divinity.client.WarpingRenderer;
+import de.abq.arcane_divinity.common.effect.ZMobEffects;
 import foundry.veil.Veil;
 import foundry.veil.api.client.render.shader.program.ShaderProgram;
 import foundry.veil.platform.VeilEventPlatform;
@@ -19,19 +21,7 @@ public final class ArcaneDivinity {
     public static final String MOD_NAME = "arcane_divinity";
     public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
 
-    private static final ResourceLocation CUSTOM_POST_PIPELINE = ArcaneDivinity.defaultResourceLocation("test_pipeline");
-    private static final ResourceLocation CUSTOM_POST_SHADER = Veil.veilPath("test_post_shader");
-
     public static void init() {
-
-        VeilEventPlatform.INSTANCE.preVeilPostProcessing((pipelineName, pipeline, context) -> {
-            if (CUSTOM_POST_PIPELINE.equals(pipelineName)) {
-                ShaderProgram shader = context.getShader(CUSTOM_POST_SHADER);
-                if (shader != null) {
-                    shader.setInt("Secret", 42);
-                }
-            }
-        });
     }
 
     public static ResourceLocation defaultResourceLocation(String name){

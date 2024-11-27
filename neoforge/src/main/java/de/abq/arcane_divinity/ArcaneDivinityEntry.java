@@ -4,7 +4,9 @@ package de.abq.arcane_divinity;
 import de.abq.arcane_divinity.common.block.ZBlocks;
 import de.abq.arcane_divinity.common.block.block_entity.ZBlockEntities;
 import de.abq.arcane_divinity.common.block.block_entity.renderers.DefaultBlockEntityRenderer;
+import de.abq.arcane_divinity.common.effect.ZMobEffects;
 import de.abq.arcane_divinity.common.item.ZItems;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -15,11 +17,13 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
+import org.apache.logging.log4j.util.TriConsumer;
 
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 @Mod(ArcaneDivinity.MOD_ID)
+
 public class ArcaneDivinityEntry {
     //public static final DeferredRegister<ArmorMaterial> ARMOR_MATERIALS = DeferredRegister.create(BuiltInRegistries., ArcaneDivinity.MOD_ID);
     public ArcaneDivinityEntry(IEventBus eventBus) {
@@ -34,6 +38,7 @@ public class ArcaneDivinityEntry {
         //ARMOR_MATERIALS.register(eventBus);
 
         eventBus.addListener((RegisterEvent event) -> {
+            bind(event, Registries.MOB_EFFECT, ZMobEffects::register);
             bind(event, Registries.BLOCK, ZBlocks::registerBlocks);
             bindItems(event, ZBlocks::registerBlockItems);
             bindItems(event, ZItems::registerItems );
