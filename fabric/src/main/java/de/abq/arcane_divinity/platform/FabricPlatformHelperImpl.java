@@ -23,7 +23,6 @@ import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
 public class FabricPlatformHelperImpl implements ArcaneDivinityPlatformHelper {
-
     @Override
     public String getPlatformName() {
         return "Fabric";
@@ -68,7 +67,6 @@ public class FabricPlatformHelperImpl implements ArcaneDivinityPlatformHelper {
     public void tessellateBlock(Level level, BlockState state, BlockPos pos, PoseStack ps, MultiBufferSource buffers, int overlay) {
 
     }
-
 
     private static <T, R extends Registry<? super T>> Holder<T> registerHolder(R registry, String id, Supplier<T> object) {
         return Registry.registerForHolder((Registry<T>)registry, ResourceLocation.fromNamespaceAndPath(ArcaneDivinity.MOD_ID, id), object.get());
