@@ -1,6 +1,6 @@
 package de.abq.arcane_divinity.platform;
 
-import de.abq.arcane_divinity.ArcaneDivinityCommon;
+import de.abq.arcane_divinity.ArcaneDivinity;
 import de.abq.arcane_divinity.platform.service.ArcaneDivinityPlatformHelper;
 
 import java.util.ServiceLoader;
@@ -24,7 +24,7 @@ public final class Services {
         final T loadedService = ServiceLoader.load(clazz)
                 .findFirst()
                 .orElseThrow(() -> new NullPointerException("Failed to load service for " + clazz.getName()));
-        ArcaneDivinityCommon.LOG.debug("Loaded {} for service {}", loadedService, clazz);
+        ArcaneDivinity.LOG.debug("Loaded {} for service {}", loadedService, clazz);
         return loadedService;
     }
 }

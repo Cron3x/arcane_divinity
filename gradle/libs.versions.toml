@@ -11,9 +11,9 @@ neoform = "1.21-20240613.152323"
 
 # Fabric
 fabric = "0.16.9"
-fabric-range = "0.16"
-fabric-api = "0.102.0+1.21"
-fabric-api-range = "0.102.0+1.21"
+fabric-range = "0.15"
+fabric-api = "0.110.0+1.21.1"
+fabric-api-range = "0.100.0+1.21"
 
 # Forge
 forge-fml-range = "[53,)"

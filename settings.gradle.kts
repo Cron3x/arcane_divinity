@@ -60,5 +60,5 @@ plugins {
 rootProject.name = "arcane_divinity"
 
 include("common")
-//FIX: include("fabric")
+include("fabric")
 include("neoforge")

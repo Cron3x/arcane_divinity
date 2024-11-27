@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 // import and access the vanilla codebase, libraries used by vanilla, and optionally third party libraries that provide
 // common compatible binaries. This means common code can not directly use loader specific concepts such as Forge events
 // however it will be compatible with all supported mod loaders.
-public final class ArcaneDivinityCommon {
+public final class ArcaneDivinity {
     // The loader specific projects are able to import and use any code from the common project. This allows you to
     // write the majority of your code here and load it from your loader specific projects. This example has some
     // code that gets invoked by the entry point of the loader specific projects.
@@ -19,9 +19,8 @@ public final class ArcaneDivinityCommon {
     public static final String MOD_NAME = "arcane_divinity";
     public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
 
-    private static final ResourceLocation CUSTOM_POST_PIPELINE = Veil.veilPath("test_pipeline");
+    private static final ResourceLocation CUSTOM_POST_PIPELINE = ArcaneDivinity.defaultResourceLocation("test_pipeline");
     private static final ResourceLocation CUSTOM_POST_SHADER = Veil.veilPath("test_post_shader");
-
 
     public static void init() {
 
@@ -36,6 +35,6 @@ public final class ArcaneDivinityCommon {
     }
 
     public static ResourceLocation defaultResourceLocation(String name){
-        return ResourceLocation.fromNamespaceAndPath(ArcaneDivinityCommon.MOD_ID, name);
+        return ResourceLocation.fromNamespaceAndPath(ArcaneDivinity.MOD_ID, name);
     }
 }

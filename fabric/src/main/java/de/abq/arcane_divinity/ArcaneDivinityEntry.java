@@ -6,7 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 
 import java.util.function.BiConsumer;
 
-public class ArcaneDivinity implements ModInitializer {
+public class ArcaneDivinityEntry implements ModInitializer {
     
     @Override
     public void onInitialize() {
@@ -16,8 +16,8 @@ public class ArcaneDivinity implements ModInitializer {
         // project.
 
         // Use Fabric to bootstrap the Common mod.
-        ArcaneDivinityCommon.LOG.info("Hello Fabric world!");
-        ArcaneDivinityCommon.init();
+        ArcaneDivinity.LOG.info("Hello Fabric world!");
+        ArcaneDivinity.init();
     }
 
     private static <T> BiConsumer<T, ResourceLocation> bind(Registry<? super T> registry) {

@@ -33,6 +33,21 @@ repositories {
             includeGroup("software.bernie.geckolib")
         }
     }
+    maven {
+        name = "BlameJared Maven (CrT / Bookshelf)"
+        url = uri("https://maven.blamejared.com")
+    }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = uri("https://api.modrinth.com/maven")
+            }
+        }
+        filter {
+            includeGroup( "maven.modrinth")
+        }
+    }
 
     mavenCentral()
 }
@@ -47,6 +62,9 @@ dependencies {
     modImplementation(libs.fabric.api)
 
     modImplementation("software.bernie.geckolib:geckolib-fabric-${mcVersion}:${geckolibVersion}")
+    modImplementation("foundry.veil:veil-fabric-${libs.versions.veil.minecraft.get()}:${libs.versions.veil.asProvider().get()}") {
+        exclude("maven.modrinth")
+    }
 
     compileOnly(project(":common"))
 }
@@ -77,7 +95,6 @@ loom {
 }
 
 tasks.withType<JavaCompile>().configureEach {
-    options.release = 17
     source(project(":common").sourceSets.getByName("main").allSource)
 }
 

@@ -22,7 +22,7 @@ neoForge {
 dependencies {
     compileOnly(libs.mixin)
     compileOnly(libs.mixinextras.common)
-
+    
     implementation( "software.bernie.geckolib:geckolib-common-${libs.versions.minecraft.asProvider().get()}:${libs.versions.geckolib.asProvider().get()}")
 
     implementation("foundry.veil:veil-common-${libs.versions.veil.minecraft.get()}:${libs.versions.veil.asProvider().get()}") {

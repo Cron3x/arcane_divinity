@@ -86,6 +86,7 @@ dependencies {
     }
     jarJar("foundry.veil:veil-neoforge-${libs.versions.veil.minecraft.get()}:${libs.versions.veil.asProvider().get()}")
     implementation( "software.bernie.geckolib:geckolib-neoforge-${libs.versions.minecraft.asProvider().get()}:${libs.versions.geckolib.asProvider().get()}"){
+        exclude("maven.modrinth")
     }
     compileOnly(project(":common"))
 }

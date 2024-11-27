@@ -1,7 +1,8 @@
 package de.abq.arcane_divinity.platform;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import de.abq.arcane_divinity.ArcaneDivinityCommon;
+import com.mojang.datafixers.types.Type;
+import de.abq.arcane_divinity.ArcaneDivinity;
 import de.abq.arcane_divinity.platform.service.ArcaneDivinityPlatformHelper;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -44,7 +45,7 @@ public class FabricPlatformHelperImpl implements ArcaneDivinityPlatformHelper {
     }
 
     @Override
-    public <T extends BlockEntity> BlockEntityType<T> createBlockEntityType(BiFunction<BlockPos, BlockState, T> fn, Block... blocks) {
+    public <T extends BlockEntity> BlockEntityType<T> createBlockEntityType(BiFunction<BlockPos, BlockState, T> fn, Type<?> type, Block... blocks) {
         return null;
     }
 
@@ -70,6 +71,6 @@ public class FabricPlatformHelperImpl implements ArcaneDivinityPlatformHelper {
 
 
     private static <T, R extends Registry<? super T>> Holder<T> registerHolder(R registry, String id, Supplier<T> object) {
-        return Registry.registerForHolder((Registry<T>)registry, ResourceLocation.fromNamespaceAndPath(ArcaneDivinityCommon.MOD_ID, id), object.get());
+        return Registry.registerForHolder((Registry<T>)registry, ResourceLocation.fromNamespaceAndPath(ArcaneDivinity.MOD_ID, id), object.get());
     }
 }

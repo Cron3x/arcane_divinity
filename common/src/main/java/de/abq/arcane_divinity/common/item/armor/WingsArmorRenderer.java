@@ -1,6 +1,6 @@
 package de.abq.arcane_divinity.common.item.armor;
 
-import de.abq.arcane_divinity.ArcaneDivinityCommon;
+import de.abq.arcane_divinity.ArcaneDivinity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import org.jetbrains.annotations.NotNull;
@@ -12,7 +12,7 @@ import software.bernie.geckolib.util.Color;
 
 public class WingsArmorRenderer extends DyeableGeoArmorRenderer<WingsArmorItem> {
     public WingsArmorRenderer() {
-        super(new DefaultedItemGeoModel<>(ResourceLocation.fromNamespaceAndPath(ArcaneDivinityCommon.MOD_ID, "armor/wings"))); //new WingsArmorModel()
+        super(new DefaultedItemGeoModel<>(ResourceLocation.fromNamespaceAndPath(ArcaneDivinity.MOD_ID, "armor/wings"))); //new WingsArmorModel()
         //addRenderLayer(new AutoGlowingGeoLayer<>(this));
     }
 

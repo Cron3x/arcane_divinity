@@ -16,7 +16,7 @@
     "environment": "*",
     "entrypoints": {
         "main": [
-            "de.abq.arcane_divinity.ArcaneDivinity"
+          "de.abq.arcane_divinity.ArcaneDivinityEntry"
         ]
     },
     "mixins": [

@@ -19,17 +19,17 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-@Mod(ArcaneDivinityCommon.MOD_ID)
-public class ArcaneDivinity {
+@Mod(ArcaneDivinity.MOD_ID)
+public class ArcaneDivinityEntry {
     //public static final DeferredRegister<ArmorMaterial> ARMOR_MATERIALS = DeferredRegister.create(BuiltInRegistries., ArcaneDivinity.MOD_ID);
-    public ArcaneDivinity(IEventBus eventBus) {
-        ArcaneDivinityCommon.init();
+    public ArcaneDivinityEntry(IEventBus eventBus) {
+        ArcaneDivinity.init();
         // This method is invoked by the NeoForge mod loader when it is ready
         // to load your mod. You can access NeoForge and Common code in this
         // project.
 
         // Use NeoForge to bootstrap the Common mod.
-        ArcaneDivinityCommon.LOG.info("Hello NeoForge world!");
+        ArcaneDivinity.LOG.info("Hello NeoForge world!");
 
         //ARMOR_MATERIALS.register(eventBus);
 

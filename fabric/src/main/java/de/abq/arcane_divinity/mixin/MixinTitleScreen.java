@@ -1,6 +1,6 @@
 package de.abq.arcane_divinity.mixin;
 
-import de.abq.arcane_divinity.ArcaneDivinityCommon;
+import de.abq.arcane_divinity.ArcaneDivinity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.TitleScreen;
 import org.spongepowered.asm.mixin.Mixin;
@@ -14,7 +14,7 @@ public class MixinTitleScreen {
     @Inject(at = @At("HEAD"), method = "init()V")
     private void init(CallbackInfo info) {
         
-        ArcaneDivinityCommon.LOG.info("This line is printed by an example mod mixin from Fabric!");
-        ArcaneDivinityCommon.LOG.info("MC Version: {}", Minecraft.getInstance().getVersionType());
+        ArcaneDivinity.LOG.info("This line is printed by an example mod mixin from Fabric!");
+        ArcaneDivinity.LOG.info("MC Version: {}", Minecraft.getInstance().getVersionType());
     }
 }
