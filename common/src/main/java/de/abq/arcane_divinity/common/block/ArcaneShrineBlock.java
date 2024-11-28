@@ -1,6 +1,6 @@
 package de.abq.arcane_divinity.common.block;
 
-import de.abq.arcane_divinity.common.block.block_entity.ArcaneAltarBlockEntity;
+import de.abq.arcane_divinity.common.block.block_entity.ArcaneShrineBlockEntity;
 import de.abq.arcane_divinity.common.block.block_entity.SimpleInventoryGeoBlockEntity;
 import de.abq.arcane_divinity.common.block.block_entity.ZBlockEntities;
 import net.minecraft.core.BlockPos;
@@ -21,23 +21,23 @@ import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class ArcaneAltarBlock extends AbstractWaterLoggableBlock implements EntityBlock{
-    public ArcaneAltarBlock(Properties $$0) {
+public class ArcaneShrineBlock extends AbstractWaterLoggableBlock implements EntityBlock{
+    public ArcaneShrineBlock(Properties $$0) {
         super($$0);
     }
     @NotNull
     @Override
     public BlockEntity newBlockEntity(@NotNull BlockPos pos, @NotNull BlockState state) {
-        return new ArcaneAltarBlockEntity(pos, state);
+        return new ArcaneShrineBlockEntity(pos, state);
     }
 
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
         if (level.isClientSide) {
-            return createTickerHelper(type, ZBlockEntities.ARCANE_ALTAR_BLOCK_ENTITY, ArcaneAltarBlockEntity::clientTick);
+            return createTickerHelper(type, ZBlockEntities.ARCANE_ALTAR_BLOCK_ENTITY, ArcaneShrineBlockEntity::clientTick);
         } else {
-            return createTickerHelper(type, ZBlockEntities.ARCANE_ALTAR_BLOCK_ENTITY, ArcaneAltarBlockEntity::serverTick);
+            return createTickerHelper(type, ZBlockEntities.ARCANE_ALTAR_BLOCK_ENTITY, ArcaneShrineBlockEntity::serverTick);
         }
 
     }
@@ -47,7 +47,7 @@ public class ArcaneAltarBlock extends AbstractWaterLoggableBlock implements Enti
         if (level.isClientSide) {
             return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
         }
-        if (!(level.getBlockEntity(pos) instanceof ArcaneAltarBlockEntity altar)) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        if (!(level.getBlockEntity(pos) instanceof ArcaneShrineBlockEntity altar)) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         altar.setShouldBeActive(true);
         altar.setChanged();
         return ItemInteractionResult.SUCCESS;
@@ -59,7 +59,7 @@ public class ArcaneAltarBlock extends AbstractWaterLoggableBlock implements Enti
         if (level.isClientSide) {
             return InteractionResult.PASS;
         }
-        if (!(level.getBlockEntity(pos) instanceof ArcaneAltarBlockEntity altar)) return InteractionResult.PASS;
+        if (!(level.getBlockEntity(pos) instanceof ArcaneShrineBlockEntity altar)) return InteractionResult.PASS;
         altar.setShouldBeActive(true);
         altar.setChanged();
         return InteractionResult.SUCCESS;

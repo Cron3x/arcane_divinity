@@ -1,5 +1,6 @@
 package de.abq.arcane_divinity.common.block.block_entity;
 
+import de.abq.arcane_divinity.ArcaneDivinity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.particles.ParticleTypes;
@@ -15,11 +16,11 @@ import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.*;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class ArcaneAltarBlockEntity extends SimpleInventoryGeoBlockEntity implements GeoBlockEntity {
+public class ArcaneShrineBlockEntity extends SimpleInventoryGeoBlockEntity implements GeoBlockEntity {
 
-    protected static final RawAnimation ACTIVATE = RawAnimation.begin().thenPlay("animation.arcane_altar.misc.activate").thenLoop("animation.arcane_altar.misc.active_idle");
-    protected static final RawAnimation DEACTIVATE = RawAnimation.begin().thenPlay("animation.arcane_altar.misc.deactivate");
-    protected static final RawAnimation ACTIVE_IDLE = RawAnimation.begin().thenLoop("animation.arcane_altar.misc.active_idle");
+    protected static final RawAnimation ACTIVATE = RawAnimation.begin().thenPlay("animation.arcane_shrine.misc.activate").thenLoop("animation.arcane_shrine.misc.active_idle");
+    protected static final RawAnimation DEACTIVATE = RawAnimation.begin().thenPlay("animation.arcane_shrine.misc.deactivate");
+    protected static final RawAnimation ACTIVE_IDLE = RawAnimation.begin().thenLoop("animation.arcane_shrine.misc.active_idle");
 
     private final AnimatableInstanceCache animationCache = GeckoLibUtil.createInstanceCache(this);
 
@@ -28,7 +29,7 @@ public class ArcaneAltarBlockEntity extends SimpleInventoryGeoBlockEntity implem
     private boolean isActive = false;
     public boolean isDay = false;
 
-    public ArcaneAltarBlockEntity(BlockPos pos, BlockState state) {
+    public ArcaneShrineBlockEntity(BlockPos pos, BlockState state) {
         super(ZBlockEntities.ARCANE_ALTAR_BLOCK_ENTITY, pos, state);
     }
 
@@ -42,8 +43,8 @@ public class ArcaneAltarBlockEntity extends SimpleInventoryGeoBlockEntity implem
         };
     }
 
-    public static void clientTick(Level level, BlockPos blockPos, BlockState blockState, ArcaneAltarBlockEntity self) {}
-    public static void serverTick(Level level, BlockPos blockPos, BlockState blockState, ArcaneAltarBlockEntity self) {
+    public static void clientTick(Level level, BlockPos blockPos, BlockState blockState, ArcaneShrineBlockEntity self) {}
+    public static void serverTick(Level level, BlockPos blockPos, BlockState blockState, ArcaneShrineBlockEntity self) {
         ++self.ticks;
 
         if (self.shouldBeActive && !self.isActive){
@@ -93,8 +94,8 @@ public class ArcaneAltarBlockEntity extends SimpleInventoryGeoBlockEntity implem
         double py = (dy * (ticks-100)) / 100;
         double pz = (dz * (ticks-100)) / 100;
 
-        System.out.println("dx = " + dx);
-        System.out.println("px: " + px + " | py: " + py + " | pz: " + pz);
+        ArcaneDivinity.LOG.debug("dx = {}", dx);
+        ArcaneDivinity.LOG.debug("px: {} » py: {} » pz: {}", px , py, pz);
 
         level.sendParticles(ParticleTypes.ELECTRIC_SPARK, altarPos.x()+px, altarPos.y()+py, altarPos.z()+pz, 1, 0, 0, 0, 1);
     }
@@ -119,7 +120,7 @@ public class ArcaneAltarBlockEntity extends SimpleInventoryGeoBlockEntity implem
         }));
     }
 
-    public static <T extends ArcaneAltarBlockEntity> boolean getIsDay(T altar){
+    public static <T extends ArcaneShrineBlockEntity> boolean getIsDay(T altar){
         return altar.isDay;
     }
 

@@ -1,8 +1,8 @@
 {
   "item.arcane_divinity.pedestal" : "Pedestal",
   "block.arcane_divinity.pedestal" : "Pedestal",
-  "item.arcane_divinity.craftingaltar" : "Arcane Altar",
-  "block.arcane_divinity.craftingaltar" : "Arcane Altar",
+  "item.arcane_divinity.craftingaltar" : "Arcane Shrine",
+  "block.arcane_divinity.craftingaltar" : "Arcane Shrine",
   "item.arcane_divinity.wooden_catalyst" : "Wooden Catalyst",
   "key.etruscraft.switch_spell": "Cycle Spells",
   "key.category.arcane_divinity.keybinds": "Arcane Divinity",
@@ -17,5 +17,7 @@
   "item.arcane_divinity.whetstone.holy.description": "Holy Whetstone",
   "item.arcane_divinity.whetstone.rot.description": "Rotten Whetstone",
   "item.arcane_divinity.whetstone.lightning.description": "Whetstone of Lightning",
-  "item.arcane_divinity.whetstone.poison.description": "Whetstone of Poison"
+  "item.arcane_divinity.whetstone.poison.description": "Whetstone of Poison",
+
+  "effect.arcane_divinity.warp_vision": "Warp Vision HUIHUI",
 }

@@ -49,7 +49,7 @@ neoForge {
 
         create("server") {
             server()
-            programArgument("--nogui")
+            //programArgument("--nogui")
         }
     }
 }
@@ -84,7 +84,7 @@ dependencies {
     implementation("foundry.veil:veil-neoforge-${libs.versions.veil.minecraft.get()}:${libs.versions.veil.asProvider().get()}") {
         exclude("maven.modrinth")
     }
-    jarJar("foundry.veil:veil-neoforge-${libs.versions.veil.minecraft.get()}:${libs.versions.veil.asProvider().get()}")
+    //jarJar("foundry.veil:veil-neoforge-${libs.versions.veil.minecraft.get()}:${libs.versions.veil.asProvider().get()}")
     implementation( "software.bernie.geckolib:geckolib-neoforge-${libs.versions.minecraft.asProvider().get()}:${libs.versions.geckolib.asProvider().get()}"){
         exclude("maven.modrinth")
     }

@@ -1,27 +1,26 @@
 package de.abq.arcane_divinity.common.effect;
 
-import de.abq.arcane_divinity.ArcaneDivinity;
 import de.abq.arcane_divinity.client.WarpingRenderer;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 
 public class MagicMushroomMobEffect extends MobEffect {
-    protected MagicMushroomMobEffect(MobEffectCategory category, int color, ParticleOptions particle) {
+    public MagicMushroomMobEffect(MobEffectCategory category, int color, ParticleOptions particle) {
         super(category, color, particle);
     }
 
     @Override
-    public void onEffectAdded(LivingEntity livingEntity, int amplifier) {
+    public boolean applyEffectTick(LivingEntity livingEntity, int amplifier){
         super.onEffectAdded(livingEntity, amplifier);
 
-        ArcaneDivinity.LOG.debug("asdf-asdfsödfjölaskjföalsdfjöasldfjöalsdjflösajfdlsajdf");
+        if (livingEntity.level().isClientSide && livingEntity instanceof Player player) {
 
-        if (livingEntity.level().isClientSide) {
-            ArcaneDivinity.LOG.debug("qwer-asdfsödfjölaskjföalsdfjöasldfjöalsdjflösajfdlsajdf");
             WarpingRenderer.render();
         }
+        return true;
     }
 
     @Override

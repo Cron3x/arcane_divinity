@@ -5,6 +5,7 @@ import de.abq.arcane_divinity.common.effect.ZMobEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -38,7 +39,7 @@ public class MagicMushroomItem extends Item {
 
                                 for (ItemStack onFire : campfireBlockEntity.getItems()) {
                                     if (onFire.getItem().equals(ZItems.HALLUCINOGENIC_GRASS)) {
-                                        grassCount++;
+                                        ++grassCount;
                                     }
                                 }
                             }
@@ -47,15 +48,12 @@ public class MagicMushroomItem extends Item {
                 }
             }
 
-            ArcaneDivinity.LOG.debug("->üüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüü");
-
-            if (user.addEffect(new MobEffectInstance(ZMobEffects.MAGIC_MUSHROOM_WARP_VISION_EFFECT, 365*20, grassCount, false, true), user)){
-                ArcaneDivinity.LOG.debug("psst");
-            } else {
-                ArcaneDivinity.LOG.debug("wierd");
+            if (grassCount >= 1 && user instanceof Player player){
+                //MobEffectInstance mobEffectInstance = new MobEffectInstance(ZMobEffects.returnRegisteredEffect(level.registryAccess(), ZMobEffects.Names.MAGIC_MUSHROOM_WARP_VISION_EFFECT_NAME), 365*20, 0);
+                MobEffectInstance mobEffectInstance = new MobEffectInstance(ZMobEffects.MAGIC_MUSHROOM_WARP_VISION_EFFECT, 365*20, 0);
+                player.addEffect(mobEffectInstance, user);
             }
         }
-
         return returnStack;
     }
 }

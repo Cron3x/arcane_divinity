@@ -40,10 +40,3 @@ ${mod_description}
     versionRange="${geckolib_range}"
     ordering="NONE"
     side="BOTH"
-[[dependencies.${mod_id}]]
-    modId="veil"
-    versionRange="${veil_version}"
-    ordering="NONE"
-    side="BOTH"
-[features.${mod_id}]
-openGLVersion = "[3.3,)"

@@ -1,10 +1,5 @@
 package de.abq.arcane_divinity;
 
-import de.abq.arcane_divinity.client.WarpingRenderer;
-import de.abq.arcane_divinity.common.effect.ZMobEffects;
-import foundry.veil.Veil;
-import foundry.veil.api.client.render.shader.program.ShaderProgram;
-import foundry.veil.platform.VeilEventPlatform;
 import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,26 +1,24 @@
 package de.abq.arcane_divinity.common.effect;
 
 import de.abq.arcane_divinity.ArcaneDivinity;
+import de.abq.arcane_divinity.platform.Services;
+import de.abq.arcane_divinity.platform.service.ArcaneDivinityPlatformHelper;
 import net.minecraft.core.Holder;
-import net.minecraft.core.MappedRegistry;
-import net.minecraft.core.Registry;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraft.world.effect.MobEffects;
-import org.apache.logging.log4j.util.TriConsumer;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
 
 public class ZMobEffects {
-    private static final Map<String, MobEffect> toRegister = new HashMap<>();
+    private static final Map<String, MobEffect> toRegister = new LinkedHashMap<>();
 
-    public static final Holder<MobEffect> MAGIC_MUSHROOM_WARP_VISION_EFFECT = prepare("magic_mushroom_warp_vision_effect", new MagicMushroomMobEffect(MobEffectCategory.NEUTRAL, 0xffff00, ParticleTypes.DRAGON_BREATH));
+    public static Holder<MobEffect> MAGIC_MUSHROOM_WARP_VISION_EFFECT = prepare("warp_vision", new MagicMushroomMobEffect(MobEffectCategory.NEUTRAL, 0xffff00, ParticleTypes.WITCH));
 
     private static Holder<MobEffect> prepare(String name, MobEffect effect){
                 toRegister.put(name, effect);
@@ -31,5 +29,13 @@ public class ZMobEffects {
         toRegister.forEach((k, v) ->{
             consumer.accept(v, ArcaneDivinity.defaultResourceLocation(k));
         });
+    }
+
+    public static void reassignEffect(ResourceLocation rl, Holder<MobEffect> holder){
+        if (rl.getPath().equals("warp_vision")) {
+            MAGIC_MUSHROOM_WARP_VISION_EFFECT = holder;
+        } else {
+            ArcaneDivinity.LOG.error("resource Location: `{}` is not assigned!", rl);
+        }
     }
 }

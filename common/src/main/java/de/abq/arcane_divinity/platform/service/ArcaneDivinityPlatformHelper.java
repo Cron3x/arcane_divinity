@@ -4,6 +4,9 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.datafixers.types.Type;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -17,7 +20,6 @@ import java.util.function.BiFunction;
  * Loader-agnostic service interface for general loader-specific functions
  */
 public interface ArcaneDivinityPlatformHelper {
-
     //<T extends ArmorMaterial> T registerArmorMaterial(String id, Supplier<T> armorMaterial);
 
     /**

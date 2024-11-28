@@ -1,0 +1,8 @@
+{
+  "item.arcane_divinity.pedestal" : "Sockel",
+  "block.arcane_divinity.pedestal" : "Sockel",
+  "item.arcane_divinity.craftingaltar" : "Arkaner Schrein",
+  "block.arcane_divinity.craftingaltar" : "Arkaner Schrein",
+
+  "effect.arcane_divinity.warp_vision": "Warp Vision HUIHUI",
+}

@@ -80,7 +80,7 @@ public class ArcaneObeliskBlockEntity extends AbstractBlockEntity {
 
         if (serverLevel.getBlockEntity(self.altarPos) == null) return;
         if (!(serverLevel.getBlockEntity(self.altarPos).getType().equals(ZBlockEntities.ARCANE_ALTAR_BLOCK_ENTITY))) return;
-        ArcaneAltarBlockEntity altar = (ArcaneAltarBlockEntity) serverLevel.getBlockEntity(self.altarPos);
+        ArcaneShrineBlockEntity altar = (ArcaneShrineBlockEntity) serverLevel.getBlockEntity(self.altarPos);
 
         if (altar.isDay) {
             //self.flameParticle(self.getBlockPos().offset(0,3,0), new ParticleColor(255,255,255), new ParticleColor(255,150,0), 15);
