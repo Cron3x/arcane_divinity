@@ -18,7 +18,7 @@ public class MagicMushroomMobEffect extends MobEffect {
 
         if (livingEntity.level().isClientSide && livingEntity instanceof Player player) {
 
-            WarpingRenderer.render();
+            //WarpingRenderer.render(levelRenderer, bufferSource, matrixStack, matrix4fc, matrix4fc2, partialTicks, deltaTracker, camera, frustum);
         }
         return true;
     }

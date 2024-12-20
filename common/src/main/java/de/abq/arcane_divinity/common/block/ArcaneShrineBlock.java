@@ -22,8 +22,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class ArcaneShrineBlock extends AbstractWaterLoggableBlock implements EntityBlock{
-    public ArcaneShrineBlock(Properties $$0) {
-        super($$0);
+    public ArcaneShrineBlock(Properties props) {
+        super(props);
     }
     @NotNull
     @Override
@@ -35,11 +35,10 @@ public class ArcaneShrineBlock extends AbstractWaterLoggableBlock implements Ent
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
         if (level.isClientSide) {
-            return createTickerHelper(type, ZBlockEntities.ARCANE_ALTAR_BLOCK_ENTITY, ArcaneShrineBlockEntity::clientTick);
+            return createTickerHelper(type, ZBlockEntities.ARCANE_SHRINE_BLOCK_ENTITY, ArcaneShrineBlockEntity::clientTick);
         } else {
-            return createTickerHelper(type, ZBlockEntities.ARCANE_ALTAR_BLOCK_ENTITY, ArcaneShrineBlockEntity::serverTick);
+            return createTickerHelper(type, ZBlockEntities.ARCANE_SHRINE_BLOCK_ENTITY, ArcaneShrineBlockEntity::serverTick);
         }
-
     }
 
     @Override

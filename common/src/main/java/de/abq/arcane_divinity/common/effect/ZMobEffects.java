@@ -1,12 +1,8 @@
 package de.abq.arcane_divinity.common.effect;
 
 import de.abq.arcane_divinity.ArcaneDivinity;
-import de.abq.arcane_divinity.platform.Services;
-import de.abq.arcane_divinity.platform.service.ArcaneDivinityPlatformHelper;
 import net.minecraft.core.Holder;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -27,7 +23,7 @@ public class ZMobEffects {
 
     public static void register(BiConsumer<MobEffect, ResourceLocation> consumer){
         toRegister.forEach((k, v) ->{
-            consumer.accept(v, ArcaneDivinity.defaultResourceLocation(k));
+            consumer.accept(v, ArcaneDivinity.path(k));
         });
     }
 

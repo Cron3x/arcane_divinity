@@ -27,12 +27,12 @@ neoforge-range = "[21.0.167,)"
 neoforge = "21.1.80"#"21.0.167"
 
 # Dependencies
-mixin = "0.8.5"
+mixin = "0.8.7"
 mixinextras = "0.3.5"
 mixinextras-range = "[0.3.5,)"
 geckolib = "4.7"#"4.5.8"
-geckolib-range = "[4.5.8,)"
-veil = "1.0.0.29"
+geckolib-range = "[4.7,)"
+veil = "1.0.0.66"
 veil-minecraft = "1.21.1"
 
 # Plugins

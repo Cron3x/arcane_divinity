@@ -1,5 +1,11 @@
 package de.abq.arcane_divinity;
 
+import de.abq.arcane_divinity.client.WarpingRenderer;
+import foundry.veil.api.client.render.VeilRenderer;
+import foundry.veil.api.event.VeilRenderLevelStageEvent;
+import foundry.veil.platform.VeilEventPlatform;
+import net.minecraft.client.Minecraft;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,9 +23,22 @@ public final class ArcaneDivinity {
     public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
 
     public static void init() {
+        /*VeilEventPlatform.INSTANCE.onVeilRenderTypeStageRender((stage, levelRenderer, bufferSource, matrixStack, matrix4fc, matrix4fc2, partialTicks, deltaTracker, camera, frustum) -> {
+            if (stage == VeilRenderLevelStageEvent.Stage.AFTER_BLOCK_ENTITIES) {
+
+                CableRenderer.renderCables();
+            }
+        });*/
+    }
+    public static void initClient(){
+        VeilEventPlatform.INSTANCE.onVeilRenderLevelStage((stage, levelRenderer, bufferSource, matrixStack, matrix4fc, matrix4fc2, partialTicks, deltaTracker, camera, frustum) -> {
+            if (stage == VeilRenderLevelStageEvent.Stage.AFTER_WEATHER) {
+                WarpingRenderer.render(levelRenderer, bufferSource, matrixStack, matrix4fc, matrix4fc2, partialTicks, deltaTracker, camera, frustum);
+            }
+        });
     }
 
-    public static ResourceLocation defaultResourceLocation(String name){
+    public static ResourceLocation path(String name){
         return ResourceLocation.fromNamespaceAndPath(ArcaneDivinity.MOD_ID, name);
     }
 }

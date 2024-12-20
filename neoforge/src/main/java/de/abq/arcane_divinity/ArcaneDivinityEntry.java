@@ -20,7 +20,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.neoforge.client.event.RenderGuiEvent;
 import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
@@ -28,7 +27,6 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 @Mod(ArcaneDivinity.MOD_ID)
-
 public class ArcaneDivinityEntry {
     //public static final DeferredRegister<ArmorMaterial> ARMOR_MATERIALS = DeferredRegister.create(BuiltInRegistries., ArcaneDivinity.MOD_ID);
     private IEventBus bus;
@@ -51,7 +49,7 @@ public class ArcaneDivinityEntry {
             bind(event, Registries.BLOCK_ENTITY_TYPE, ZBlockEntities::registerBlockEntities);
         });
         eventBus.addListener((EntityRenderersEvent.RegisterRenderers event) -> {
-            event.registerBlockEntityRenderer(ZBlockEntities.ARCANE_ALTAR_BLOCK_ENTITY, DefaultBlockEntityRenderer::new);
+            event.registerBlockEntityRenderer(ZBlockEntities.ARCANE_SHRINE_BLOCK_ENTITY, DefaultBlockEntityRenderer::new);
         });
         eventBus.addListener(this::registerCapabilities);
 
@@ -110,7 +108,7 @@ public class ArcaneDivinityEntry {
             if (Minecraft.getInstance().player.hasEffect(ZMobEffects.MAGIC_MUSHROOM_WARP_VISION_EFFECT)){
                 ArcaneDivinity.LOG.debug("Hee");
 
-                WarpingRenderer.render();
+                //WarpingRenderer.render();
             }
         }
     }

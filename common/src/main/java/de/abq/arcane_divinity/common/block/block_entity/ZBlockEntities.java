@@ -22,11 +22,10 @@ public class ZBlockEntities {
     private static final Map<ResourceLocation, BlockEntityType<?>> ALL = new HashMap<>();
 
     public static final BlockEntityType<PedestalBlockEntity> PEDESTAL_BLOCK_ENTITY = assign(ZBlockNames.PEDESTAL, PedestalBlockEntity::new, ZBlocks.pedestalBlock);
-    public static final BlockEntityType<ArcaneShrineBlockEntity> ARCANE_ALTAR_BLOCK_ENTITY = assign(ZBlockNames.ARCANE_SHRINE, ArcaneShrineBlockEntity::new, ZBlocks.arcaneShrineBlock);
+    public static final BlockEntityType<ArcaneShrineBlockEntity> ARCANE_SHRINE_BLOCK_ENTITY = assign(ZBlockNames.ARCANE_SHRINE, ArcaneShrineBlockEntity::new, ZBlocks.arcaneShrineBlock);
     public static final BlockEntityType<ArcaneObeliskBlockEntity> ARCANE_OBELISK_BLOCK_ENTITY = assign(ZBlockNames.ARCANE_OBELISK, ArcaneObeliskBlockEntity::new, ZBlocks.arcaneObeliskBlock);
 
     private static <T extends BlockEntity> BlockEntityType<T> assign(ResourceLocation id, BiFunction<BlockPos, BlockState, T> fn, Block... blocks){
-
         Type<?> type = Util.fetchChoiceType(References.BLOCK_ENTITY, id.getPath());
         BlockEntityType<T> ret = Services.PLATFORM.createBlockEntityType(fn, type, blocks);
         var old = ALL.put(id, ret);

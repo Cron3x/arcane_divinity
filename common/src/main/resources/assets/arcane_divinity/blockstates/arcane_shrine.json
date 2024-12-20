@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "arcane_divinity:block/arcane_altar"
+      "model": "arcane_divinity:block/arcane_shrine"
     }
   }
 }
