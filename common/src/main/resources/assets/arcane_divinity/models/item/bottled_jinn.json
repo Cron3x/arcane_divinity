@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "arcane_divinity:item/wings"
+    "layer0": "arcane_divinity:item/bottled_jinn"
   }
 }
