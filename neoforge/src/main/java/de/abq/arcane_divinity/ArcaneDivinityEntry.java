@@ -56,13 +56,11 @@ public class ArcaneDivinityEntry {
             bindItems(event, ZItems::registerItems );
             bind(event, Registries.BLOCK_ENTITY_TYPE, ZBlockEntities::registerBlockEntities);
 
+            //Very ugly but it works?
             Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, ARCANE_TAB,
                     CreativeModeTab.builder()
-                            //Set the title of the tab. Don't forget to add a translation!
                             .title(Component.translatable("itemGroup." + ArcaneDivinity.MOD_ID + ".arcane_tab"))
-                            //Set the icon of the tab.
                             .icon(() -> new ItemStack(ZBlocks.arcaneShrineBlock))
-                            //Add your items to the tab.
                             .build()
             );
         });

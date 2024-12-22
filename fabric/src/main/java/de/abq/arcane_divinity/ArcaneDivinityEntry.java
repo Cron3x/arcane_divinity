@@ -1,5 +1,6 @@
 package de.abq.arcane_divinity;
 
+import de.abq.arcane_divinity.common.block.ZBlocks;
 import de.abq.arcane_divinity.common.item.ZItems;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
@@ -11,8 +12,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
 
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
@@ -21,20 +22,28 @@ public class ArcaneDivinityEntry implements ModInitializer {
     
     @Override
     public void onInitialize() {
-        bindItems(ZItems::registerItems);
+        bindItemLike(BuiltInRegistries.ITEM, ZItems::registerItems);
+        bindItemLike(BuiltInRegistries.ITEM, ZBlocks::registerBlockItems);
+
+        bindItemLike(BuiltInRegistries.BLOCK, ZBlocks::registerBlocks);
 
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, CUSTOM_ITEM_GROUP_KEY, CUSTOM_ITEM_GROUP);
         ArcaneDivinity.init();
     }
 
-    private void bindItems(Consumer<BiConsumer<Item, ResourceLocation>> source){
-            source.accept((item, rl) ->{
-                //TODO: Add to inv
-                Registry.register(BuiltInRegistries.ITEM, rl, item);
+    private <T extends ItemLike> void bindItemLike(Registry<T> registry, Consumer<BiConsumer<T, ResourceLocation>> source){
+        source.accept((t, rl) -> {
+            Registry.register(registry, rl, t);
 
-                ItemGroupEvents.modifyEntriesEvent(CUSTOM_ITEM_GROUP_KEY).register((content) ->{
-                    content.accept(item);
-                });
+            ItemGroupEvents.modifyEntriesEvent(CUSTOM_ITEM_GROUP_KEY).register((content) ->{
+                content.accept(t);
+            });
+        });
+    }
+
+    private <T> void bind(Registry<T> reg, Consumer<BiConsumer<T, ResourceLocation>> source){
+            source.accept((item, rl) ->{
+                Registry.register(reg, rl, item);
             });
     }
 
