@@ -5,8 +5,6 @@ import de.abq.arcane_divinity.common.block.block_entity.ZBlockEntities;
 import de.abq.arcane_divinity.common.block.block_entity.renderers.DefaultBlockEntityRenderer;
 import de.abq.arcane_divinity.common.item.ZItems;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
@@ -58,6 +56,6 @@ public class ArcaneDivinityEntry implements ModInitializer {
     public static final ResourceKey<CreativeModeTab> CUSTOM_ITEM_GROUP_KEY = ResourceKey.create(Registries.CREATIVE_MODE_TAB, ArcaneDivinity.path("arcane_group"));
     public static final CreativeModeTab CUSTOM_ITEM_GROUP = FabricItemGroup.builder()
             .icon(() -> new ItemStack(ZItems.BOTTLED_JINN))
-            .title(Component.translatable("itemGroup." + ArcaneDivinity.MOD_ID + ".example"))
+            .title(Component.translatable("itemGroup." + ArcaneDivinity.MOD_ID + ".arcane_tab"))
             .build();
 }
