@@ -4,10 +4,9 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.datafixers.types.Type;
 import de.abq.arcane_divinity.ArcaneDivinity;
 import de.abq.arcane_divinity.platform.service.ArcaneDivinityPlatformHelper;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.texture.AbstractTexture;
-import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -45,7 +44,8 @@ public class FabricPlatformHelperImpl implements ArcaneDivinityPlatformHelper {
 
     @Override
     public <T extends BlockEntity> BlockEntityType<T> createBlockEntityType(BiFunction<BlockPos, BlockState, T> fn, Type<?> type, Block... blocks) {
-        return null;
+ 		return FabricBlockEntityTypeBuilder.create(fn::apply, blocks).build();
+
     }
 
     @Override
@@ -54,6 +54,6 @@ public class FabricPlatformHelperImpl implements ArcaneDivinityPlatformHelper {
     }
 
     private static <T, R extends Registry<? super T>> Holder<T> registerHolder(R registry, String id, Supplier<T> object) {
-        return Registry.registerForHolder((Registry<T>)registry, ResourceLocation.fromNamespaceAndPath(ArcaneDivinity.MOD_ID, id), object.get());
+        return Registry.registerForHolder((Registry<T>)registry, ArcaneDivinity.path(id), object.get());
     }
 }
