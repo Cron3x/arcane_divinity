@@ -1,6 +1,7 @@
 package de.abq.arcane_divinity.common.block.block_entity;
 
 import com.mojang.datafixers.types.Type;
+import de.abq.arcane_divinity.ArcaneDivinity;
 import de.abq.arcane_divinity.common.block.ZBlocks;
 import de.abq.arcane_divinity.platform.Services;
 import net.minecraft.Util;
@@ -42,6 +43,7 @@ public class ZBlockEntities {
                 return type.getKey().getPath();
             }
         }
+        ArcaneDivinity.LOG.error("no id for BlockEntity: {}", be);
         return null;
     }
 }

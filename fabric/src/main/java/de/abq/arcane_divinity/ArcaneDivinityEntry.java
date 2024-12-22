@@ -2,10 +2,14 @@ package de.abq.arcane_divinity;
 
 import de.abq.arcane_divinity.common.block.ZBlocks;
 import de.abq.arcane_divinity.common.block.block_entity.ZBlockEntities;
+import de.abq.arcane_divinity.common.block.block_entity.renderers.DefaultBlockEntityRenderer;
 import de.abq.arcane_divinity.common.item.ZItems;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -31,6 +35,8 @@ public class ArcaneDivinityEntry implements ModInitializer {
 
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, CUSTOM_ITEM_GROUP_KEY, CUSTOM_ITEM_GROUP);
         ArcaneDivinity.init();
+
+        BlockEntityRenderers.register(ZBlockEntities.ARCANE_SHRINE_BLOCK_ENTITY, DefaultBlockEntityRenderer::new);
     }
 
     private <T extends ItemLike> void bindItemLike(Registry<T> registry, Consumer<BiConsumer<T, ResourceLocation>> source){
