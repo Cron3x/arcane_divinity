@@ -61,6 +61,6 @@ public final class NeoPlatformHelperImpl implements ArcaneDivinityPlatformHelper
     @Override
     public void tessellateBlock(Level level, BlockState state, BlockPos pos, PoseStack ps, MultiBufferSource buffers,
                                 int overlay) {
-        System.out.println("UNIMPLEMENTED: tesselationBlock (NeoForgePlatform)");
+        ArcaneDivinity.LOG.error("UNIMPLEMENTED: tesselationBlock (NeoForgePlatform)");
     }
 }
