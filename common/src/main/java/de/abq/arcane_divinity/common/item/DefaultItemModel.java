@@ -16,16 +16,19 @@ public class DefaultItemModel<T extends Item & GeoAnimatable> extends GeoModel<T
 
     @Override
     public ResourceLocation getModelResource(T animatable) {
+        ArcaneDivinity.LOG.debug("getModelResource: {}", name);
         return ResourceLocation.fromNamespaceAndPath(ArcaneDivinity.MOD_ID, "%s.geo.json".formatted(name));
     }
 
     @Override
     public ResourceLocation getTextureResource(T animatable) {
+        ArcaneDivinity.LOG.debug("getTextureResource: {}", name);
         return ResourceLocation.fromNamespaceAndPath(ArcaneDivinity.MOD_ID, "%s.png".formatted(name));
     }
 
     @Override
     public ResourceLocation getAnimationResource(T animatable) {
+        ArcaneDivinity.LOG.debug("getAnimationResource: {}", name);
         return ResourceLocation.fromNamespaceAndPath(ArcaneDivinity.MOD_ID, "%s.animation.json".formatted(name));
     }
 }

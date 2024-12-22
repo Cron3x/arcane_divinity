@@ -10,7 +10,6 @@ import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoItem;
 import software.bernie.geckolib.animatable.SingletonGeoAnimatable;
 import software.bernie.geckolib.animatable.client.GeoRenderProvider;
@@ -24,9 +23,9 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 import java.util.function.Consumer;
 
 public class HeroBladeItem extends SwordItem implements GeoItem {
-    public static final String IDENTIFIER = "hero_blade";
+    public static final String IDENTIFIER = "ea_sword";
 
-    private static final RawAnimation ACTIVATE_ANIM = RawAnimation.begin().thenPlay("use.activate");
+    private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenPlay("idle");
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     public HeroBladeItem(Tier tier, Properties properties) {
@@ -37,7 +36,7 @@ public class HeroBladeItem extends SwordItem implements GeoItem {
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "Activation", 0, state -> PlayState.STOP).triggerableAnim("activate", ACTIVATE_ANIM));
+        controllers.add(new AnimationController<>(this, "Idle", 0, state -> PlayState.STOP).triggerableAnim("idle", IDLE_ANIM));
     }
 
     @Override
@@ -51,8 +50,8 @@ public class HeroBladeItem extends SwordItem implements GeoItem {
                              private DefaultItemRenderer<HeroBladeItem> renderer;
 
                              @Override
-                             public @Nullable BlockEntityWithoutLevelRenderer getGeoItemRenderer() {
-                                 if (this.renderer == null) this.renderer = new DefaultItemRenderer<>(new DefaultItemModel<>("hero_blade"));
+                             public @NotNull BlockEntityWithoutLevelRenderer getGeoItemRenderer() {
+                                 if (this.renderer == null) this.renderer = new DefaultItemRenderer<>(new DefaultItemModel<>(IDENTIFIER));
                                  return this.renderer;
                              }
                          }
@@ -61,7 +60,7 @@ public class HeroBladeItem extends SwordItem implements GeoItem {
 
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, @NotNull Player player, @NotNull InteractionHand usedHand) {
-        if (level instanceof ServerLevel serverLevel) triggerAnim(player, GeoItem.getOrAssignId(player.getItemInHand(usedHand), serverLevel), "Activation", "activate");
+        if (level instanceof ServerLevel serverLevel) triggerAnim(player, GeoItem.getOrAssignId(player.getItemInHand(usedHand), serverLevel), "Idle", "idle");
         return super.use(level, player, usedHand);
     }
 }
