@@ -1,7 +1,7 @@
 package de.abq.arcane_divinity;
 
 
-import de.abq.arcane_divinity.client.WarpingRenderer;
+import com.jcraft.jorbis.Block;
 import de.abq.arcane_divinity.common.block.ZBlocks;
 import de.abq.arcane_divinity.common.block.block_entity.ZBlockEntities;
 import de.abq.arcane_divinity.common.block.block_entity.renderers.DefaultBlockEntityRenderer;
@@ -10,21 +10,29 @@ import de.abq.arcane_divinity.common.item.ZItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 @Mod(ArcaneDivinity.MOD_ID)
 public class ArcaneDivinityEntry {
@@ -47,11 +55,28 @@ public class ArcaneDivinityEntry {
             bindItems(event, ZBlocks::registerBlockItems);
             bindItems(event, ZItems::registerItems );
             bind(event, Registries.BLOCK_ENTITY_TYPE, ZBlockEntities::registerBlockEntities);
+
+            Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, ARCANE_TAB,
+                    CreativeModeTab.builder()
+                            //Set the title of the tab. Don't forget to add a translation!
+                            .title(Component.translatable("itemGroup." + ArcaneDivinity.MOD_ID + ".arcane_tab"))
+                            //Set the icon of the tab.
+                            .icon(() -> new ItemStack(ZBlocks.arcaneShrineBlock))
+                            //Add your items to the tab.
+                            .build()
+            );
         });
         eventBus.addListener((EntityRenderersEvent.RegisterRenderers event) -> {
             event.registerBlockEntityRenderer(ZBlockEntities.ARCANE_SHRINE_BLOCK_ENTITY, DefaultBlockEntityRenderer::new);
         });
         eventBus.addListener(this::registerCapabilities);
+
+        eventBus.addListener((BuildCreativeModeTabContentsEvent event) ->{
+            if (event.getTabKey() == ARCANE_TAB){
+                ZBlocks.BLOCKS.forEach((_rl, block) -> event.accept(block));
+                ZItems.getItems().forEach((_rl, item) -> event.accept(item));
+            }
+        });
 
         ArcaneDivinity.init();
     }
@@ -86,7 +111,6 @@ public class ArcaneDivinityEntry {
     private void bindItems(RegisterEvent event, Consumer<BiConsumer<Item, ResourceLocation>> source){
         if (event.getRegistryKey().equals(Registries.ITEM)){
             source.accept( (t, rl) ->{
-                //TODO: Add to inv
                 event.register(Registries.ITEM, rl, () -> t);
             });
         }
@@ -112,4 +136,6 @@ public class ArcaneDivinityEntry {
             }
         }
     }
+
+    public static final ResourceKey<CreativeModeTab> ARCANE_TAB= ResourceKey.create(Registries.CREATIVE_MODE_TAB, ArcaneDivinity.path("arcane_tab"));
 }

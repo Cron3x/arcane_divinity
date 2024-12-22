@@ -1,7 +1,6 @@
 package de.abq.arcane_divinity.common.block.block_entity;
 
 import com.mojang.datafixers.types.Type;
-import de.abq.arcane_divinity.common.block.ZBlockNames;
 import de.abq.arcane_divinity.common.block.ZBlocks;
 import de.abq.arcane_divinity.platform.Services;
 import net.minecraft.Util;
@@ -21,9 +20,9 @@ import java.util.function.BiFunction;
 public class ZBlockEntities {
     private static final Map<ResourceLocation, BlockEntityType<?>> ALL = new HashMap<>();
 
-    public static final BlockEntityType<PedestalBlockEntity> PEDESTAL_BLOCK_ENTITY = assign(ZBlockNames.PEDESTAL, PedestalBlockEntity::new, ZBlocks.pedestalBlock);
-    public static final BlockEntityType<ArcaneShrineBlockEntity> ARCANE_SHRINE_BLOCK_ENTITY = assign(ZBlockNames.ARCANE_SHRINE, ArcaneShrineBlockEntity::new, ZBlocks.arcaneShrineBlock);
-    public static final BlockEntityType<ArcaneObeliskBlockEntity> ARCANE_OBELISK_BLOCK_ENTITY = assign(ZBlockNames.ARCANE_OBELISK, ArcaneObeliskBlockEntity::new, ZBlocks.arcaneObeliskBlock);
+    public static final BlockEntityType<PedestalBlockEntity> PEDESTAL_BLOCK_ENTITY = assign(ZBlocks.Locations.PEDESTAL, PedestalBlockEntity::new, ZBlocks.pedestalBlock);
+    public static final BlockEntityType<ArcaneShrineBlockEntity> ARCANE_SHRINE_BLOCK_ENTITY = assign(ZBlocks.Locations.ARCANE_SHRINE, ArcaneShrineBlockEntity::new, ZBlocks.arcaneShrineBlock);
+    public static final BlockEntityType<ArcaneObeliskBlockEntity> ARCANE_OBELISK_BLOCK_ENTITY = assign(ZBlocks.Locations.ARCANE_OBELISK, ArcaneObeliskBlockEntity::new, ZBlocks.arcaneObeliskBlock);
 
     private static <T extends BlockEntity> BlockEntityType<T> assign(ResourceLocation id, BiFunction<BlockPos, BlockState, T> fn, Block... blocks){
         Type<?> type = Util.fetchChoiceType(References.BLOCK_ENTITY, id.getPath());

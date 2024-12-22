@@ -31,4 +31,8 @@ public class ZItems {
     public static void registerItems(BiConsumer<Item, ResourceLocation> register){
         ITEMS.forEach((rl, i) -> register.accept(i, rl));
     }
+
+    public static Map<ResourceLocation, Item> getItems(){
+       return ITEMS;
+    }
 }
