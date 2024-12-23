@@ -1,5 +1,6 @@
 package de.abq.arcane_divinity.common.item;
 
+import de.abq.arcane_divinity.common.defaulted.renderer.DefaultedItemRenderer;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
@@ -22,13 +23,13 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.function.Consumer;
 
-public class HeroBladeItem extends SwordItem implements GeoItem {
+public class EaSwordItem extends SwordItem implements GeoItem {
     public static final String IDENTIFIER = "ea_sword";
 
     private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenPlay("idle");
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
-    public HeroBladeItem(Tier tier, Properties properties) {
+    public EaSwordItem(Tier tier, Properties properties) {
         super(tier, properties);
 
         SingletonGeoAnimatable.registerSyncedAnimatable(this);
@@ -47,11 +48,12 @@ public class HeroBladeItem extends SwordItem implements GeoItem {
     @Override
     public void createGeoRenderer(Consumer<GeoRenderProvider> consumer) {
         consumer.accept( new GeoRenderProvider() {
-                             private DefaultItemRenderer<HeroBladeItem> renderer;
+                             private DefaultedItemRenderer<EaSwordItem> renderer;
 
                              @Override
                              public @NotNull BlockEntityWithoutLevelRenderer getGeoItemRenderer() {
-                                 if (this.renderer == null) this.renderer = new DefaultItemRenderer<>(new DefaultItemModel<>(IDENTIFIER));
+                                 if (this.renderer == null)
+                                     this.renderer = new DefaultedItemRenderer<>(IDENTIFIER);
                                  return this.renderer;
                              }
                          }

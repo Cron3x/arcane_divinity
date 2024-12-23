@@ -22,7 +22,7 @@ public class ZItems {
     public static final Item ASH = build("ash", new Item(Services.PLATFORM.defaultItemBuilder()));
     public static final Item BOTTLED_JINN = build(BottledJinnItem.IDENTIFIER, new BottledJinnItem(Services.PLATFORM.defaultItemBuilder()));
 
-    public static final Item HERO_BLADE = build(HeroBladeItem.IDENTIFIER, new HeroBladeItem(Tiers.NETHERITE, Services.PLATFORM.defaultItemBuilder()));
+    public static final Item HERO_BLADE = build(EaSwordItem.IDENTIFIER, new EaSwordItem(Tiers.NETHERITE, Services.PLATFORM.defaultItemBuilder()));
 
     private static Item build(String identifier, Item item){
         ITEMS.put(ArcaneDivinity.path(identifier), item);
