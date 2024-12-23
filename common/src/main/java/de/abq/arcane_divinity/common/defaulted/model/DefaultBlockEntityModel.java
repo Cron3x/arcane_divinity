@@ -17,20 +17,17 @@ public class DefaultBlockEntityModel<T extends AbstractGeoBlockEntity> extends G
 
     @Override
     public ResourceLocation getModelResource(T animatable) {
-        ArcaneDivinity.LOG.debug("getModelResource: {}",id);
         return ArcaneDivinity.path("geo/block/%s.geo.json".formatted(id));
     }
 
     @Override
     public ResourceLocation getTextureResource(T animatable) {
-        ArcaneDivinity.LOG.debug("getTextureResource: {}",id);
         return ArcaneDivinity.path("textures/block/%s.png".formatted(id));
     }
 
 
     @Override
     public ResourceLocation getAnimationResource(T animatable) {
-        ArcaneDivinity.LOG.debug("getAnimationResource: {}",id);
         return ArcaneDivinity.path("animations/block/%s.animation.json".formatted(id));
     }
 }
