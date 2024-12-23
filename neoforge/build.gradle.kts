@@ -57,6 +57,11 @@ neoForge {
 repositories {
     mavenLocal()
     maven {
+        name = "KosmX's maven"
+        url = uri("https://maven.kosmx.dev/")
+    }
+    maven { url = uri("https://maven.shedaniel.me/") }
+    maven {
         name = "GeckoLib"
         url = uri("https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/")
         content {
@@ -84,10 +89,13 @@ dependencies {
     implementation("foundry.veil:veil-neoforge-${libs.versions.veil.minecraft.get()}:${libs.versions.veil.asProvider().get()}") {
         exclude("maven.modrinth")
     }
-    //jarJar("foundry.veil:veil-neoforge-${libs.versions.veil.minecraft.get()}:${libs.versions.veil.asProvider().get()}")
     implementation( "software.bernie.geckolib:geckolib-neoforge-${libs.versions.minecraft.asProvider().get()}:${libs.versions.geckolib.asProvider().get()}"){
         exclude("maven.modrinth")
     }
+    api("me.shedaniel.cloth:cloth-config-neoforge:${libs.versions.clothconfig.get()}")
+    implementation("dev.kosmx.player-anim:player-animation-lib-forge:${libs.versions.playeranim.get()}")
+    implementation("maven.modrinth:better-combat:${libs.versions.bettercombat.get()}-neoforge")
+
     compileOnly(project(":common"))
 }
 

@@ -20,6 +20,17 @@ base {
 
 repositories {
     maven {
+        name = "KosmX's maven"
+        url = uri("https://maven.kosmx.dev/")
+    }
+    maven {
+        name = "Shedaniel Maven"
+        url = uri("https://maven.shedaniel.me/") }
+    maven {
+        name = "terraformersmc Maven"
+        url = uri("https://maven.terraformersmc.com/releases/")
+    }
+    maven {
         name = "ParchmentMC"
         url = uri("https://maven.parchmentmc.org")
         content {
@@ -66,6 +77,12 @@ dependencies {
         exclude("maven.modrinth")
     }
 
+    //BetterCombat
+    modApi("me.shedaniel.cloth:cloth-config-fabric:${libs.versions.clothconfig.get()}") {
+        exclude("net.fabricmc.fabric-api")
+    }
+    modImplementation("dev.kosmx.player-anim:player-animation-lib-fabric:${libs.versions.playeranim.get()}")
+    modImplementation("maven.modrinth:better-combat:${libs.versions.bettercombat.get()}-fabric")
     compileOnly(project(":common"))
 }
 

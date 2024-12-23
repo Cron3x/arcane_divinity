@@ -34,6 +34,9 @@ geckolib = "4.7"#"4.5.8"
 geckolib-range = "[4.7,)"
 veil = "1.0.0.66"
 veil-minecraft = "1.21.1"
+clothconfig = "15.0.140"
+playeranim = "2.0.0+1.21.1"
+bettercombat = "2.0.4+1.21.1"
 
 # Plugins
 plugin-moddevgradle = "2.0.47-beta"

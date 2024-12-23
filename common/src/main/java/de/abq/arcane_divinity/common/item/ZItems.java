@@ -7,6 +7,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tiers;
 
 import java.util.LinkedHashMap;
@@ -22,7 +23,7 @@ public class ZItems {
     public static final Item ASH = build("ash", new Item(Services.PLATFORM.defaultItemBuilder()));
     public static final Item BOTTLED_JINN = build(BottledJinnItem.IDENTIFIER, new BottledJinnItem(Services.PLATFORM.defaultItemBuilder()));
 
-    public static final Item HERO_BLADE = build(EaSwordItem.IDENTIFIER, new EaSwordItem(Tiers.NETHERITE, Services.PLATFORM.defaultItemBuilder()));
+    public static final Item HERO_BLADE = build(EaSwordItem.IDENTIFIER, new EaSwordItem(Tiers.NETHERITE, Services.PLATFORM.defaultItemBuilder().attributes(SwordItem.createAttributes(Tiers.NETHERITE, 3, -2.4f))));
 
     private static Item build(String identifier, Item item){
         ITEMS.put(ArcaneDivinity.path(identifier), item);

@@ -39,16 +39,10 @@ pluginManagement {
                 includeGroupAndSubgroups("org.spongepowered")
             }
         }
+
         maven {
-            name = "BlameJared Maven (CrT / Bookshelf)"
-            url = uri("https://maven.blamejared.com")
-        }
-        maven {
-            name = "GeckoLib"
-            url = uri("https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/")
-            content {
-                includeGroup("software.bernie.geckolib")
-            }
+            name = "Shedaniel Maven"
+            url = uri("https://maven.shedaniel.me/")
         }
     }
 }

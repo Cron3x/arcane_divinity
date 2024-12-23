@@ -22,16 +22,42 @@ neoForge {
 dependencies {
     compileOnly(libs.mixin)
     compileOnly(libs.mixinextras.common)
-    
+
+    //Geckolib
     implementation( "software.bernie.geckolib:geckolib-common-${libs.versions.minecraft.asProvider().get()}:${libs.versions.geckolib.asProvider().get()}")
 
+    //Veil
     implementation("foundry.veil:veil-common-${libs.versions.veil.minecraft.get()}:${libs.versions.veil.asProvider().get()}") {
         exclude("maven.modrinth")
     }
+
+    //Accessories
+    //compileOnly("io.wispforest:accessories-common:${accessories_version}")
+
+    //Better Combat
+    compileOnly("me.shedaniel.cloth:cloth-config:${libs.versions.clothconfig.get()}") {
+        exclude("net.fabricmc")
+    }
+    implementation("dev.kosmx.player-anim:player-animation-lib:${libs.versions.playeranim.get()}"){
+        exclude("net.fabricmc")
+    }
+    //implementation("maven.modrinth:better-combat:${libs.versions.bettercombat.get()}")
 }
 
 repositories {
     mavenLocal()
+    maven {
+        name = "KosmX's maven"
+        url = uri("https://maven.kosmx.dev/")
+    }
+    maven {
+        name = "Shedaniel Maven"
+        url = uri("https://maven.shedaniel.me/")
+    }
+    maven {
+        name = "terraformersmc Maven"
+        url = uri("https://maven.terraformersmc.com/releases/")
+    }
     maven {
         name = "GeckoLib"
         url = uri("https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/")
