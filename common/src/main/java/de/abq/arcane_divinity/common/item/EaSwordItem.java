@@ -15,10 +15,7 @@ import software.bernie.geckolib.animatable.GeoItem;
 import software.bernie.geckolib.animatable.SingletonGeoAnimatable;
 import software.bernie.geckolib.animatable.client.GeoRenderProvider;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.animation.AnimatableManager;
-import software.bernie.geckolib.animation.AnimationController;
-import software.bernie.geckolib.animation.PlayState;
-import software.bernie.geckolib.animation.RawAnimation;
+import software.bernie.geckolib.animation.*;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.function.Consumer;
@@ -26,18 +23,21 @@ import java.util.function.Consumer;
 public class EaSwordItem extends SwordItem implements GeoItem {
     public static final String IDENTIFIER = "ea_sword";
 
-    private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenPlay("idle");
+    private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     public EaSwordItem(Tier tier, Properties properties) {
         super(tier, properties);
-
         SingletonGeoAnimatable.registerSyncedAnimatable(this);
     }
 
     @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "Idle", 0, state -> PlayState.STOP).triggerableAnim("idle", IDLE_ANIM));
+    public void registerControllers(final AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<>(this, "Idle", 0, this::idleAnimationController));
+    }
+
+    protected <S extends EaSwordItem> PlayState idleAnimationController(final AnimationState<S> event){
+        return event.setAndContinue(IDLE_ANIM);
     }
 
     @Override
@@ -62,7 +62,7 @@ public class EaSwordItem extends SwordItem implements GeoItem {
 
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, @NotNull Player player, @NotNull InteractionHand usedHand) {
-        if (level instanceof ServerLevel serverLevel) triggerAnim(player, GeoItem.getOrAssignId(player.getItemInHand(usedHand), serverLevel), "Idle", "idle");
+       //if (level instanceof ServerLevel serverLevel) triggerAnim(player, GeoItem.getOrAssignId(player.getItemInHand(usedHand), serverLevel), "Idle", "idle");
         return super.use(level, player, usedHand);
     }
 }
