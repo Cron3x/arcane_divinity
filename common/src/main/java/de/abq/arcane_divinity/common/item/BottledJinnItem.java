@@ -1,5 +1,7 @@
 package de.abq.arcane_divinity.common.item;
 
+import de.abq.arcane_divinity.ArcaneDivinity;
+import de.abq.arcane_divinity.common.defaulted.renderer.DefaultedItemRenderer;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
@@ -18,6 +20,7 @@ import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.animation.AnimationController;
 import software.bernie.geckolib.animation.PlayState;
 import software.bernie.geckolib.animation.RawAnimation;
+import software.bernie.geckolib.model.DefaultedItemGeoModel;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.function.Consumer;
@@ -47,11 +50,11 @@ public class BottledJinnItem extends Item implements GeoItem {
     @Override
     public void createGeoRenderer(Consumer<GeoRenderProvider> consumer) {
         consumer.accept( new GeoRenderProvider() {
-                             private DefaultItemRenderer<BottledJinnItem> renderer;
+                             private DefaultedItemRenderer<BottledJinnItem> renderer;
 
                              @Override
-                             public @Nullable BlockEntityWithoutLevelRenderer getGeoItemRenderer() {
-                                 if (this.renderer == null) this.renderer = new DefaultItemRenderer<>(new DefaultItemModel<>(BottledJinnItem.IDENTIFIER));
+                             public @NotNull BlockEntityWithoutLevelRenderer getGeoItemRenderer() {
+                                 if (this.renderer == null) this.renderer = new DefaultedItemRenderer<>(IDENTIFIER);
                                  return this.renderer;
                              }
                          }
