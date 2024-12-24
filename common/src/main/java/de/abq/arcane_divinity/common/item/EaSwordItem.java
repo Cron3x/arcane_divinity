@@ -74,7 +74,6 @@ public class EaSwordItem extends SwordItem implements GeoItem {
 
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, @NotNull Player player, @NotNull InteractionHand usedHand) {
-
         if (level instanceof ServerLevel serverLevel)
             triggerAnim(player, GeoItem.getOrAssignId(player.getItemInHand(usedHand), serverLevel), "Use", "use");
         return super.use(level, player, usedHand);
