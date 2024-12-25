@@ -1,6 +1,7 @@
 package de.abq.arcane_divinity.common.item;
 
 import de.abq.arcane_divinity.ArcaneDivinity;
+import de.abq.arcane_divinity.client.item.render.FlameSwordItemRenderer;
 import de.abq.arcane_divinity.common.defaulted.renderer.DefaultedItemRenderer;
 import foundry.veil.api.client.render.VeilRenderSystem;
 import foundry.veil.api.client.render.light.PointLight;
@@ -22,6 +23,7 @@ import software.bernie.geckolib.animatable.SingletonGeoAnimatable;
 import software.bernie.geckolib.animatable.client.GeoRenderProvider;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.*;
+import software.bernie.geckolib.model.DefaultedItemGeoModel;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.function.Consumer;
@@ -69,12 +71,12 @@ public class FlameSwordItem extends SwordItem implements GeoItem {
     @Override
     public void createGeoRenderer(Consumer<GeoRenderProvider> consumer) {
         consumer.accept( new GeoRenderProvider() {
-                             private DefaultedItemRenderer<FlameSwordItem> renderer;
+                             private FlameSwordItemRenderer renderer;
 
                              @Override
                              public @NotNull BlockEntityWithoutLevelRenderer getGeoItemRenderer() {
                                  if (this.renderer == null)
-                                     this.renderer = new DefaultedItemRenderer<>(IDENTIFIER);
+                                     this.renderer = new FlameSwordItemRenderer(new DefaultedItemGeoModel<>(ArcaneDivinity.path(IDENTIFIER)));
                                  return this.renderer;
                              }
                          }

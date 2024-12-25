@@ -55,7 +55,7 @@ public class ArcaneDivinityEntry implements ModInitializer {
 
     public static final ResourceKey<CreativeModeTab> CUSTOM_ITEM_GROUP_KEY = ResourceKey.create(Registries.CREATIVE_MODE_TAB, ArcaneDivinity.path("arcane_group"));
     public static final CreativeModeTab CUSTOM_ITEM_GROUP = FabricItemGroup.builder()
-            .icon(() -> new ItemStack(ZItems.BOTTLED_JINN))
-            .title(Component.translatable("itemGroup." + ArcaneDivinity.MOD_ID + ".arcane_tab"))
+            .icon(() -> new ItemStack(ZBlocks.arcaneShrineBlock))
+            .title(Component.translatable("itemGroup." + ArcaneDivinity.MOD_ID + ".arcane_group"))
             .build();
 }

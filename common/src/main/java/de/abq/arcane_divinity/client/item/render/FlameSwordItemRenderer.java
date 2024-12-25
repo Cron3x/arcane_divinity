@@ -7,11 +7,15 @@ import foundry.veil.api.client.render.VeilRenderSystem;
 import foundry.veil.api.client.render.VeilRenderer;
 import foundry.veil.api.client.render.shader.definition.ShaderPreDefinitions;
 import foundry.veil.api.client.render.shader.program.ShaderProgram;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.texture.AbstractTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import org.joml.Matrix4f;
+import org.joml.Vector2f;
+import org.joml.Vector3f;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.GeoItemRenderer;
 
@@ -30,8 +34,11 @@ public class FlameSwordItemRenderer extends GeoItemRenderer<FlameSwordItem> {
             return;
         }
         shader.bind();
+        shader.setVector("bladeColor", new Vector3f(0,100,255));
+        shader.setFloat("glowIntensity", 1f);
+        shader.setup();
         // rendering code here
-
+        VeilRenderSystem.drawScreenQuad();
         ShaderProgram.unbind();
     }
 }

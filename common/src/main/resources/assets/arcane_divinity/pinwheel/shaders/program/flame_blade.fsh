@@ -1,4 +1,6 @@
-#version 330 core
+#version 330
+
+#include "veil:common"
 
 out vec4 FragColor;
 
@@ -6,7 +8,7 @@ in vec2 TexCoord;
 
 uniform vec3 bladeColor;       // Color of the blade
 uniform float glowIntensity;   // Intensity of the glow
-uniform float time;            // Time variable for animation
+uniform float time;
 
 void main() {
     // Centered radial gradient for blade edges

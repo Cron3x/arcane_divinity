@@ -59,7 +59,7 @@ public class ArcaneDivinityEntry {
             //Very ugly but it works?
             Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, ARCANE_TAB,
                     CreativeModeTab.builder()
-                            .title(Component.translatable("itemGroup." + ArcaneDivinity.MOD_ID + ".arcane_tab"))
+                            .title(Component.translatable("itemGroup." + ArcaneDivinity.MOD_ID + ".arcane_group"))
                             .icon(() -> new ItemStack(ZBlocks.arcaneShrineBlock))
                             .build()
             );
