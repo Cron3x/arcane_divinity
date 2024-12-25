@@ -40,5 +40,6 @@ public final class ZBlocks {
         public static final ResourceLocation ARCANE_SHRINE = ResourceLocation.fromNamespaceAndPath(ArcaneDivinity.MOD_ID, "arcane_shrine");
         public static final ResourceLocation ARCANE_OBELISK = ResourceLocation.fromNamespaceAndPath(ArcaneDivinity.MOD_ID, "arcane_obelisk");
         public static final ResourceLocation PEDESTAL = ResourceLocation.fromNamespaceAndPath(ArcaneDivinity.MOD_ID, "pedestal");
+        public static final ResourceLocation MAGICAL_LIGHT_BLOCK = ResourceLocation.fromNamespaceAndPath(ArcaneDivinity.MOD_ID, "magical_light_block");
     }
 }

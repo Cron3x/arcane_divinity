@@ -4,10 +4,12 @@ import de.abq.arcane_divinity.ArcaneDivinity;
 import de.abq.arcane_divinity.common.defaulted.renderer.DefaultedItemRenderer;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Tuple;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
@@ -34,6 +36,11 @@ public class EaSwordItem extends SwordItem implements GeoItem {
     public EaSwordItem(Tier tier, Properties properties) {
         super(tier, properties);
         SingletonGeoAnimatable.registerSyncedAnimatable(this);
+    }
+    //TODO: make better
+    public static Tuple<String, Item> init (Tier tier, Properties properties){
+        Item item = new EaSwordItem(tier, properties);
+        return new Tuple<>(IDENTIFIER, item);
     }
 
     @Override

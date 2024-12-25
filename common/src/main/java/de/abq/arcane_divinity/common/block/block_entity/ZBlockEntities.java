@@ -21,7 +21,7 @@ import java.util.function.BiFunction;
 public class ZBlockEntities {
     private static final Map<ResourceLocation, BlockEntityType<?>> BLOCK_ENTITIES = new HashMap<>();
 
-    public static final BlockEntityType<PedestalBlockEntity> PEDESTAL_BLOCK_ENTITY = assign(ZBlocks.Locations.PEDESTAL, PedestalBlockEntity::new, ZBlocks.pedestalBlock);
+    public static final BlockEntityType<PedestalBlockEntity> PEDESTAL_BLOCK_ENTITY = assign(ZBlocks.Locations.MAGICAL_LIGHT_BLOCK, PedestalBlockEntity::new, ZBlocks.pedestalBlock);
     public static final BlockEntityType<ArcaneShrineBlockEntity> ARCANE_SHRINE_BLOCK_ENTITY = assign(ZBlocks.Locations.ARCANE_SHRINE, ArcaneShrineBlockEntity::new, ZBlocks.arcaneShrineBlock);
     public static final BlockEntityType<ArcaneObeliskBlockEntity> ARCANE_OBELISK_BLOCK_ENTITY = assign(ZBlocks.Locations.ARCANE_OBELISK, ArcaneObeliskBlockEntity::new, ZBlocks.arcaneObeliskBlock);
 

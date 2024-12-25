@@ -2,12 +2,16 @@ package de.abq.arcane_divinity.common.item;
 
 import de.abq.arcane_divinity.ArcaneDivinity;
 import de.abq.arcane_divinity.common.defaulted.renderer.DefaultedItemRenderer;
+import foundry.veil.api.client.render.VeilRenderSystem;
+import foundry.veil.api.client.render.light.PointLight;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Tuple;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
@@ -34,6 +38,11 @@ public class FlameSwordItem extends SwordItem implements GeoItem {
     public FlameSwordItem(Tier tier, Properties properties) {
         super(tier, properties);
         SingletonGeoAnimatable.registerSyncedAnimatable(this);
+    }
+
+    public static Tuple<String, Item> init (Tier tier, Properties properties){
+        Item item = new FlameSwordItem(tier, properties);
+        return new Tuple<>(IDENTIFIER, item);
     }
 
     @Override
@@ -76,6 +85,15 @@ public class FlameSwordItem extends SwordItem implements GeoItem {
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, @NotNull Player player, @NotNull InteractionHand usedHand) {
         if (level instanceof ServerLevel serverLevel)
             triggerAnim(player, GeoItem.getOrAssignId(player.getItemInHand(usedHand), serverLevel), "Use", "use");
+
+        PointLight light = new PointLight();
+        light.setPosition(player.getX(),player.getY(),player.getZ());
+        light.setColor(0x8f00ff);
+        light.setBrightness(1.3f);
+        light.setRadius(4f);
+        light.renderImGuiAttributes();
+        VeilRenderSystem.renderer().getLightRenderer().addLight(light);
+
         return super.use(level, player, usedHand);
     }
 

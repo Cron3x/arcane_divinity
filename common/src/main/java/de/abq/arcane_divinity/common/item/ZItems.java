@@ -4,6 +4,7 @@ import de.abq.arcane_divinity.ArcaneDivinity;
 import de.abq.arcane_divinity.common.item.armor.WingsArmorItem;
 import de.abq.arcane_divinity.platform.Services;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Tuple;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -23,12 +24,17 @@ public class ZItems {
     public static final Item ASH = build("ash", new Item(Services.PLATFORM.defaultItemBuilder()));
     public static final Item BOTTLED_JINN = build(BottledJinnItem.IDENTIFIER, new BottledJinnItem(Services.PLATFORM.defaultItemBuilder()));
 
-    public static final Item HERO_BLADE = build(EaSwordItem.IDENTIFIER, new EaSwordItem(Tiers.NETHERITE, Services.PLATFORM.defaultItemBuilder().attributes(SwordItem.createAttributes(Tiers.NETHERITE, 3, -2.4f))));
+    public static final Item HERO_BLADE = build(EaSwordItem.init(Tiers.NETHERITE, Services.PLATFORM.defaultItemBuilder().attributes(SwordItem.createAttributes(Tiers.NETHERITE, 3, -2.4f))));
+    public static final Item FLAME_SWORD = build(FlameSwordItem.init(Tiers.NETHERITE, Services.PLATFORM.defaultItemBuilder().attributes(SwordItem.createAttributes(Tiers.NETHERITE, 3, -2.4f))));
 
     private static Item build(String identifier, Item item){
         ITEMS.put(ArcaneDivinity.path(identifier), item);
         return item;
     }
+    private static Item build(Tuple<String, Item> packed){
+        return build(packed.getA(), packed.getB());
+    }
+
     public static void registerItems(BiConsumer<Item, ResourceLocation> register){
         ITEMS.forEach((rl, i) -> register.accept(i, rl));
     }
