@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " sO",
+    "GRs",
+    "MG  "
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:gold_block"
+    },
+    "s": {
+      "item": "minecraft:netherite_scrap"
+    },
+    "O": {
+      "item": "minecraft:obsidian"
+    },
+    "R": {
+      "item": "minecraft:redstone_block"
+    },
+    "M": {
+      "item": "mythicmetals:midas_gold_sword"
+    }
+  },
+  "result": {
+    "id": "arcane_divinity:ea_sword",
+    "count": 1
+  }
+}
