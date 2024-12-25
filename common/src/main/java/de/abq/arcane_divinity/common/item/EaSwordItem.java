@@ -26,7 +26,7 @@ public class EaSwordItem extends SwordItem implements GeoItem {
     public static final String IDENTIFIER = "ea_sword";
 
     private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
-    private static final RawAnimation USE_ANIM = RawAnimation.begin().thenPlayXTimes("idle",10);
+    private static final RawAnimation USE_ANIM = RawAnimation.begin().thenPlayXTimes("idle",12);
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     private boolean triggeredUse = false;
@@ -41,7 +41,7 @@ public class EaSwordItem extends SwordItem implements GeoItem {
         controllers
                 .add(new AnimationController<>(this, "Idle", 0, this::idleAnimationController))
                 .add(new AnimationController<>(this, "Use", 0, state -> PlayState.STOP)
-                        .triggerableAnim("use", USE_ANIM).setAnimationSpeed(100f));
+                        .triggerableAnim("use", USE_ANIM).setAnimationSpeed(10f));
     }
 
     protected <S extends EaSwordItem> PlayState idleAnimationController(final AnimationState<S> event){
