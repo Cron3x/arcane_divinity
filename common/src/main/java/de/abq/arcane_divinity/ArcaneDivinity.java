@@ -1,13 +1,10 @@
 package de.abq.arcane_divinity;
 
 import de.abq.arcane_divinity.platform.Services;
-import de.abq.arcane_divinity.platform.service.ArcaneDivinityRegistrationHelper;
-import de.abq.arcane_divinity.world.effect.ZMobEffects;
 import de.abq.arcane_divinity.world.entity.ZEntityType;
 import de.abq.arcane_divinity.world.item.ZItems;
 import de.abq.arcane_divinity.world.level.block.ZBlocks;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
