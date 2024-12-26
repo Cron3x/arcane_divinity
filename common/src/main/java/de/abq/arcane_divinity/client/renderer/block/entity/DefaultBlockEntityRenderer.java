@@ -1,4 +1,4 @@
-package de.abq.arcane_divinity.world.level.block.entity.renderers;
+package de.abq.arcane_divinity.client.renderer.block.entity;
 
 import de.abq.arcane_divinity.world.level.block.entity.AbstractGeoBlockEntity;
 import de.abq.arcane_divinity.world.level.block.entity.ArcaneShrineBlockEntity;

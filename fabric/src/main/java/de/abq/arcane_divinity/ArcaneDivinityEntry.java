@@ -1,8 +1,9 @@
 package de.abq.arcane_divinity;
 
+import de.abq.arcane_divinity.world.entity.ZEntityType;
 import de.abq.arcane_divinity.world.level.block.ZBlocks;
 import de.abq.arcane_divinity.world.level.block.entity.ZBlockEntities;
-import de.abq.arcane_divinity.world.level.block.entity.renderers.DefaultBlockEntityRenderer;
+import de.abq.arcane_divinity.client.renderer.block.entity.DefaultBlockEntityRenderer;
 import de.abq.arcane_divinity.world.item.ZItems;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
@@ -30,6 +31,7 @@ public class ArcaneDivinityEntry implements ModInitializer {
         bindItemLike(BuiltInRegistries.ITEM, ZBlocks::registerBlockItems);
         bind(BuiltInRegistries.BLOCK, ZBlocks::registerBlocks);
         bind(BuiltInRegistries.BLOCK_ENTITY_TYPE, ZBlockEntities::registerBlockEntities);
+        bind(BuiltInRegistries.ENTITY_TYPE, ZEntityType::registerEntities);
 
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, CUSTOM_ITEM_GROUP_KEY, CUSTOM_ITEM_GROUP);
         ArcaneDivinity.init();

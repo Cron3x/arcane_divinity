@@ -3,7 +3,7 @@ package de.abq.arcane_divinity;
 
 import de.abq.arcane_divinity.world.level.block.ZBlocks;
 import de.abq.arcane_divinity.world.level.block.entity.ZBlockEntities;
-import de.abq.arcane_divinity.world.level.block.entity.renderers.DefaultBlockEntityRenderer;
+import de.abq.arcane_divinity.client.renderer.block.entity.DefaultBlockEntityRenderer;
 import de.abq.arcane_divinity.world.effect.ZMobEffects;
 import de.abq.arcane_divinity.world.item.ZItems;
 import net.minecraft.client.Minecraft;

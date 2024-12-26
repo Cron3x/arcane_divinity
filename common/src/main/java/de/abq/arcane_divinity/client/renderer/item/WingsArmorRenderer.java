@@ -1,6 +1,7 @@
-package de.abq.arcane_divinity.world.item.armor;
+package de.abq.arcane_divinity.client.renderer.item;
 
 import de.abq.arcane_divinity.ArcaneDivinity;
+import de.abq.arcane_divinity.world.item.armor.WingsArmorItem;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import org.jetbrains.annotations.NotNull;
