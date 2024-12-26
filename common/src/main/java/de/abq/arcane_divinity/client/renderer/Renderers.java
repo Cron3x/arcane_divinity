@@ -2,6 +2,7 @@ package de.abq.arcane_divinity.client.renderer;
 
 import de.abq.arcane_divinity.client.renderer.block.entity.DefaultBlockEntityRenderer;
 import de.abq.arcane_divinity.client.renderer.entity.vfx.RuptureBeamRenderer;
+import de.abq.arcane_divinity.client.renderer.entity.vfx.RuptureWaveHitRenderer;
 import de.abq.arcane_divinity.world.entity.ZEntityType;
 import de.abq.arcane_divinity.world.level.block.entity.ZBlockEntities;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
@@ -18,6 +19,7 @@ public class Renderers {
     public static class Entities {
         public static void register(BiConsumer<EntityType<? extends Entity>, EntityRendererProvider> entityRenderers) {
             entityRenderers.accept(ZEntityType.RUPTURE_BEAM, RuptureBeamRenderer::new);
+            entityRenderers.accept(ZEntityType.RUPTURE_WAVE_HIT, RuptureWaveHitRenderer::new);
         }
     }
 

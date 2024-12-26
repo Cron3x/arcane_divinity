@@ -2,6 +2,7 @@ package de.abq.arcane_divinity.world.item;
 
 import de.abq.arcane_divinity.ArcaneDivinity;
 import de.abq.arcane_divinity.client.defaulted.renderer.DefaultedItemRenderer;
+import de.abq.arcane_divinity.world.entity.vfx.RuptureWaveHitEntity;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
@@ -92,8 +93,10 @@ public class EaSwordItem extends SwordItem implements GeoItem {
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         ArcaneDivinity.LOG.debug("hurtEnemy");
-        if (attacker.level() instanceof ServerLevel serverLevel)
+        if (attacker.level() instanceof ServerLevel serverLevel){
             triggerAnim(attacker, GeoItem.getOrAssignId(attacker.getItemInHand(InteractionHand.MAIN_HAND), serverLevel), "Use", "use");
+            serverLevel.addFreshEntity(new RuptureWaveHitEntity(serverLevel, target.getX(), target.getY(), target.getZ()));
+        }
         return super.hurtEnemy(stack, target, attacker);
     }
 

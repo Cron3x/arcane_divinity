@@ -2,6 +2,7 @@ package de.abq.arcane_divinity.world.entity;
 
 import de.abq.arcane_divinity.ArcaneDivinity;
 import de.abq.arcane_divinity.world.entity.vfx.RuptureBeamEntity;
+import de.abq.arcane_divinity.world.entity.vfx.RuptureWaveHitEntity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -14,9 +15,11 @@ import java.util.function.BiConsumer;
 public class ZEntityType {
     public static final Map<String, EntityType<?>> ENTITIES = new LinkedHashMap<>();
 
-    public static final EntityType<RuptureBeamEntity> RUPTURE_BEAM = build("rupture_beam",
-            EntityType.Builder.of(RuptureBeamEntity::new, MobCategory.MISC).sized(0.7F, 0.65F).eyeHeight(0.26F).clientTrackingRange(10)
-);
+    public static final EntityType<?> RUPTURE_BEAM = build("rupture_beam",
+            EntityType.Builder.of(RuptureBeamEntity::new, MobCategory.MISC).sized(0.7F, 0.65F).eyeHeight(0.26F).clientTrackingRange(10));
+
+    public static final EntityType<?> RUPTURE_WAVE_HIT = build("rupture_hit_particle",
+            EntityType.Builder.of(RuptureWaveHitEntity::new, MobCategory.MISC).sized(0.7F, 0.65F).eyeHeight(0.26F).clientTrackingRange(10));
 
     private static <T extends Entity> EntityType<T> build(String key, EntityType.Builder<T> builder){
         EntityType<T> type = builder.build(key);
