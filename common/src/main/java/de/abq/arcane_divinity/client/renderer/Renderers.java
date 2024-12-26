@@ -10,13 +10,13 @@ import java.util.function.BiConsumer;
 
 public class Renderers {
 
-    static class Entities {
+    public static class Entities {
         public static void register(BiConsumer<EntityType<? extends Entity>, EntityRendererProvider> entityRenderers) {
             entityRenderers.accept(ZEntityType.RUPTURE_BEAM, RuptureBeamRenderer::new);
         }
     }
 
-    static class block {
+    public static class Blocks {
         public static void register(BiConsumer<EntityType<? extends Entity>, EntityRendererProvider> entityRenderers) {
             entityRenderers.accept(ZEntityType.RUPTURE_BEAM, RuptureBeamRenderer::new);
         }
