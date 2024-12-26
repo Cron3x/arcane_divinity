@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.function.BiConsumer;
 
 public class ZItems {
-    private static final Map<ResourceLocation, Item> ITEMS = new LinkedHashMap<>();
+    public static final Map<String, Item> ITEMS = new LinkedHashMap<>();
 
     public static final Item WINGS = build("wings", new WingsArmorItem(Services.PLATFORM.defaultItemBuilder().rarity(Rarity.EPIC)));
     public static final Item MAGIC_MUSHROOM = build("magic_mushroom", new MagicMushroomItem(Services.PLATFORM.defaultItemBuilder().food(new FoodProperties.Builder().alwaysEdible().nutrition(0).build()), 10));
@@ -25,15 +25,11 @@ public class ZItems {
 
     public static final Item EA_SWORD = build(EaSwordItem.IDENTIFIER, new EaSwordItem(Tiers.NETHERITE, Services.PLATFORM.defaultItemBuilder().attributes(SwordItem.createAttributes(Tiers.NETHERITE, 5, -2f))));
 
-    private static Item build(String identifier, Item item){
-        ITEMS.put(ArcaneDivinity.path(identifier), item);
+    private static Item build(String key, Item item){
+        ITEMS.put(key, item);
         return item;
     }
     public static void registerItems(BiConsumer<Item, ResourceLocation> register){
-        ITEMS.forEach((rl, i) -> register.accept(i, rl));
-    }
-
-    public static Map<ResourceLocation, Item> getItems(){
-       return ITEMS;
+        ITEMS.forEach((rl, i) -> register.accept(i, ArcaneDivinity.path(rl)));
     }
 }

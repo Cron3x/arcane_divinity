@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.function.BiConsumer;
 
 public class ZEntityType {
-    public static final Map<ResourceLocation, EntityType<?>> ENTITIES = new LinkedHashMap<>();
+    public static final Map<String, EntityType<?>> ENTITIES = new LinkedHashMap<>();
 
     public static final EntityType<RuptureBeamEntity> RUPTURE_BEAM = build("rupture_beam",
             EntityType.Builder.of(RuptureBeamEntity::new, MobCategory.MISC).sized(0.7F, 0.65F).eyeHeight(0.26F).clientTrackingRange(10)
@@ -20,11 +20,11 @@ public class ZEntityType {
 
     private static <T extends Entity> EntityType<T> build(String key, EntityType.Builder<T> builder){
         EntityType<T> type = builder.build(key);
-        ENTITIES.put(ArcaneDivinity.path(key), type);
+        ENTITIES.put(key, type);
         return type;
     }
 
     public static void registerEntities(BiConsumer<EntityType<?>, ResourceLocation> register){
-        ENTITIES.forEach((rl, i) -> register.accept(i, rl));
+        ENTITIES.forEach((key, i) -> register.accept(i, ArcaneDivinity.path(key)));
     }
 }

@@ -16,7 +16,7 @@
     "environment": "*",
     "entrypoints": {
         "main": [
-          "de.abq.arcane_divinity.ArcaneDivinityEntry"
+            "de.abq.arcane_divinity.ArcaneDivinityFabric"
         ],
         "client": [
             "de.abq.arcane_divinity.ArcaneDivinityClientEntry"

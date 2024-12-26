@@ -14,10 +14,16 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -25,27 +31,33 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 @Mod(ArcaneDivinity.MOD_ID)
-public class ArcaneDivinityEntry {
-    //public static final DeferredRegister<ArmorMaterial> ARMOR_MATERIALS = DeferredRegister.create(BuiltInRegistries., ArcaneDivinity.MOD_ID);
-    private IEventBus bus;
+public class ArcaneDivinityNeo {
+    public static final DeferredRegister<Item> ITEM_DEFERRED_REGISTER = DeferredRegister.create(BuiltInRegistries.ITEM, ArcaneDivinity.MOD_ID);
+    public static final DeferredRegister<Block> BLOCK_DEFERRED_REGISTER  = DeferredRegister.create(BuiltInRegistries.BLOCK, ArcaneDivinity.MOD_ID);
+    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_DEFERRED_REGISTER  = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, ArcaneDivinity.MOD_ID);
+    public static final DeferredRegister<EntityType<?>> ENTITY_TYPE_DEFERRED_REGISTER = DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, ArcaneDivinity.MOD_ID);
+    public static final DeferredRegister<MobEffect> MOB_EFFECT_DEFERRED_REGISTER = DeferredRegister.create(BuiltInRegistries.MOB_EFFECT, ArcaneDivinity.MOD_ID);
+    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TAB_DEFERRED_REGISTER = DeferredRegister.create(BuiltInRegistries.CREATIVE_MODE_TAB, ArcaneDivinity.MOD_ID);
+    public static final DeferredRegister<ArmorMaterial> ARMOR_MATERIAL_DEFERRED_REGISTER = DeferredRegister.create(BuiltInRegistries.ARMOR_MATERIAL, ArcaneDivinity.MOD_ID);
+    public static final DeferredRegister<SoundEvent> SOUND_EVENT_DEFERRED_REGISTER = DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, ArcaneDivinity.MOD_ID);
 
-    public ArcaneDivinityEntry(IEventBus eventBus) {
-        // This method is invoked by the NeoForge mod loader when it is ready
-        // to load your mod. You can access NeoForge and Common code in this
-        // project.
-
-        // Use NeoForge to bootstrap the Common mod.
-        ArcaneDivinity.LOG.info("Hello NeoForge world!");
-
-        //ARMOR_MATERIALS.register(eventBus);
-
+    public ArcaneDivinityNeo(IEventBus eventBus) {
         eventBus.addListener((RegisterEvent event) -> {
+            BLOCK_ENTITY_DEFERRED_REGISTER.register(eventBus);
+            BLOCK_DEFERRED_REGISTER.register(eventBus);
+            ENTITY_TYPE_DEFERRED_REGISTER.register(eventBus);
+            ITEM_DEFERRED_REGISTER.register(eventBus);
+            MOB_EFFECT_DEFERRED_REGISTER.register(eventBus);
+            CREATIVE_MODE_TAB_DEFERRED_REGISTER.register(eventBus);
+            SOUND_EVENT_DEFERRED_REGISTER.register(eventBus);
+
             bindMobEffect(event, ZMobEffects::register);
             bind(event, Registries.BLOCK, ZBlocks::registerBlocks);
             bindItems(event, ZBlocks::registerBlockItems);
@@ -59,6 +71,9 @@ public class ArcaneDivinityEntry {
                             .icon(() -> new ItemStack(ZBlocks.arcaneShrineBlock))
                             .build()
             );
+
+
+            ArcaneDivinity.registerEverything();
         });
         eventBus.addListener((EntityRenderersEvent.RegisterRenderers event) -> {
             event.registerBlockEntityRenderer(ZBlockEntities.ARCANE_SHRINE_BLOCK_ENTITY, DefaultBlockEntityRenderer::new);
@@ -68,7 +83,7 @@ public class ArcaneDivinityEntry {
         eventBus.addListener((BuildCreativeModeTabContentsEvent event) ->{
             if (event.getTabKey() == ARCANE_TAB){
                 ZBlocks.BLOCKS.forEach((_rl, block) -> event.accept(block));
-                ZItems.getItems().forEach((_rl, item) -> event.accept(item));
+                ZItems.ITEMS.forEach((_rl, item) -> event.accept(item));
             }
         });
 

@@ -1,6 +1,13 @@
 package de.abq.arcane_divinity;
 
+import de.abq.arcane_divinity.platform.Services;
+import de.abq.arcane_divinity.platform.service.ArcaneDivinityRegistrationHelper;
+import de.abq.arcane_divinity.world.effect.ZMobEffects;
+import de.abq.arcane_divinity.world.entity.ZEntityType;
+import de.abq.arcane_divinity.world.item.ZItems;
+import de.abq.arcane_divinity.world.level.block.ZBlocks;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,5 +34,12 @@ public final class ArcaneDivinity {
 
     public static ResourceLocation path(String name){
         return ResourceLocation.fromNamespaceAndPath(ArcaneDivinity.MOD_ID, name);
+    }
+
+    public static void registerEverything() {
+        ZBlocks.BLOCKS.forEach((id, block) -> Services.PLATFORM_REGISTER.registerBlock(id, () -> block));
+        ZItems.ITEMS.forEach((id, toReg) -> Services.PLATFORM_REGISTER.registerItem(id, () -> toReg));
+        ZEntityType.ENTITIES.forEach((id, toReg) -> Services.PLATFORM_REGISTER.registerEntity(id, () -> toReg));
+        ZMobEffects.
     }
 }
