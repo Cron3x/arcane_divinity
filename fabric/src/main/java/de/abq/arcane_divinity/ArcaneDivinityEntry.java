@@ -36,7 +36,6 @@ public class ArcaneDivinityEntry implements ModInitializer {
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, CUSTOM_ITEM_GROUP_KEY, CUSTOM_ITEM_GROUP);
         ArcaneDivinity.init();
 
-        BlockEntityRenderers.register(ZBlockEntities.ARCANE_SHRINE_BLOCK_ENTITY, DefaultBlockEntityRenderer::new);
     }
 
     private <T extends ItemLike> void bindItemLike(Registry<T> registry, Consumer<BiConsumer<T, ResourceLocation>> source){

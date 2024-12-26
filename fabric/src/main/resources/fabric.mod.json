@@ -17,6 +17,9 @@
     "entrypoints": {
         "main": [
           "de.abq.arcane_divinity.ArcaneDivinityEntry"
+        ],
+        "client": [
+            "de.abq.arcane_divinity.ArcaneDivinityClientEntry"
         ]
     },
     "mixins": [
@@ -27,6 +30,7 @@
         "fabricloader": ">=${fabric_loader_version_range}",
         "fabric-api": "*",
         "minecraft": "${minecraft_version}",
+        "veil": ">=1.0.0",
         "java": ">=21"
     }
 }
