@@ -1,6 +1,6 @@
 package de.abq.arcane_divinity.config;
 
-import de.abq.arcane_divinity.common.item.ZItems;
+import de.abq.arcane_divinity.world.item.ZItems;
 import net.minecraft.world.item.Item;
 
 import java.util.Arrays;

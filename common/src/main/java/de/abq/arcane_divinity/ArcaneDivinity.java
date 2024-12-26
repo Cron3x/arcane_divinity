@@ -1,11 +1,8 @@
 package de.abq.arcane_divinity;
 
-import de.abq.arcane_divinity.client.WarpingRenderer;
-import foundry.veil.api.client.render.VeilRenderer;
+import de.abq.arcane_divinity.client.warping.WarpingRenderer;
 import foundry.veil.api.event.VeilRenderLevelStageEvent;
 import foundry.veil.platform.VeilEventPlatform;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

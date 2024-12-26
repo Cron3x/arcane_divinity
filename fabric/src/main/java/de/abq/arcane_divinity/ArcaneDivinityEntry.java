@@ -1,9 +1,9 @@
 package de.abq.arcane_divinity;
 
-import de.abq.arcane_divinity.common.block.ZBlocks;
-import de.abq.arcane_divinity.common.block.block_entity.ZBlockEntities;
-import de.abq.arcane_divinity.common.block.block_entity.renderers.DefaultBlockEntityRenderer;
-import de.abq.arcane_divinity.common.item.ZItems;
+import de.abq.arcane_divinity.world.level.block.ZBlocks;
+import de.abq.arcane_divinity.world.level.block.entity.ZBlockEntities;
+import de.abq.arcane_divinity.world.level.block.entity.renderers.DefaultBlockEntityRenderer;
+import de.abq.arcane_divinity.world.item.ZItems;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;

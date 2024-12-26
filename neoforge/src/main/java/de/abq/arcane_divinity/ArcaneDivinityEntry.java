@@ -1,12 +1,11 @@
 package de.abq.arcane_divinity;
 
 
-import com.jcraft.jorbis.Block;
-import de.abq.arcane_divinity.common.block.ZBlocks;
-import de.abq.arcane_divinity.common.block.block_entity.ZBlockEntities;
-import de.abq.arcane_divinity.common.block.block_entity.renderers.DefaultBlockEntityRenderer;
-import de.abq.arcane_divinity.common.effect.ZMobEffects;
-import de.abq.arcane_divinity.common.item.ZItems;
+import de.abq.arcane_divinity.world.level.block.ZBlocks;
+import de.abq.arcane_divinity.world.level.block.entity.ZBlockEntities;
+import de.abq.arcane_divinity.world.level.block.entity.renderers.DefaultBlockEntityRenderer;
+import de.abq.arcane_divinity.world.effect.ZMobEffects;
+import de.abq.arcane_divinity.world.item.ZItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -15,10 +14,8 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
@@ -32,7 +29,6 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 @Mod(ArcaneDivinity.MOD_ID)
 public class ArcaneDivinityEntry {

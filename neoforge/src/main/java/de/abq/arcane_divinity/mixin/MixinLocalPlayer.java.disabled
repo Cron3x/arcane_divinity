@@ -2,7 +2,7 @@ package de.abq.arcane_divinity.mixin;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.authlib.GameProfile;
-import de.abq.arcane_divinity.common.item.ZItems;
+import de.abq.arcane_divinity.world.item.ZItems;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.player.LocalPlayer;
