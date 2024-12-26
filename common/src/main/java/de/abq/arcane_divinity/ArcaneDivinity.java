@@ -40,6 +40,5 @@ public final class ArcaneDivinity {
         ZBlocks.BLOCKS.forEach((id, block) -> Services.PLATFORM_REGISTER.registerBlock(id, () -> block));
         ZItems.ITEMS.forEach((id, toReg) -> Services.PLATFORM_REGISTER.registerItem(id, () -> toReg));
         ZEntityType.ENTITIES.forEach((id, toReg) -> Services.PLATFORM_REGISTER.registerEntity(id, () -> toReg));
-        ZMobEffects.
     }
 }
