@@ -3,16 +3,26 @@ package de.abq.arcane_divinity.common.item;
 import de.abq.arcane_divinity.ArcaneDivinity;
 import de.abq.arcane_divinity.common.defaulted.renderer.DefaultedItemRenderer;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
+import net.minecraft.core.Direction;
+import net.minecraft.core.Position;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.Tier;
+import net.minecraft.world.entity.projectile.Arrow;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.entity.projectile.ThrownEnderpearl;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec2;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoItem;
 import software.bernie.geckolib.animatable.SingletonGeoAnimatable;
 import software.bernie.geckolib.animatable.client.GeoRenderProvider;
@@ -20,7 +30,9 @@ import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.*;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
+import java.util.Collections;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 public class EaSwordItem extends SwordItem implements GeoItem {
     public static final String IDENTIFIER = "ea_sword";
@@ -29,7 +41,7 @@ public class EaSwordItem extends SwordItem implements GeoItem {
     private static final RawAnimation USE_ANIM = RawAnimation.begin().thenPlayXTimes("idle",12);
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
-    private boolean triggeredUse = false;
+    private int beamTick = 0;
 
     public EaSwordItem(Tier tier, Properties properties) {
         super(tier, properties);
@@ -41,14 +53,10 @@ public class EaSwordItem extends SwordItem implements GeoItem {
         controllers
                 .add(new AnimationController<>(this, "Idle", 0, this::idleAnimationController))
                 .add(new AnimationController<>(this, "Use", 0, state -> PlayState.STOP)
-                        .triggerableAnim("use", USE_ANIM).setAnimationSpeed(10f));
+                        .triggerableAnim("use", USE_ANIM).setAnimationSpeed(100f));
     }
 
     protected <S extends EaSwordItem> PlayState idleAnimationController(final AnimationState<S> event){
-        if (triggeredUse){
-            event.setControllerSpeed(1.9f);
-            triggeredUse = false;
-        }
         return event.setAndContinue(IDLE_ANIM);
     }
 
@@ -73,9 +81,24 @@ public class EaSwordItem extends SwordItem implements GeoItem {
     }
 
     @Override
+    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
+        super.inventoryTick(stack, level, entity, slotId, isSelected);
+
+        ArcaneDivinity.LOG.debug("clientside?: {}, beamtick: {}", level.isClientSide, beamTick);
+
+        if (level instanceof ServerLevel serverLevel){
+        }
+    }
+
+    @Override
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, @NotNull Player player, @NotNull InteractionHand usedHand) {
-        if (level instanceof ServerLevel serverLevel)
+        if (level instanceof ServerLevel serverLevel){
             triggerAnim(player, GeoItem.getOrAssignId(player.getItemInHand(usedHand), serverLevel), "Use", "use");
+            ArcaneDivinity.LOG.debug("setting beamTick = 1 ({})", beamTick);
+            beamTick = 1;
+
+            shootProjectile(serverLevel, player);
+        }
         return super.use(level, player, usedHand);
     }
 
@@ -93,5 +116,7 @@ public class EaSwordItem extends SwordItem implements GeoItem {
         if (attacker.level() instanceof ServerLevel serverLevel)
             triggerAnim(attacker, GeoItem.getOrAssignId(attacker.getItemInHand(InteractionHand.MAIN_HAND), serverLevel), "Use", "use");
         super.postHurtEnemy(stack, target, attacker);
+    }
+    protected void shootProjectile(ServerLevel level, LivingEntity player) {
     }
 }
