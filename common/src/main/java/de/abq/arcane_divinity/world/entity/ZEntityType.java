@@ -1,6 +1,7 @@
 package de.abq.arcane_divinity.world.entity;
 
 import de.abq.arcane_divinity.ArcaneDivinity;
+import de.abq.arcane_divinity.platform.Services;
 import de.abq.arcane_divinity.world.entity.vfx.RuptureBeamEntity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -12,6 +13,7 @@ import java.util.Map;
 import java.util.function.BiConsumer;
 
 public class ZEntityType {
+    public static void init(){}
     public static final Map<String, EntityType<?>> ENTITIES = new LinkedHashMap<>();
 
     public static final EntityType<RuptureBeamEntity> RUPTURE_BEAM = build("rupture_beam",
@@ -21,7 +23,7 @@ public class ZEntityType {
     private static <T extends Entity> EntityType<T> build(String key, EntityType.Builder<T> builder){
         EntityType<T> type = builder.build(key);
         ENTITIES.put(key, type);
-        return type;
+        return Services.PLATFORM_REGISTER.registerEntity(key, () -> type).get();
     }
 
     public static void registerEntities(BiConsumer<EntityType<?>, ResourceLocation> register){

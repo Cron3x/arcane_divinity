@@ -10,11 +10,13 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tiers;
 
+import java.security.Provider;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
 
 public class ZItems {
+    public static void init(){}
     public static final Map<String, Item> ITEMS = new LinkedHashMap<>();
 
     public static final Item WINGS = build("wings", new WingsArmorItem(Services.PLATFORM.defaultItemBuilder().rarity(Rarity.EPIC)));
@@ -27,7 +29,7 @@ public class ZItems {
 
     private static Item build(String key, Item item){
         ITEMS.put(key, item);
-        return item;
+        return Services.PLATFORM_REGISTER.registerItem(key, () -> item).get();
     }
     public static void registerItems(BiConsumer<Item, ResourceLocation> register){
         ITEMS.forEach((rl, i) -> register.accept(i, ArcaneDivinity.path(rl)));

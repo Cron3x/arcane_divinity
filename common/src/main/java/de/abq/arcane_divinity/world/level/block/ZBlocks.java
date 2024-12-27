@@ -14,6 +14,8 @@ import java.util.Map;
 import java.util.function.BiConsumer;
 
 public final class ZBlocks {
+    public static void init(){}
+
     public static final Map<String, Block> BLOCKS = new LinkedHashMap<>();
 
     public static final Block arcaneShrineBlock     = build(Locations.ARCANE_SHRINE , new ArcaneShrineBlock(BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE).strength(3).noOcclusion()));
@@ -22,7 +24,7 @@ public final class ZBlocks {
 
     private static Block build(String key, Block block){
         BLOCKS.put(key, block);
-        return block;
+        return Services.PLATFORM_REGISTER.registerBlock(key, () -> block).get();
     }
 
     public static void registerBlocks(BiConsumer<Block, ResourceLocation> register){
