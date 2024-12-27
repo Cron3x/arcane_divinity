@@ -30,7 +30,7 @@ public class ArcaneShrineBlockEntity extends SimpleInventoryGeoBlockEntity imple
     public boolean isDay = false;
 
     public ArcaneShrineBlockEntity(BlockPos pos, BlockState state) {
-        super(ZBlockEntities.ARCANE_SHRINE_BLOCK_ENTITY, pos, state);
+        super(ZBlockEntities.ARCANE_SHRINE_BLOCK_ENTITY.get(), pos, state);
     }
 
     @Override

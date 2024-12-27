@@ -23,7 +23,7 @@ public class Renderers {
 
     public static class Blocks {
         public static void register(BiConsumer<BlockEntityType<? extends BlockEntity>, BlockEntityRendererProvider> entityRenderers) {
-            entityRenderers.accept(ZBlockEntities.ARCANE_SHRINE_BLOCK_ENTITY, DefaultBlockEntityRenderer::new);
+            entityRenderers.accept(ZBlockEntities.ARCANE_SHRINE_BLOCK_ENTITY.get(), DefaultBlockEntityRenderer::new);
         }
     }
 }

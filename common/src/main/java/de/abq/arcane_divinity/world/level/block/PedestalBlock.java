@@ -12,8 +12,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class PedestalBlock extends AbstractBlock implements EntityBlock {
-    public PedestalBlock(Properties $$0) {
-        super($$0);
+    public PedestalBlock(Properties $$0) {super($$0);}
+    public PedestalBlock() {
+        super(Properties.of().noOcclusion());
     }
 
     @Override

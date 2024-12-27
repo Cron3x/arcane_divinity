@@ -33,15 +33,15 @@ public final class ArcaneDivinityNeo {
     public static final DeferredRegister<ArmorMaterial> ARMOR_MATERIAL_DEFERRED_REGISTER = DeferredRegister.create(Registries.ARMOR_MATERIAL, ArcaneDivinity.MOD_ID);
     public static final DeferredRegister<SoundEvent> SOUND_EVENT_DEFERRED_REGISTER = DeferredRegister.create(Registries.SOUND_EVENT, ArcaneDivinity.MOD_ID);
 
-    public ArcaneDivinityNeo(IEventBus eventBus) {
+    public ArcaneDivinityNeo(IEventBus modEventBus) {
 
-        BLOCK_ENTITY_DEFERRED_REGISTER.register(eventBus);
-        BLOCK_DEFERRED_REGISTER.register(eventBus);
-        ENTITY_TYPE_DEFERRED_REGISTER.register(eventBus);
-        ITEM_DEFERRED_REGISTER.register(eventBus);
-        MOB_EFFECT_DEFERRED_REGISTER.register(eventBus);
-        CREATIVE_MODE_TAB_DEFERRED_REGISTER.register(eventBus);
-        SOUND_EVENT_DEFERRED_REGISTER.register(eventBus);
+        ITEM_DEFERRED_REGISTER.register(modEventBus);
+        BLOCK_DEFERRED_REGISTER.register(modEventBus);
+        BLOCK_ENTITY_DEFERRED_REGISTER.register(modEventBus);
+        ENTITY_TYPE_DEFERRED_REGISTER.register(modEventBus);
+        MOB_EFFECT_DEFERRED_REGISTER.register(modEventBus);
+        CREATIVE_MODE_TAB_DEFERRED_REGISTER.register(modEventBus);
+        SOUND_EVENT_DEFERRED_REGISTER.register(modEventBus);
 
         ArcaneDivinity.registerEverything();
     }

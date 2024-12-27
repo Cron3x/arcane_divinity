@@ -18,20 +18,28 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
+import java.util.function.Supplier;
 
 public class ZBlockEntities {
     private static final Map<String, BlockEntityType<?>> BLOCK_ENTITIES = new HashMap<>();
 
-    public static final BlockEntityType<PedestalBlockEntity> PEDESTAL_BLOCK_ENTITY = assign(ZBlocks.Locations.PEDESTAL, PedestalBlockEntity::new, ZBlocks.pedestalBlock);
-    public static final BlockEntityType<ArcaneShrineBlockEntity> ARCANE_SHRINE_BLOCK_ENTITY = assign(ZBlocks.Locations.ARCANE_SHRINE, ArcaneShrineBlockEntity::new, ZBlocks.arcaneShrineBlock);
-    public static final BlockEntityType<ArcaneObeliskBlockEntity> ARCANE_OBELISK_BLOCK_ENTITY = assign(ZBlocks.Locations.ARCANE_OBELISK, ArcaneObeliskBlockEntity::new, ZBlocks.arcaneObeliskBlock);
+    public static final Supplier<BlockEntityType<PedestalBlockEntity>>      PEDESTAL_BLOCK_ENTITY       = registerBlockEntity(ZBlocks.Locations.PEDESTAL, () ->
+            BlockEntityType.Builder.of(PedestalBlockEntity::new, ZBlocks.PEDESTAL_BLOCK_SUPPLIER.get()).build(null));
+    public static final Supplier<BlockEntityType<ArcaneShrineBlockEntity>>  ARCANE_SHRINE_BLOCK_ENTITY  = registerBlockEntity(ZBlocks.Locations.ARCANE_SHRINE, () ->
+            BlockEntityType.Builder.of(ArcaneShrineBlockEntity::new, ZBlocks.ARCANE_SHRINE_BLOCK_SUPPLIER.get()).build(null));
+    public static final Supplier<BlockEntityType<ArcaneObeliskBlockEntity>> ARCANE_OBELISK_BLOCK_ENTITY = registerBlockEntity(ZBlocks.Locations.ARCANE_OBELISK, () ->
+            BlockEntityType.Builder.of(ArcaneObeliskBlockEntity::new, ZBlocks.ARCANE_OBELISK_BLOCK_SUPPLIER.get()).build(null));
 
-    private static <T extends BlockEntity> BlockEntityType<T> assign(String key, BiFunction<BlockPos, BlockState, T> fn, Block... blocks){
+    private static <T extends BlockEntity> Supplier<BlockEntityType<T>> assign(String key, BiFunction<BlockPos, BlockState, T> fn, Block... blocks){
         Type<?> type = Util.fetchChoiceType(References.BLOCK_ENTITY, key);
         BlockEntityType<T> ret = Services.PLATFORM.createBlockEntityType(fn, type, blocks);
         var old = BLOCK_ENTITIES.put(key, ret);
         if (old != null) throw new IllegalArgumentException("ID duplicated" + key);
-        return ret;
+        return Services.PLATFORM_REGISTER.registerBlockEntity(key, () -> ret);
+    }
+
+    private static <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntity(String id, Supplier<BlockEntityType<T>> blockEntity) {
+        return Services.PLATFORM_REGISTER.registerBlockEntity(id, blockEntity);
     }
 
     public static void registerBlockEntities(BiConsumer<BlockEntityType<?>, ResourceLocation> r){
@@ -47,5 +55,7 @@ public class ZBlockEntities {
         ArcaneDivinity.LOG.error("no id for BlockEntity: {}", be);
         return returnKey.get();
     }
+
+    public static void init() {}
 }
 

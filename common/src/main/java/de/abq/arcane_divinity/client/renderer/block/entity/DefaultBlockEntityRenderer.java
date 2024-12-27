@@ -9,6 +9,6 @@ import software.bernie.geckolib.renderer.GeoBlockRenderer;
 
 public class DefaultBlockEntityRenderer<T extends AbstractGeoBlockEntity> extends GeoBlockRenderer<ArcaneShrineBlockEntity> {
     public DefaultBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
-        super(new DefaultBlockEntityModel<>(ZBlockEntities.ARCANE_SHRINE_BLOCK_ENTITY));
+        super(new DefaultBlockEntityModel<>(ZBlockEntities.ARCANE_SHRINE_BLOCK_ENTITY.get()));
     }
 }

@@ -4,6 +4,7 @@ import de.abq.arcane_divinity.platform.Services;
 import de.abq.arcane_divinity.world.entity.ZEntityType;
 import de.abq.arcane_divinity.world.item.ZItems;
 import de.abq.arcane_divinity.world.level.block.ZBlocks;
+import de.abq.arcane_divinity.world.level.block.entity.ZBlockEntities;
 import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,8 +36,10 @@ public final class ArcaneDivinity {
 
     public static void registerEverything() {
         ZBlocks.init();
+        ZBlockEntities.init();
         ZItems.init();
         ZEntityType.init();
+
         //ZEntityType.ENTITIES.forEach((id, toReg) -> Services.PLATFORM_REGISTER.registerEntity(id, () -> toReg));
     }
 }

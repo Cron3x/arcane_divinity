@@ -35,9 +35,13 @@ public class ArcaneObeliskBlock extends BaseEntityBlock {
 
     public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
 
-    public ArcaneObeliskBlock(Properties properties)
-    {
+    public ArcaneObeliskBlock(Properties properties) {
         super(properties);
+        registerDefaultState(stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER));
+    }
+
+    public ArcaneObeliskBlock() {
+        super(Properties.of().noOcclusion());
         registerDefaultState(stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER));
     }
 
@@ -55,7 +59,7 @@ public class ArcaneObeliskBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return ZBlockEntities.ARCANE_OBELISK_BLOCK_ENTITY.create(pos, state);
+        return ZBlockEntities.ARCANE_OBELISK_BLOCK_ENTITY.get().create(pos, state);
     }
 
     @Override
@@ -135,9 +139,9 @@ public class ArcaneObeliskBlock extends BaseEntityBlock {
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
         if (level.isClientSide) {
-            return createTickerHelper(type, ZBlockEntities.ARCANE_OBELISK_BLOCK_ENTITY, ArcaneObeliskBlockEntity::clientTick);
+            return createTickerHelper(type, ZBlockEntities.ARCANE_OBELISK_BLOCK_ENTITY.get(), ArcaneObeliskBlockEntity::clientTick);
         } else {
-            return createTickerHelper(type, ZBlockEntities.ARCANE_OBELISK_BLOCK_ENTITY, ArcaneObeliskBlockEntity::serverTick);
+            return createTickerHelper(type, ZBlockEntities.ARCANE_OBELISK_BLOCK_ENTITY.get(), ArcaneObeliskBlockEntity::serverTick);
         }
 
     }
