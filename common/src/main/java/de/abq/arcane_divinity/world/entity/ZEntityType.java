@@ -11,19 +11,21 @@ import net.minecraft.world.entity.MobCategory;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
+import java.util.function.Supplier;
 
 public class ZEntityType {
     public static void init(){}
     public static final Map<String, EntityType<?>> ENTITIES = new LinkedHashMap<>();
 
-    public static final EntityType<RuptureBeamEntity> RUPTURE_BEAM = build("rupture_beam",
-            EntityType.Builder.of(RuptureBeamEntity::new, MobCategory.MISC).sized(0.7F, 0.65F).eyeHeight(0.26F).clientTrackingRange(10)
-);
+    public static final Supplier<EntityType<RuptureBeamEntity>> RUPTURE_BEAM = build("rupture_beam", RuptureBeamEntity::new, MobCategory.MISC, 2, 2);
 
-    private static <T extends Entity> EntityType<T> build(String key, EntityType.Builder<T> builder){
-        EntityType<T> type = builder.build(key);
-        ENTITIES.put(key, type);
-        return Services.PLATFORM_REGISTER.registerEntity(key, () -> type).get();
+    private static <T extends Entity> Supplier<EntityType<T>> build(String key, EntityType.EntityFactory<T> factory, MobCategory category){
+        return Services.PLATFORM_REGISTER.registerEntity(key, () ->
+                EntityType.Builder.of(factory, category).build(key));
+    }
+    private static <T extends Entity> Supplier<EntityType<T>> build(String key, EntityType.EntityFactory<T> factory, MobCategory category, float width, float height){
+        return Services.PLATFORM_REGISTER.registerEntity(key, () ->
+                EntityType.Builder.of(factory, category).sized(width, height).build(key));
     }
 
     public static void registerEntities(BiConsumer<EntityType<?>, ResourceLocation> register){
