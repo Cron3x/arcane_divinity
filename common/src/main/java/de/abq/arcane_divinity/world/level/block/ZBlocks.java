@@ -6,8 +6,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -23,9 +21,9 @@ public final class ZBlocks {
     //public static final Block arcaneObeliskBlock    = build(Locations.ARCANE_OBELISK, new ArcaneObeliskBlock(BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE).strength(3).noOcclusion()));
     //public static final Block pedestalBlock         = build(Locations.PEDESTAL, new PedestalBlock(BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE).strength(1).noOcclusion()));
 
-    public static final Supplier<ArcaneShrineBlock> ARCANE_SHRINE_BLOCK_SUPPLIER= build(Locations.ARCANE_SHRINE, ArcaneShrineBlock::new);
-    public static final Supplier<ArcaneObeliskBlock> ARCANE_OBELISK_BLOCK_SUPPLIER= build(Locations.ARCANE_OBELISK, ArcaneObeliskBlock::new);
-    public static final Supplier<PedestalBlock> PEDESTAL_BLOCK_SUPPLIER= build(Locations.PEDESTAL, PedestalBlock::new);
+    public static final Supplier<ArcaneShrineBlock> ARCANE_SHRINE_BLOCK = build(Locations.ARCANE_SHRINE, ArcaneShrineBlock::new);
+    public static final Supplier<ArcaneObeliskBlock> ARCANE_OBELISK_BLOCK = build(Locations.ARCANE_OBELISK, ArcaneObeliskBlock::new);
+    public static final Supplier<PedestalBlock> PEDESTAL_BLOCK = build(Locations.PEDESTAL, PedestalBlock::new);
 
     private static Block build(String key, Block block){
         BLOCKS.put(key, block);

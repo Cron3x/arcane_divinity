@@ -24,11 +24,11 @@ public class ZBlockEntities {
     private static final Map<String, BlockEntityType<?>> BLOCK_ENTITIES = new HashMap<>();
 
     public static final Supplier<BlockEntityType<PedestalBlockEntity>>      PEDESTAL_BLOCK_ENTITY       = registerBlockEntity(ZBlocks.Locations.PEDESTAL, () ->
-            BlockEntityType.Builder.of(PedestalBlockEntity::new, ZBlocks.PEDESTAL_BLOCK_SUPPLIER.get()).build(null));
+            BlockEntityType.Builder.of(PedestalBlockEntity::new, ZBlocks.PEDESTAL_BLOCK.get()).build(null));
     public static final Supplier<BlockEntityType<ArcaneShrineBlockEntity>>  ARCANE_SHRINE_BLOCK_ENTITY  = registerBlockEntity(ZBlocks.Locations.ARCANE_SHRINE, () ->
-            BlockEntityType.Builder.of(ArcaneShrineBlockEntity::new, ZBlocks.ARCANE_SHRINE_BLOCK_SUPPLIER.get()).build(null));
+            BlockEntityType.Builder.of(ArcaneShrineBlockEntity::new, ZBlocks.ARCANE_SHRINE_BLOCK.get()).build(null));
     public static final Supplier<BlockEntityType<ArcaneObeliskBlockEntity>> ARCANE_OBELISK_BLOCK_ENTITY = registerBlockEntity(ZBlocks.Locations.ARCANE_OBELISK, () ->
-            BlockEntityType.Builder.of(ArcaneObeliskBlockEntity::new, ZBlocks.ARCANE_OBELISK_BLOCK_SUPPLIER.get()).build(null));
+            BlockEntityType.Builder.of(ArcaneObeliskBlockEntity::new, ZBlocks.ARCANE_OBELISK_BLOCK.get()).build(null));
 
     private static <T extends BlockEntity> Supplier<BlockEntityType<T>> assign(String key, BiFunction<BlockPos, BlockState, T> fn, Block... blocks){
         Type<?> type = Util.fetchChoiceType(References.BLOCK_ENTITY, key);

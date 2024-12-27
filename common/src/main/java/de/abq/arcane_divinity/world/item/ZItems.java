@@ -3,14 +3,11 @@ package de.abq.arcane_divinity.world.item;
 import de.abq.arcane_divinity.ArcaneDivinity;
 import de.abq.arcane_divinity.world.item.armor.WingsArmorItem;
 import de.abq.arcane_divinity.platform.Services;
+import de.abq.arcane_divinity.world.level.block.ZBlocks;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.Tiers;
+import net.minecraft.world.item.*;
 
-import java.security.Provider;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
@@ -26,13 +23,16 @@ public class ZItems {
     public static final Supplier<Item> ASH = build("ash", () -> new Item(Services.PLATFORM.defaultItemBuilder()));
     public static final Supplier<Item> BOTTLED_JINN = build(BottledJinnItem.IDENTIFIER, () -> new BottledJinnItem(Services.PLATFORM.defaultItemBuilder()));
 
+    //WEAPONS
     public static final Supplier<EaSwordItem> EA_SWORD = build(EaSwordItem.IDENTIFIER, () -> new EaSwordItem(Tiers.NETHERITE, Services.PLATFORM.defaultItemBuilder().attributes(SwordItem.createAttributes(Tiers.NETHERITE, 5, -2f))));
 
+    //ITEMS
+    public static final Supplier<BlockItem> ARCANE_OBELISK_BLOCK_ITEM = build(ZBlocks.Locations.ARCANE_OBELISK, () -> new BlockItem(ZBlocks.ARCANE_OBELISK_BLOCK.get(), new Item.Properties()));
+    public static final Supplier<BlockItem> ARCANE_SHRINE_BLOCK_ITEM = build(ZBlocks.Locations.ARCANE_SHRINE, () -> new BlockItem(ZBlocks.ARCANE_SHRINE_BLOCK.get(), new Item.Properties()));
+    public static final Supplier<BlockItem> PEDESTAL_BLOCK_ITEM = build(ZBlocks.Locations.PEDESTAL, () -> new BlockItem(ZBlocks.PEDESTAL_BLOCK.get(), new Item.Properties()));
+
+
     private static <T extends Item> Supplier<T> build(String key, Supplier<T> item){
-        //ITEMS.put(key, item.get());
         return Services.PLATFORM_REGISTER.registerItem(key, item);
-    }
-    public static void registerItems(BiConsumer<Item, ResourceLocation> register){
-        ITEMS.forEach((rl, i) -> register.accept(i, ArcaneDivinity.path(rl)));
     }
 }

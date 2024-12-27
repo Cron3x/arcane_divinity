@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "arcane_divinity:block/arcane_shrine"
+  },
+  "render_type": "cutout"
+}
