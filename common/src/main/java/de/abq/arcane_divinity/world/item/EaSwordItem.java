@@ -23,7 +23,7 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.function.Consumer;
 
-public class EaSwordItem extends SwordItem implements GeoItem {
+public class EaSwordItem extends GeoSwordItem {
     public static final String IDENTIFIER = "ea_sword";
 
     private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
