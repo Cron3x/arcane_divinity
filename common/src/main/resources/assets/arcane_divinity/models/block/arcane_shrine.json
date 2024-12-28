@@ -1,7 +1,3 @@
 {
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "arcane_divinity:block/arcane_shrine"
-  },
-  "render_type": "cutout"
+  "parent": "arcane_divinity:geo/block/arcane_altar"
 }
