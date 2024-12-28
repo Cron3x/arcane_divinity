@@ -1,7 +1,7 @@
 package de.abq.arcane_divinity.util;
 
 import de.abq.arcane_divinity.ArcaneDivinity;
-import de.abq.arcane_divinity.config.CONFIG;
+import de.abq.arcane_divinity.config.Config;
 import de.abq.arcane_divinity.platform.Services;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.item.Item;
@@ -13,7 +13,7 @@ public final class SharedMixins {
             ArcaneDivinity.LOG.error("Services.PLATFORM.defaultItemBuilder() == null");
             return item;
         }
-        if (CONFIG.ALLOWED_FLIGHT_ITEMS.contains( itemStack.getItem() )) return itemStack.getItem();
+        if (Config.ALLOWED_FLIGHT_ITEMS.contains( itemStack.getItem() )) return itemStack.getItem();
         return item;
     }
 
