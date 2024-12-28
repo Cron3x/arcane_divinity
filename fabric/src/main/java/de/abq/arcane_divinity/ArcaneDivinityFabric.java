@@ -6,6 +6,6 @@ public class ArcaneDivinityFabric implements ModInitializer {
     
     @Override
     public void onInitialize() {
-        ArcaneDivinity.init();
+        ArcaneDivinity.registerEverything();
     }
 }

@@ -21,15 +21,6 @@ public final class ArcaneDivinity {
     public static final String MOD_NAME = "arcane_divinity";
     public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
 
-    public static void init() {
-        /*VeilEventPlatform.INSTANCE.onVeilRenderTypeStageRender((stage, levelRenderer, bufferSource, matrixStack, matrix4fc, matrix4fc2, partialTicks, deltaTracker, camera, frustum) -> {
-            if (stage == VeilRenderLevelStageEvent.Stage.AFTER_BLOCK_ENTITIES) {
-
-                CableRenderer.renderCables();
-            }
-        });*/
-    }
-
     public static ResourceLocation path(String name){
         return ResourceLocation.fromNamespaceAndPath(ArcaneDivinity.MOD_ID, name);
     }
