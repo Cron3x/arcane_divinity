@@ -13,7 +13,7 @@ public class ZCreativeTabs {
 
     public static final Supplier<CreativeModeTab> ARCANE_TAB = Services.PLATFORM_REGISTER.registerCreativeModeTab("arcane_group", () -> Services.PLATFORM_REGISTER.newCreativeTabBuilder()
             .title(Component.translatable("itemGroup." + ArcaneDivinity.MOD_ID + ".arcane_group"))
-            .icon(() -> new ItemStack(ZItems.ARCANE_SHRINE_BLOCK_ITEM.get()))
+            .icon(() -> new ItemStack(ZItems.PEDESTAL_BLOCK_ITEM.get()))
             .displayItems((enabledFeatures, entries) -> {
                 entries.accept(ZItems.ARCANE_OBELISK_BLOCK_ITEM.get());
                 entries.accept(ZItems.ARCANE_SHRINE_BLOCK_ITEM.get());
