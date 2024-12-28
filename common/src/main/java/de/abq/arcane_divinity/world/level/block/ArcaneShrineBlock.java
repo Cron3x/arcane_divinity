@@ -22,10 +22,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class ArcaneShrineBlock extends AbstractWaterLoggableBlock implements EntityBlock{
-    public ArcaneShrineBlock(Properties props) {
-        super(props);
-    }
-
     public ArcaneShrineBlock() {
         super(Properties.of().noOcclusion());
     }

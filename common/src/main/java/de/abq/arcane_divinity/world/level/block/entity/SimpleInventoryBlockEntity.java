@@ -64,4 +64,11 @@ public abstract class SimpleInventoryBlockEntity extends AbstractBlockEntity imp
     public final Container getItemHandler() {
         return itemHandler;
     }
+
+    @Override
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        CompoundTag tag = new CompoundTag();
+        saveAdditional(tag, registries);
+        return tag;
+    }
 }
