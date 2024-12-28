@@ -55,7 +55,7 @@ public class ArcaneShrineBlock extends AbstractWaterLoggableBlock implements Ent
         if (!(level.getBlockEntity(pos) instanceof ArcaneShrineBlockEntity altar)) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         altar.setShouldBeActive(true);
         altar.setChanged();
-        return ItemInteractionResult.SUCCESS;
+        return ItemInteractionResult.FAIL;
     }
 
 
