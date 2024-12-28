@@ -1,16 +1,13 @@
 package de.abq.arcane_divinity.world.item;
 
-import de.abq.arcane_divinity.ArcaneDivinity;
-import de.abq.arcane_divinity.world.item.armor.WingsArmorItem;
 import de.abq.arcane_divinity.platform.Services;
+import de.abq.arcane_divinity.world.item.armor.WingsArmorItem;
 import de.abq.arcane_divinity.world.level.block.ZBlocks;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.function.BiConsumer;
 import java.util.function.Supplier;
 
 public class ZItems {

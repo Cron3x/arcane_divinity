@@ -1,6 +1,5 @@
 package de.abq.arcane_divinity.world.level.block;
 
-import de.abq.arcane_divinity.platform.Services;
 import de.abq.arcane_divinity.world.level.block.entity.ArcaneShrineBlockEntity;
 import de.abq.arcane_divinity.world.level.block.entity.SimpleInventoryGeoBlockEntity;
 import de.abq.arcane_divinity.world.level.block.entity.ZBlockEntities;

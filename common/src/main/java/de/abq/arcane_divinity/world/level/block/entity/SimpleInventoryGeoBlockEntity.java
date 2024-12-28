@@ -1,5 +1,6 @@
 package de.abq.arcane_divinity.world.level.block.entity;
 
+import com.google.common.base.Preconditions;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -11,8 +12,6 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-
-import com.google.common.base.Preconditions;
 
 
 public abstract class SimpleInventoryGeoBlockEntity extends AbstractGeoBlockEntity implements Clearable {

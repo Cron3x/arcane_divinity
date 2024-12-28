@@ -1,6 +1,5 @@
 package de.abq.arcane_divinity;
 
-import de.abq.arcane_divinity.platform.Services;
 import de.abq.arcane_divinity.world.entity.ZEntityType;
 import de.abq.arcane_divinity.world.item.ZCreativeTabs;
 import de.abq.arcane_divinity.world.item.ZItems;

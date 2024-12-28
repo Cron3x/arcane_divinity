@@ -2,8 +2,8 @@ package de.abq.arcane_divinity.world.level.block.entity;
 
 import com.mojang.datafixers.types.Type;
 import de.abq.arcane_divinity.ArcaneDivinity;
-import de.abq.arcane_divinity.world.level.block.ZBlocks;
 import de.abq.arcane_divinity.platform.Services;
+import de.abq.arcane_divinity.world.level.block.ZBlocks;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
