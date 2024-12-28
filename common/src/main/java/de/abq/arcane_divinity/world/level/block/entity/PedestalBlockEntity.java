@@ -8,7 +8,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class PedestalBlockEntity extends SimpleInventoryBlockEntity {
 
     public PedestalBlockEntity(BlockPos pos, BlockState state) {
-        super(ZBlockEntities.PEDESTAL_BLOCK_ENTITY, pos, state);
+        super(ZBlockEntities.PEDESTAL_BLOCK_ENTITY.get(), pos, state);
     }
 
     @Override

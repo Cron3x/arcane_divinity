@@ -19,7 +19,7 @@ public class ArcaneObeliskBlockEntity extends AbstractBlockEntity {
     private int ticks = 0;
 
     public ArcaneObeliskBlockEntity(BlockPos pos, BlockState state) {
-        super(ZBlockEntities.ARCANE_OBELISK_BLOCK_ENTITY, pos, state);
+        super(ZBlockEntities.ARCANE_OBELISK_BLOCK_ENTITY.get(), pos, state);
         this.altarPos = BlockPos.ZERO;
     }
 

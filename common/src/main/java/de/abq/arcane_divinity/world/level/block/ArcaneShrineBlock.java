@@ -1,5 +1,6 @@
 package de.abq.arcane_divinity.world.level.block;
 
+import de.abq.arcane_divinity.platform.Services;
 import de.abq.arcane_divinity.world.level.block.entity.ArcaneShrineBlockEntity;
 import de.abq.arcane_divinity.world.level.block.entity.SimpleInventoryGeoBlockEntity;
 import de.abq.arcane_divinity.world.level.block.entity.ZBlockEntities;
@@ -25,6 +26,11 @@ public class ArcaneShrineBlock extends AbstractWaterLoggableBlock implements Ent
     public ArcaneShrineBlock(Properties props) {
         super(props);
     }
+
+    public ArcaneShrineBlock() {
+        super(Properties.of().noOcclusion());
+    }
+
     @NotNull
     @Override
     public BlockEntity newBlockEntity(@NotNull BlockPos pos, @NotNull BlockState state) {
@@ -35,9 +41,9 @@ public class ArcaneShrineBlock extends AbstractWaterLoggableBlock implements Ent
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
         if (level.isClientSide) {
-            return createTickerHelper(type, ZBlockEntities.ARCANE_SHRINE_BLOCK_ENTITY, ArcaneShrineBlockEntity::clientTick);
+            return createTickerHelper(type, ZBlockEntities.ARCANE_SHRINE_BLOCK_ENTITY.get(), ArcaneShrineBlockEntity::clientTick);
         } else {
-            return createTickerHelper(type, ZBlockEntities.ARCANE_SHRINE_BLOCK_ENTITY, ArcaneShrineBlockEntity::serverTick);
+            return createTickerHelper(type, ZBlockEntities.ARCANE_SHRINE_BLOCK_ENTITY.get(), ArcaneShrineBlockEntity::serverTick);
         }
     }
 
@@ -49,7 +55,7 @@ public class ArcaneShrineBlock extends AbstractWaterLoggableBlock implements Ent
         if (!(level.getBlockEntity(pos) instanceof ArcaneShrineBlockEntity altar)) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         altar.setShouldBeActive(true);
         altar.setChanged();
-        return ItemInteractionResult.SUCCESS;
+        return ItemInteractionResult.FAIL;
     }
 
 

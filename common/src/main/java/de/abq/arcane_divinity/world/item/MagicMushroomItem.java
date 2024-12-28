@@ -1,6 +1,5 @@
 package de.abq.arcane_divinity.world.item;
 
-import de.abq.arcane_divinity.world.effect.ZMobEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
@@ -49,8 +48,8 @@ public class MagicMushroomItem extends Item {
 
             if (grassCount >= 1 && user instanceof Player player){
                 //MobEffectInstance mobEffectInstance = new MobEffectInstance(ZMobEffects.returnRegisteredEffect(level.registryAccess(), ZMobEffects.Names.MAGIC_MUSHROOM_WARP_VISION_EFFECT_NAME), 365*20, 0);
-                MobEffectInstance mobEffectInstance = new MobEffectInstance(ZMobEffects.MAGIC_MUSHROOM_WARP_VISION_EFFECT, 365*20, 0);
-                player.addEffect(mobEffectInstance, user);
+                /*MobEffectInstance mobEffectInstance = new MobEffectInstance(ZMobEffects.MAGIC_MUSHROOM_WARP_VISION_EFFECT, 365*20, 0);
+                player.addEffect(mobEffectInstance, user);*/
             }
         }
         return returnStack;

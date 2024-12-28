@@ -15,36 +15,47 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
+import java.util.function.Supplier;
 
 public class ZBlockEntities {
-    private static final Map<ResourceLocation, BlockEntityType<?>> BLOCK_ENTITIES = new HashMap<>();
+    private static final Map<String, BlockEntityType<?>> BLOCK_ENTITIES = new HashMap<>();
 
-    public static final BlockEntityType<PedestalBlockEntity> PEDESTAL_BLOCK_ENTITY = assign(ZBlocks.Locations.PEDESTAL, PedestalBlockEntity::new, ZBlocks.pedestalBlock);
-    public static final BlockEntityType<ArcaneShrineBlockEntity> ARCANE_SHRINE_BLOCK_ENTITY = assign(ZBlocks.Locations.ARCANE_SHRINE, ArcaneShrineBlockEntity::new, ZBlocks.arcaneShrineBlock);
-    public static final BlockEntityType<ArcaneObeliskBlockEntity> ARCANE_OBELISK_BLOCK_ENTITY = assign(ZBlocks.Locations.ARCANE_OBELISK, ArcaneObeliskBlockEntity::new, ZBlocks.arcaneObeliskBlock);
+    public static final Supplier<BlockEntityType<PedestalBlockEntity>>      PEDESTAL_BLOCK_ENTITY       = registerBlockEntity(ZBlocks.Locations.PEDESTAL, () ->
+            BlockEntityType.Builder.of(PedestalBlockEntity::new, ZBlocks.PEDESTAL_BLOCK.get()).build(null));
+    public static final Supplier<BlockEntityType<ArcaneShrineBlockEntity>>  ARCANE_SHRINE_BLOCK_ENTITY  = registerBlockEntity(ZBlocks.Locations.ARCANE_SHRINE, () ->
+            BlockEntityType.Builder.of(ArcaneShrineBlockEntity::new, ZBlocks.ARCANE_SHRINE_BLOCK.get()).build(null));
+    public static final Supplier<BlockEntityType<ArcaneObeliskBlockEntity>> ARCANE_OBELISK_BLOCK_ENTITY = registerBlockEntity(ZBlocks.Locations.ARCANE_OBELISK, () ->
+            BlockEntityType.Builder.of(ArcaneObeliskBlockEntity::new, ZBlocks.ARCANE_OBELISK_BLOCK.get()).build(null));
 
-    private static <T extends BlockEntity> BlockEntityType<T> assign(ResourceLocation id, BiFunction<BlockPos, BlockState, T> fn, Block... blocks){
-        Type<?> type = Util.fetchChoiceType(References.BLOCK_ENTITY, id.getPath());
+    private static <T extends BlockEntity> Supplier<BlockEntityType<T>> assign(String key, BiFunction<BlockPos, BlockState, T> fn, Block... blocks){
+        Type<?> type = Util.fetchChoiceType(References.BLOCK_ENTITY, key);
         BlockEntityType<T> ret = Services.PLATFORM.createBlockEntityType(fn, type, blocks);
-        var old = BLOCK_ENTITIES.put(id, ret);
-        if (old != null) throw new IllegalArgumentException("ID duplicated" + id);
-        return ret;
+        var old = BLOCK_ENTITIES.put(key, ret);
+        if (old != null) throw new IllegalArgumentException("ID duplicated" + key);
+        return Services.PLATFORM_REGISTER.registerBlockEntity(key, () -> ret);
+    }
+
+    private static <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntity(String id, Supplier<BlockEntityType<T>> blockEntity) {
+        return Services.PLATFORM_REGISTER.registerBlockEntity(id, blockEntity);
     }
 
     public static void registerBlockEntities(BiConsumer<BlockEntityType<?>, ResourceLocation> r){
-        BLOCK_ENTITIES.forEach((rl, entity) -> r.accept(entity, rl));
+        BLOCK_ENTITIES.forEach((rl, entity) -> r.accept(entity, ArcaneDivinity.path(rl)));
     }
 
     public static <T extends AbstractGeoBlockEntity> String getId(BlockEntityType<T> be) {
-        for (var type : BLOCK_ENTITIES.entrySet()){
-            if (type.getValue().equals(be)){
-                return type.getKey().getPath();
-            }
-        }
+        AtomicReference<String> returnKey = new AtomicReference<>();
+        BLOCK_ENTITIES.forEach((key, entity) -> {
+                    if (entity.equals(be)){
+                        returnKey.set(key);            }
+        });
         ArcaneDivinity.LOG.error("no id for BlockEntity: {}", be);
-        return null;
+        return returnKey.get();
     }
+
+    public static void init() {}
 }
 

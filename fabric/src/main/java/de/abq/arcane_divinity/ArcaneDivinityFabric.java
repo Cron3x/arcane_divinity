@@ -24,37 +24,6 @@ public class ArcaneDivinityFabric implements ModInitializer {
     
     @Override
     public void onInitialize() {
-        bindItemLike(BuiltInRegistries.ITEM, ZItems::registerItems);
-
-        bindItemLike(BuiltInRegistries.ITEM, ZBlocks::registerBlockItems);
-        bind(BuiltInRegistries.BLOCK, ZBlocks::registerBlocks);
-        bind(BuiltInRegistries.BLOCK_ENTITY_TYPE, ZBlockEntities::registerBlockEntities);
-        bind(BuiltInRegistries.ENTITY_TYPE, ZEntityType::registerEntities);
-
-        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, CUSTOM_ITEM_GROUP_KEY, CUSTOM_ITEM_GROUP);
         ArcaneDivinity.init();
-
     }
-
-    private <T extends ItemLike> void bindItemLike(Registry<T> registry, Consumer<BiConsumer<T, ResourceLocation>> source){
-        source.accept((t, rl) -> {
-            Registry.register(registry, rl, t);
-
-            ItemGroupEvents.modifyEntriesEvent(CUSTOM_ITEM_GROUP_KEY).register((content) ->{
-                content.accept(t);
-            });
-        });
-    }
-
-    private <T> void bind(Registry<T> reg, Consumer<BiConsumer<T, ResourceLocation>> source){
-            source.accept((item, rl) ->{
-                Registry.register(reg, rl, item);
-            });
-    }
-
-    public static final ResourceKey<CreativeModeTab> CUSTOM_ITEM_GROUP_KEY = ResourceKey.create(Registries.CREATIVE_MODE_TAB, ArcaneDivinity.path("arcane_group"));
-    public static final CreativeModeTab CUSTOM_ITEM_GROUP = FabricItemGroup.builder()
-            .icon(() -> new ItemStack(ZItems.BOTTLED_JINN))
-            .title(Component.translatable("itemGroup." + ArcaneDivinity.MOD_ID + ".arcane_tab"))
-            .build();
 }

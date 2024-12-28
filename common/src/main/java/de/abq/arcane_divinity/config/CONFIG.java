@@ -8,7 +8,7 @@ import java.util.List;
 
 public final class CONFIG {
     public static final List<Item> ALLOWED_FLIGHT_ITEMS = Arrays.stream(new Item[]{
-            ZItems.WINGS,
+            ZItems.WINGS.get(),
     }).toList();
 
     public static final double ELYTRA__MAX_SPEED = 5;
