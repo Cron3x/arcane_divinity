@@ -11,8 +11,11 @@ public final class CONFIG {
             ZItems.WINGS.get(),
     }).toList();
 
-    public static final double ELYTRA__MAX_SPEED = 5;
-    public static final double ELYTRA__MIN_SPEED = 0;
-    public static final double ELYTRA__SPRINT_MULTIPLIER = 0.3;
-    public static final double ELYTRA__NON_SPRINT_MULTIPLIER = 0.1;
+
+    public static final class ELYTRA {
+        public static final double MAX_SPEED = 5;
+        public static final double MIN_SPEED = 0;
+        public static final double SPRINT_MULTIPLIER = 0.3;
+        public static final double NON_SPRINT_MULTIPLIER = 0.1;
+    }
 }

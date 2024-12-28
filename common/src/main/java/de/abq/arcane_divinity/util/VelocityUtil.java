@@ -9,10 +9,10 @@ public class VelocityUtil {
         Vec3 velocity = player.getDeltaMovement();
         Vec3 look = player.getLookAngle();
 
-        double slowingFactor = player.isSprinting() ? CONFIG.ELYTRA__SPRINT_MULTIPLIER : CONFIG.ELYTRA__NON_SPRINT_MULTIPLIER;
+        double slowingFactor = player.isSprinting() ? CONFIG.ELYTRA.SPRINT_MULTIPLIER : CONFIG.ELYTRA.NON_SPRINT_MULTIPLIER;
         double forImpulse = player.input.forwardImpulse;
         double parallelSpeed = look.dot(velocity);
-        double forSpeed = Math.max(CONFIG.ELYTRA__MIN_SPEED, forImpulse * (CONFIG.ELYTRA__MAX_SPEED - parallelSpeed) * slowingFactor);
+        double forSpeed = Math.max(CONFIG.ELYTRA.MIN_SPEED, forImpulse * (CONFIG.ELYTRA.MAX_SPEED - parallelSpeed) * slowingFactor);
 
         return look.scale(forSpeed);
     }
