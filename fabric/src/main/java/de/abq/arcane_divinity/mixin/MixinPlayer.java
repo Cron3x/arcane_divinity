@@ -1,7 +1,7 @@
 package de.abq.arcane_divinity.mixin;
 
 import com.llamalad7.mixinextras.sugar.Local;
-import de.abq.arcane_divinity.common.util.SharedMixins;
+import de.abq.arcane_divinity.util.SharedMixins;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;

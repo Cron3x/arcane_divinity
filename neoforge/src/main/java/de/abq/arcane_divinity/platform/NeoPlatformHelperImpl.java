@@ -3,15 +3,9 @@ package de.abq.arcane_divinity.platform;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.datafixers.types.Type;
 import de.abq.arcane_divinity.ArcaneDivinity;
-import de.abq.arcane_divinity.ArcaneDivinityEntry;
 import de.abq.arcane_divinity.platform.service.ArcaneDivinityPlatformHelper;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.texture.AbstractTexture;
-import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -21,7 +15,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLLoader;
 
-import java.util.Arrays;
 import java.util.function.BiFunction;
 
 public final class NeoPlatformHelperImpl implements ArcaneDivinityPlatformHelper {
