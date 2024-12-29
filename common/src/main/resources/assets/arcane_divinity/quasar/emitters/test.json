@@ -1,0 +1,11 @@
+{
+  "max_lifetime": 20,
+  "loop": true,
+  "rate": 1,
+  "count": 10,
+  "emitter_settings": {
+    "shape": "arcane_divinity:test",
+    "particle_settings": "arcane_divinity:test"
+  },
+  "particle_data": "arcane_divinity:test"
+}

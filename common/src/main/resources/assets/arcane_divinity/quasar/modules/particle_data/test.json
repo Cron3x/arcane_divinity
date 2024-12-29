@@ -1,0 +1,18 @@
+{
+  "render_style": "CUBE",
+  "init_modules": [
+    "arcane_divinity:test_light"
+  ],
+  "update_modules": [
+  ],
+  "collision_modules": [
+  ],
+  "forces": [
+  ],
+  "render_modules": [
+    "arcane_divinity:color/test"
+  ],
+  "face_velocity": true,
+  "velocity_stretch_factor": 1.0,
+  "should_collide": false
+}

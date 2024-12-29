@@ -2,6 +2,9 @@ package de.abq.arcane_divinity.world.item;
 
 import de.abq.arcane_divinity.ArcaneDivinity;
 import de.abq.arcane_divinity.client.defaulted.renderer.DefaultedItemRenderer;
+import foundry.veil.api.client.render.VeilRenderSystem;
+import foundry.veil.api.quasar.particle.ParticleEmitter;
+import foundry.veil.api.quasar.particle.ParticleSystemManager;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
@@ -93,6 +96,7 @@ public class EaSwordItem extends GeoSwordItem {
         ArcaneDivinity.LOG.debug("hurtEnemy");
         if (attacker.level() instanceof ServerLevel serverLevel)
             triggerAnim(attacker, GeoItem.getOrAssignId(attacker.getItemInHand(InteractionHand.MAIN_HAND), serverLevel), "Use", "use");
+        if (attacker.level().isClientSide) spawnParticle(target);
         return super.hurtEnemy(stack, target, attacker);
     }
 
@@ -104,5 +108,16 @@ public class EaSwordItem extends GeoSwordItem {
         super.postHurtEnemy(stack, target, attacker);
     }
     protected void shootProjectile(ServerLevel level, LivingEntity player) {
+    }
+
+    protected void spawnParticle(Entity entity){
+        try {
+            ParticleSystemManager manager = VeilRenderSystem.renderer().getParticleManager();
+            ParticleEmitter emitter = manager.createEmitter(ArcaneDivinity.path("test"));
+            emitter.setAttachedEntity(entity);
+            manager.addParticleSystem(emitter);
+        } catch (Exception exception) {
+            ArcaneDivinity.LOG.error(exception.getMessage());
+        }
     }
 }
