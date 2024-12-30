@@ -1,13 +1,14 @@
 {
   "sprite_data": {
-    "sprite": "arcane_divinity:textures/particle/test.png",
-    "frame_count": 4,
+    "sprite": "minecraft:textures/particle/angry.png",
+    "frame_count": 1,
     "frame_width": 8,
     "frame_height": 8,
     "stretch_to_lifetime": true
   },
   "render_style": "BILLBOARD",
   "init_modules": [
+    "arcane_divinity:test_light"
   ],
   "update_modules": [
     {
@@ -39,15 +40,15 @@
         "alpha_points": [
           {
             "percent": 0.0,
-            "alpha": 0.0
+            "alpha": 1.0
           },
           {
             "percent": 0.1,
-            "alpha": 0.2
+            "alpha": 1.0
           },
           {
             "percent": 1.0,
-            "alpha": 0.0
+            "alpha": 1.0
           }
         ]
       }
@@ -57,3 +58,6 @@
   "velocity_stretch_factor": 0.0,
   "should_collide": true
 }
+
+
+

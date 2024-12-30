@@ -7,20 +7,20 @@
     "shape": {
       "shape": "DISC",
       "dimensions": [
-        0.5,
-        0.0,
-        0.5
+        1.0,
+        1.1,
+        1.0
       ],
       "rotation": [
         0.0,
         0.0,
         0.0
       ],
-      "from_surface": false
+      "from_surface": true
     },
     "particle_settings": {
       "random_speed": true,
-      "random_size": true,
+      "random_size": false,
       "random_lifetime": true,
       "initial_direction": [
         0.0,
@@ -33,9 +33,21 @@
       "particle_lifetime": 100,
       "particle_lifetime_variation": 50,
       "particle_speed": 0.4,
-      "base_particle_size": 0.2
+      "base_particle_size": 1.0
     },
     "force_spawn": true
   },
   "particle_data": "arcane_divinity:sweep"
 }
+
+
+
+
+
+
+
+
+
+
+
+
