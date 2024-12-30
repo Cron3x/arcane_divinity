@@ -2,9 +2,9 @@ package de.abq.arcane_divinity.client.renderer;
 
 import de.abq.arcane_divinity.client.renderer.block.entity.ArcaneShrineBlockEntityRenderer;
 import de.abq.arcane_divinity.client.renderer.block.entity.PedestalBlockEntityRenderer;
+import de.abq.arcane_divinity.client.renderer.entity.KingfisherRenderer;
 import de.abq.arcane_divinity.client.renderer.entity.vfx.RuptureBeamRenderer;
 import de.abq.arcane_divinity.world.entity.ZEntityType;
-import de.abq.arcane_divinity.world.level.block.entity.PedestalBlockEntity;
 import de.abq.arcane_divinity.world.level.block.entity.ZBlockEntities;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -20,6 +20,7 @@ public class Renderers {
     public static class Entities {
         public static void register(BiConsumer<EntityType<? extends Entity>, EntityRendererProvider> entityRenderers) {
             entityRenderers.accept(ZEntityType.RUPTURE_BEAM.get(), RuptureBeamRenderer::new);
+            entityRenderers.accept(ZEntityType.KINGFISHER.get(), KingfisherRenderer::new);
         }
     }
 
