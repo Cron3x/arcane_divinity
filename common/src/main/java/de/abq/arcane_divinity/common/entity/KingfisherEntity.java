@@ -9,6 +9,8 @@ import software.bernie.geckolib.animation.*;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 public class KingfisherEntity extends PathfinderMob implements GeoEntity {
+    public static final String KEY = "kingfisher";
+
     protected static final RawAnimation FLY_ANIM = RawAnimation.begin().thenLoop("move.fly");
 
     private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
