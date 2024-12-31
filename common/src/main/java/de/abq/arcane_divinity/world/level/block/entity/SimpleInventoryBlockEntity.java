@@ -71,4 +71,8 @@ public abstract class SimpleInventoryBlockEntity extends AbstractBlockEntity imp
         saveAdditional(tag, registries);
         return tag;
     }
+
+    public ItemStack getDisplayItem(){
+        return getItemHandler().getItem(0);
+    }
 }

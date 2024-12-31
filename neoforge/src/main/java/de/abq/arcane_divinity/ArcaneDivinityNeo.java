@@ -11,7 +11,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 @Mod(ArcaneDivinity.MOD_ID)
@@ -36,5 +39,15 @@ public final class ArcaneDivinityNeo {
         SOUND_EVENT_DEFERRED_REGISTER.register(modEventBus);
 
         ArcaneDivinity.registerEverything();
+
+        NeoForge.EVENT_BUS.addListener(ArcaneDivinityNeo::onPlayerHitBlock);
+        NeoForge.EVENT_BUS.addListener(ArcaneDivinityNeo::onPlayerHitEmpty);
+    }
+
+    private static void onPlayerHitEmpty(PlayerInteractEvent.LeftClickEmpty event){
+        ArcaneDivinity.LOG.debug("left click empty event");
+    }
+    private static void onPlayerHitBlock(PlayerInteractEvent.LeftClickBlock event){
+        ArcaneDivinity.LOG.debug("left click block event");
     }
 }

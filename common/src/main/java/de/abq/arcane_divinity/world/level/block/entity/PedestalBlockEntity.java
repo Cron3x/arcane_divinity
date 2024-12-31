@@ -39,11 +39,6 @@ public class PedestalBlockEntity extends SimpleInventoryBlockEntity {
         tag.putBoolean("shouldAnimate", this.shouldAnimate);
     }
 
-    //TODO: test
-    public ItemStack getDisplayItem(){
-        return getItemHandler().getItem(0);
-    }
-
     @Override
     public void setChanged() {
         if (level != null) {

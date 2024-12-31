@@ -49,7 +49,6 @@ public abstract class SimpleInventoryGeoBlockEntity extends AbstractGeoBlockEnti
         ContainerHelper.saveAllItems(tag, copyFromInv(itemHandler), provider);
     }
 
-    // NB: Cannot be named the same as the corresponding method in vanilla's interface -- causes obf issues with MCP
     public final int inventorySize() {
         return getItemHandler().getContainerSize();
     }
@@ -63,5 +62,16 @@ public abstract class SimpleInventoryGeoBlockEntity extends AbstractGeoBlockEnti
 
     public final Container getItemHandler() {
         return itemHandler;
+    }
+
+    @Override
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        CompoundTag tag = new CompoundTag();
+        saveAdditional(tag, registries);
+        return tag;
+    }
+
+    public ItemStack getDisplayItem(){
+        return getItemHandler().getItem(0);
     }
 }
