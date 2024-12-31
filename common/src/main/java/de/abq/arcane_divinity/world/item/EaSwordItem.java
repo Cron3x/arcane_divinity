@@ -2,6 +2,7 @@ package de.abq.arcane_divinity.world.item;
 
 import de.abq.arcane_divinity.ArcaneDivinity;
 import de.abq.arcane_divinity.client.defaulted.renderer.DefaultedItemRenderer;
+import de.abq.arcane_divinity.world.item.catalyst.ISpecialCatalystItem;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
@@ -25,7 +26,7 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.function.Consumer;
 
-public class EaSwordItem extends GeoSwordItem {
+public class EaSwordItem extends GeoSwordItem implements ISpecialCatalystItem {
     public static final String IDENTIFIER = "ea_sword";
 
     private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");

@@ -1,6 +1,6 @@
 package de.abq.arcane_divinity.world.level.block.entity;
 
-import de.abq.arcane_divinity.ArcaneDivinity;
+import de.abq.arcane_divinity.util.ArcaneShrineManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.particles.ParticleTypes;
@@ -29,6 +29,7 @@ public class ArcaneShrineBlockEntity extends SimpleInventoryGeoBlockEntity imple
     private int ticks = 0;
     private boolean shouldBeActive = false;
     private boolean isActive = false;
+    private boolean craft = false;
     public boolean isDay = false;
 
     public ArcaneShrineBlockEntity(BlockPos pos, BlockState state) {
@@ -52,8 +53,8 @@ public class ArcaneShrineBlockEntity extends SimpleInventoryGeoBlockEntity imple
         if (self.shouldBeActive && !self.isActive){
             self.particleAnimationActivation((ServerLevel) level, blockPos);
         } else if (!self.shouldBeActive && self.isActive) {
-            //TODO: Deactivation Animation
             System.out.println("//TODO: Deactivation Animation");
+        } else if (self.shouldBeActive && self.isActive && self.craft) {
         }
     }
 
@@ -87,7 +88,6 @@ public class ArcaneShrineBlockEntity extends SimpleInventoryGeoBlockEntity imple
     }
 
     private void animateToPillar(ServerLevel level, Vec3 altarPos, Vec3 pillarPos){
-
         double dx = pillarPos.x() - (altarPos.x() + .5);
         double dy = pillarPos.y() - (altarPos.y() + .5);
         double dz = pillarPos.z() - (altarPos.z() + .5);
@@ -96,17 +96,25 @@ public class ArcaneShrineBlockEntity extends SimpleInventoryGeoBlockEntity imple
         double py = (dy * (ticks-100)) / 100;
         double pz = (dz * (ticks-100)) / 100;
 
-        ArcaneDivinity.LOG.debug("dx = {}", dx);
-        ArcaneDivinity.LOG.debug("px: {} » py: {} » pz: {}", px , py, pz);
-
         level.sendParticles(ParticleTypes.ELECTRIC_SPARK, altarPos.x()+px, altarPos.y()+py, altarPos.z()+pz, 1, 0, 0, 0, 1);
+    }
+
+    public void triggerActivation(Level plevel){
+        setShouldBeActive(new ArcaneShrineManager(plevel, getBlockPos()).detect());
+        setChanged();
     }
 
     public void setShouldBeActive(boolean shouldBeActive) {
         this.shouldBeActive = shouldBeActive;
         this.isActive = false;
         this.ticks = 0;
-        if ( level != null) level.sendBlockUpdated(getBlockPos(), getBlockState(),getBlockState(),2);
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+    public boolean shouldBeActive() {
+        return shouldBeActive;
     }
 
     @Override
@@ -148,4 +156,9 @@ public class ArcaneShrineBlockEntity extends SimpleInventoryGeoBlockEntity imple
         tag.putBoolean("is_day", this.isDay);
         tag.putInt("ticks", this.ticks);
     }
+
+    public void initCrafting() {
+
+    }
+
 }

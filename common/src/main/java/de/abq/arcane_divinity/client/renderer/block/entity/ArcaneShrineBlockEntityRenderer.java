@@ -33,10 +33,10 @@ public class ArcaneShrineBlockEntityRenderer<T extends AbstractGeoBlockEntity> e
         final ItemStack item = animatable.getDisplayItem();
 
 
-        poseStack.translate(0.5f, 1.15f, 0.5f);
-        poseStack.scale(1,1,1);
+        poseStack.translate(0.5f, 1f, 0.5f);
+        poseStack.scale(0.6f,0.6f,0.6f);
         poseStack.mulPose(new Quaternionf(0, 0, 0, 1).rotateAxis(angle, 0, 0.8f, 0));
-        angle += Config.PEDESTAL_SPEED;
+        angle += 0.05f;
         poseStack.pushPose();
 
         context.getItemRenderer().renderStatic(item, ItemDisplayContext.GROUND, packedLight, packedOverlay, poseStack, bufferSource, animatable.getLevel(), 1);

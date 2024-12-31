@@ -4,7 +4,6 @@ import de.abq.arcane_divinity.ArcaneDivinity;
 import de.abq.arcane_divinity.world.level.block.entity.PedestalBlockEntity;
 import de.abq.arcane_divinity.world.level.block.entity.SimpleInventoryBlockEntity;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.*;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -13,13 +12,14 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class PedestalBlock extends AbstractBlock implements EntityBlock {
+public class PedestalBlock extends AbstractContainerBlock implements SimpleWaterloggedBlock {
     public PedestalBlock() {
         super(Properties.of().noOcclusion().destroyTime(3));
     }
@@ -68,29 +68,6 @@ public class PedestalBlock extends AbstractBlock implements EntityBlock {
         if (level.isClientSide) return;
         if (!(level.getBlockEntity(pos) instanceof PedestalBlockEntity entity)) return;
         entity.setShouldAnimate(!entity.isShouldAnimate());
-        entity.setChanged();
-    }
-
-
-    /**
-     * *WARNING*: This function looks like it could handle multiple stacks, but it can't, just easy that way
-     * @param stacks should only be set to one, it would override other stacks
-    */
-    private void handleInteraction(ServerPlayer player, PedestalBlockEntity entity, ItemStack... stacks){
-        Container container = entity.getItemHandler();
-        ItemStack returned = container.getItem(0);
-        for (ItemStack stack : stacks){
-            container.setItem(0,new ItemStack(stack.getItem(), 1));
-            stack.setCount(stack.getCount()-1);
-        }
-
-        Inventory pInv = player.getInventory();
-
-        if (pInv.getFreeSlot() <= 0){
-            player.level().addFreshEntity(new ItemEntity(entity.getLevel(), entity.getBlockPos().getX()+0.5, entity.getBlockPos().getY()+1, entity.getBlockPos().getZ()+0.5, returned));
-        } else {
-            player.getInventory().add(returned);
-        }
         entity.setChanged();
     }
 }
