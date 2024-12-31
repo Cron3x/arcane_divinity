@@ -11,8 +11,7 @@ public final class Config {
             ZItems.WINGS.get(),
     }).toList();
 
-    public static final boolean PEDESTAL_ANIMATION = false;
-    public static final float PEDESTAL_SPEED = 0.01f;
+    public static final float PEDESTAL_SPEED = 0.0025f;
 
     public static final class WING {
         public static final double MAX_SPEED = 5;

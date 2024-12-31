@@ -16,6 +16,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public abstract class SimpleInventoryBlockEntity extends AbstractBlockEntity implements Clearable {
     private final SimpleContainer itemHandler = createItemHandler();
+    public boolean hasUpdated = false;
 
     protected SimpleInventoryBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
@@ -75,4 +76,15 @@ public abstract class SimpleInventoryBlockEntity extends AbstractBlockEntity imp
     public ItemStack getDisplayItem(){
         return getItemHandler().getItem(0);
     }
+
+    @Override
+    public void setChanged() {
+        if (level != null) {
+            BlockState state = level.getBlockState(this.worldPosition);
+            this.level.sendBlockUpdated(this.worldPosition, state, state, 3);
+            hasUpdated = true;
+        }
+        super.setChanged();
+    }
+
 }
