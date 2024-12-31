@@ -55,7 +55,7 @@ public class ArcaneShrineBlock extends AbstractContainerBlock {
             handleInteraction((ServerPlayer) player, blockEntity, stack);
             return ItemInteractionResult.CONSUME;
         }
-        blockEntity.setChanged();
+
         blockEntity.triggerActivation(level);
         if (!blockEntity.isActive() && !blockEntity.shouldBeActive()){
         } else {
