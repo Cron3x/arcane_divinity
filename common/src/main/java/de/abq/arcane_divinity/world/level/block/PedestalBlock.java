@@ -24,22 +24,9 @@ public class PedestalBlock extends AbstractContainerBlock implements SimpleWater
         super(Properties.of().noOcclusion().destroyTime(3));
     }
 
-    @Override
-    public void onRemove(@NotNull BlockState state, @NotNull Level world, @NotNull BlockPos pos, @NotNull BlockState newState, boolean isMoving) {
-        ArcaneDivinity.LOG.debug("onRemove");
-        if (!newState.is(state.getBlock())) {
-            BlockEntity be = world.getBlockEntity(pos);
-            if (be instanceof SimpleInventoryBlockEntity inventory) {
-                Containers.dropContents(world, pos, inventory.getItemHandler());
-            }
-            super.onRemove(state, world, pos, newState, isMoving);
-        }
-    }
-
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        ArcaneDivinity.LOG.debug("newBlockEntity");
         return new PedestalBlockEntity(blockPos, blockState);
     }
 

@@ -76,17 +76,6 @@ public class ArcaneShrineBlock extends AbstractContainerBlock {
     }
 
     @Override
-    public void onRemove(@NotNull BlockState state, @NotNull Level world, @NotNull BlockPos pos, @NotNull BlockState newState, boolean isMoving) {
-        if (!state.is(newState.getBlock())) {
-            BlockEntity be = world.getBlockEntity(pos);
-            if (be instanceof SimpleInventoryGeoBlockEntity inventory) {
-                Containers.dropContents(world, pos, inventory.getItemHandler());
-            }
-            super.onRemove(state, world, pos, newState, isMoving);
-        }
-    }
-
-    @Override
     public RenderShape getRenderShape(BlockState $$0) {
         return RenderShape.ENTITYBLOCK_ANIMATED;
     }
