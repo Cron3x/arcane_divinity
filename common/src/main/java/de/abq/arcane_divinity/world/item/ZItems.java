@@ -2,6 +2,7 @@ package de.abq.arcane_divinity.world.item;
 
 import de.abq.arcane_divinity.platform.Services;
 import de.abq.arcane_divinity.world.item.armor.WingsArmorItem;
+import de.abq.arcane_divinity.world.item.armor.WitcherRobeItem;
 import de.abq.arcane_divinity.world.level.block.ZBlocks;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
@@ -15,6 +16,7 @@ public class ZItems {
     public static final Map<String, Item> ITEMS = new LinkedHashMap<>();
 
     public static final Supplier<Item> WINGS = build("wings", () -> new WingsArmorItem(Services.PLATFORM.defaultItemBuilder().rarity(Rarity.EPIC)));
+    public static final Supplier<Item> WITCHER_ROBE_HEAD = build("witcher_robe_head", () -> new WitcherRobeItem(Services.PLATFORM.defaultItemBuilder().rarity(Rarity.EPIC)));
     public static final Supplier<Item> MAGIC_MUSHROOM = build("magic_mushroom", () -> new MagicMushroomItem(Services.PLATFORM.defaultItemBuilder().food(new FoodProperties.Builder().alwaysEdible().nutrition(0).build()), 10));
     public static final Supplier<Item> HALLUCINOGENIC_GRASS = build("hallucinogenic_grass", () -> new Item(Services.PLATFORM.defaultItemBuilder()));
     public static final Supplier<Item> ASH = build("ash", () -> new Item(Services.PLATFORM.defaultItemBuilder()));

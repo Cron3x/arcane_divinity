@@ -27,7 +27,7 @@ import software.bernie.geckolib.constant.DefaultAnimations;
 import java.util.function.Consumer;
 
 
-public final class WingsArmorItem extends ArmorItem implements GeoItem {
+public class WingsArmorItem extends ArmorItem implements GeoItem {
     private final AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
 
     private boolean isFlying = false;
