@@ -28,8 +28,8 @@ public class WitcherRobeItem extends ArmorItem implements GeoItem {
         super(material, type, properties);
     }
 
-    public WitcherRobeItem(Properties properties) {
-        super(ArmorMaterials.TURTLE, Type.HELMET, properties);
+    public WitcherRobeItem(Properties properties, ArmorItem.Type type) {
+        super(ArmorMaterials.TURTLE, type, properties);
     }
 
     @Override
@@ -44,7 +44,7 @@ public class WitcherRobeItem extends ArmorItem implements GeoItem {
     public @NotNull Color getPrimaryColor(ItemStack stack) {
         DyeColor color = stack.get(DataComponents.BASE_COLOR);
         if (color == null) color = DyeColor.BLACK;
-        return new Color(0x000000);
+        return new Color(0xff000000);
     }
 
     public @NotNull Color getSecondaryColor(ItemStack stack) {

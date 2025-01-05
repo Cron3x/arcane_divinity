@@ -31,6 +31,6 @@ public class WitcherRobeArmorRenderer extends DyeableGeoArmorRenderer<WitcherRob
     protected @NotNull Color getColorForBone(GeoBone geoBone) {
         if(geoBone.getName().contains("dye_primary"))
             return this.getAnimatable().getPrimaryColor(currentStack);
-        return new Color(0xffffffff);
+        return this.getAnimatable().getSecondaryColor(currentStack);
     }
 }
