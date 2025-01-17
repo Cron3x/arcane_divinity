@@ -8,11 +8,13 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
-public class ArcaneShrineManager {
+import static de.abq.arcane_divinity.util.SimpleVec.vec3i;
+
+public class ArcaneShrineWorldManager {
     private BlockPos center;
     private Level level;
 
-    public ArcaneShrineManager(Level level, BlockPos center) {
+    public ArcaneShrineWorldManager(Level level, BlockPos center) {
         ArcaneDivinity.LOG.debug("{}",level);
         this.center = center;
         this.level = level;
@@ -43,9 +45,5 @@ public class ArcaneShrineManager {
     private boolean has(Vec3i pos, Block should){
         ArcaneDivinity.LOG.debug("{}: {}", center.offset(pos), this.level.getBlockState(center.offset(pos)).getBlock());
         return this.level.getBlockState(center.offset(pos)).getBlock().equals(should);
-    }
-
-    private static Vec3i vec3i(int x, int y, int z){
-        return new Vec3i(x,y,z);
     }
 }

@@ -1,6 +1,6 @@
 package de.abq.arcane_divinity.world.level.block.entity;
 
-import de.abq.arcane_divinity.util.ArcaneShrineManager;
+import de.abq.arcane_divinity.util.ArcaneShrineWorldManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.particles.ParticleTypes;
@@ -100,7 +100,7 @@ public class ArcaneShrineBlockEntity extends SimpleInventoryGeoBlockEntity imple
     }
 
     public void triggerActivation(Level plevel){
-        setShouldBeActive(new ArcaneShrineManager(plevel, getBlockPos()).detect());
+        setShouldBeActive(new ArcaneShrineWorldManager(plevel, getBlockPos()).detect());
         setChanged();
     }
 
