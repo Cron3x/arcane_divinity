@@ -2,7 +2,6 @@ package de.abq.arcane_divinity.world.item;
 
 import de.abq.arcane_divinity.ArcaneDivinity;
 import de.abq.arcane_divinity.client.defaulted.renderer.DefaultedItemRenderer;
-import de.abq.arcane_divinity.util.SimpleVec;
 import de.abq.arcane_divinity.world.entity.ZEntityType;
 import de.abq.arcane_divinity.world.entity.vfx.RuptureBeamEntity;
 import de.abq.arcane_divinity.world.item.catalyst.ISpecialCatalystItem;
@@ -10,10 +9,8 @@ import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.Display;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
@@ -110,9 +107,9 @@ public class EaSwordItem extends GeoSwordItem implements ISpecialCatalystItem {
     }
     protected void shootProjectile(ServerLevel level, LivingEntity caster) {
         RuptureBeamEntity entity = new RuptureBeamEntity(ZEntityType.RUPTURE_BEAM.get(), level);
-        entity.setSize(vec3f(2,2,2));
-        entity.absRotateTo(caster.getXRot(), caster.getYHeadRot());
-        entity.setPos(caster.getX(), caster.getY(), caster.getZ());
+        entity.setPos(caster.getX(), caster.getEyeY(), caster.getZ());
+        entity.changeHitBoxAndRotation(caster.getXRot(), caster.getYHeadRot());
+        entity.setSize(vec3f(.25f,.25f,.25f));
         level.addFreshEntity(entity);
     }
 }

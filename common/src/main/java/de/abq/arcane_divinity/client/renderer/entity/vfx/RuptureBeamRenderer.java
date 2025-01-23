@@ -5,6 +5,7 @@ import de.abq.arcane_divinity.ArcaneDivinity;
 import de.abq.arcane_divinity.world.entity.vfx.RuptureBeamEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
@@ -19,8 +20,9 @@ public class RuptureBeamRenderer extends GeoEntityRenderer<RuptureBeamEntity> {
         super.render(entity, entityYaw, partialTick, poseStack, bufferSource, packedLight);
 
         Vector3f scale = entity.getSize();
-        ArcaneDivinity.LOG.debug("scale: {}", scale);
         poseStack.scale(scale.x, scale.y, scale.z);
+        //poseStack.mulPose(new Quaternionf(0, 0, 0, 1).rotateX(entity.getXRot()));
+        //poseStack.mulPose(new Quaternionf(0, 0, 0, 1).rotateY(entity.getYRot()));
         poseStack.pushPose();
         poseStack.popPose();
     }
