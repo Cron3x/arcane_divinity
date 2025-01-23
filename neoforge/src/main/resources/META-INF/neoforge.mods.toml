@@ -1,6 +1,6 @@
 modLoader="javafml"
 loaderVersion="${neoforge_loader_range}"
-issueTrackerURL="https://nonexist.ing"
+issueTrackerURL="https://github.com/Cron3x/arcane_divinity/issues"
 license="${mod_license}"
 
 [[mods]]
@@ -40,6 +40,11 @@ ${mod_description}
     versionRange="${geckolib_range}"
     ordering="NONE"
     side="BOTH"
+[[dependencies.${mod_id}]]
+modId="veil"
+versionRange="1.0.0.77"
+ordering="NONE"
+side="CLIENT"
 
 [features.${mod_id}]
 openGLVersion="[3.2,)"

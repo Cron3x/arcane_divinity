@@ -8,15 +8,19 @@
         "${mod_authors}"
     ],
     "contact": {
-        "homepage": "https://asdf.zip/",
-        "sources": "https://asdf.zip/FabricMC/fabric-example-mod"
+        "homepage": "https://modrinth.com/project/arcane-divinity",
+        "sources": "https://github.com/Cron3x/arcane_divinity/",
+        "issues": "https://github.com/Cron3x/arcane_divinity/issues"
     },
     "license": "${mod_license}",
     "icon": "${mod_id}.png",
     "environment": "*",
     "entrypoints": {
         "main": [
-          "de.abq.arcane_divinity.ArcaneDivinityEntry"
+            "de.abq.arcane_divinity.ArcaneDivinityFabric"
+        ],
+        "client": [
+            "de.abq.arcane_divinity.ArcaneDivinityClientEntry"
         ]
     },
     "mixins": [
@@ -27,6 +31,7 @@
         "fabricloader": ">=${fabric_loader_version_range}",
         "fabric-api": "*",
         "minecraft": "${minecraft_version}",
+        "veil": ">=1.0.0",
         "java": ">=21"
     }
 }
