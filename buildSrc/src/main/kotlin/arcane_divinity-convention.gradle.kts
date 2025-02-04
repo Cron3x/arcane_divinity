@@ -43,7 +43,7 @@ val fabricVersionRange = libs.get().findVersion("fabric.range").get()
 val neoforgeVersionRange = libs.get().findVersion("neoforge.range").get()
 val neoforgeLoaderVersionRange = libs.get().findVersion("neoforge.loader.range").get()
 val geckolibRange = libs.get().findVersion("geckolib.range").get()
-val veilVersion = "1.0.0.77" //find out how to make this work with veils versions
+val veilVersion = "1.0.0.134" //find out how to make this work with veils versions
 
 tasks.withType<Jar>().configureEach {
     from(rootProject.file("LICENSE")) {

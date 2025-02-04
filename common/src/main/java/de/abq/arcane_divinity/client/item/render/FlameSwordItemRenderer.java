@@ -2,7 +2,7 @@ package de.abq.arcane_divinity.client.item.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import de.abq.arcane_divinity.ArcaneDivinity;
-import de.abq.arcane_divinity.common.item.FlameSwordItem;
+import de.abq.arcane_divinity.world.item.FlameSwordItem;
 import foundry.veil.api.client.render.VeilRenderSystem;
 import foundry.veil.api.client.render.VeilRenderer;
 import foundry.veil.api.client.render.shader.definition.ShaderPreDefinitions;
@@ -36,7 +36,6 @@ public class FlameSwordItemRenderer extends GeoItemRenderer<FlameSwordItem> {
         shader.bind();
         shader.setVector("bladeColor", new Vector3f(0,100,255));
         shader.setFloat("glowIntensity", 1f);
-        shader.setup();
         // rendering code here
         VeilRenderSystem.drawScreenQuad();
         ShaderProgram.unbind();
