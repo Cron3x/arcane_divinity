@@ -1,7 +1,7 @@
 package de.abq.arcane_divinity;
 
 
-import de.abq.arcane_divinity.client.renderer.Renderers;
+import de.abq.arcane_divinity.client.render.Renderers;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
