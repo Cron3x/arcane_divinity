@@ -19,6 +19,7 @@ public class ZCreativeTabs {
                 entries.accept(ZItems.ARCANE_SHRINE_BLOCK_ITEM.get());
                 entries.accept(ZItems.PEDESTAL_BLOCK_ITEM.get());
                 entries.accept(ZItems.EA_SWORD.get());
+                entries.accept(ZItems.FLAME_SWORD.get());
                 entries.accept(ZItems.HALLUCINOGENIC_GRASS.get());
                 entries.accept(ZItems.MAGIC_MUSHROOM.get());
             })

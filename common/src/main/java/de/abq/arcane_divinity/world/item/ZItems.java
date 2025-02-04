@@ -23,6 +23,8 @@ public class ZItems {
     //WEAPONS
     public static final Supplier<EaSwordItem> EA_SWORD = build(EaSwordItem.IDENTIFIER, () -> new EaSwordItem(Tiers.NETHERITE, Services.PLATFORM.defaultItemBuilder().attributes(SwordItem.createAttributes(Tiers.NETHERITE, 5, -2f))));
 
+    public static final Supplier<FlameSwordItem> FLAME_SWORD = build(FlameSwordItem.IDENTIFIER, () -> new FlameSwordItem(Tiers.NETHERITE, Services.PLATFORM.defaultItemBuilder().attributes(SwordItem.createAttributes(Tiers.NETHERITE, 5, -2f))));
+
     //ITEMS
     public static final Supplier<BlockItem> ARCANE_OBELISK_BLOCK_ITEM = build(ZBlocks.Locations.ARCANE_OBELISK, () -> new BlockItem(ZBlocks.ARCANE_OBELISK_BLOCK.get(), new Item.Properties()));
     public static final Supplier<BlockItem> ARCANE_SHRINE_BLOCK_ITEM = build(ZBlocks.Locations.ARCANE_SHRINE, () -> new BlockItem(ZBlocks.ARCANE_SHRINE_BLOCK.get(), new Item.Properties()));
