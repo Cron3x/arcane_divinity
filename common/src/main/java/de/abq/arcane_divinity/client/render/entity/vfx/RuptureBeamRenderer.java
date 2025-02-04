@@ -1,4 +1,4 @@
-package de.abq.arcane_divinity.client.renderer.entity.vfx;
+package de.abq.arcane_divinity.client.render.entity.vfx;
 
 import de.abq.arcane_divinity.ArcaneDivinity;
 import de.abq.arcane_divinity.world.entity.vfx.RuptureBeamEntity;
