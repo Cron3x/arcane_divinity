@@ -10,9 +10,5 @@ public class ArcaneDivinityFabric implements ModInitializer {
     public void onInitialize() {
         ArcaneDivinity.registerEverything();
 
-        AttackEntityCallback.EVENT.register((player, level, interactionHand, entity, hitResult) -> {
-            player.teleportRelative(0,5,0);
-            return InteractionResult.PASS;
-        });
     }
 }

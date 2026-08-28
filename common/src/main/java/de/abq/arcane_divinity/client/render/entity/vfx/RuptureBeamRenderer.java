@@ -1,13 +1,29 @@
 package de.abq.arcane_divinity.client.render.entity.vfx;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import de.abq.arcane_divinity.ArcaneDivinity;
 import de.abq.arcane_divinity.world.entity.vfx.RuptureBeamEntity;
+import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class RuptureBeamRenderer extends GeoEntityRenderer<RuptureBeamEntity> {
     public RuptureBeamRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new DefaultedEntityGeoModel<>(ArcaneDivinity.path("rupture_beam"), false));
+    }
+
+    @Override
+    public void render(RuptureBeamEntity entity, float entityYaw, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
+        super.render(entity, entityYaw, partialTick, poseStack, bufferSource, packedLight);
+
+        Vector3f scale = entity.getSize();
+        poseStack.scale(scale.x, scale.y, scale.z);
+        //poseStack.mulPose(new Quaternionf(0, 0, 0, 1).rotateX(entity.getXRot()));
+        //poseStack.mulPose(new Quaternionf(0, 0, 0, 1).rotateY(entity.getYRot()));
+        poseStack.pushPose();
+        poseStack.popPose();
     }
 }

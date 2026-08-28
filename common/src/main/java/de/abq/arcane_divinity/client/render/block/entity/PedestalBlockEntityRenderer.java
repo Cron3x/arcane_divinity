@@ -26,7 +26,7 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
         return BlockEntityRenderer.super.shouldRender(blockEntity, cameraPos) && !Minecraft.getInstance().isPaused(); //TODO: test
     }
 
-    //TODO: implement a more performant. only reassign item and shouldAnimate when block updated
+    //TODO: implement more performant. only reassign item and shouldAnimate when block updated
     @Override
     public void render(PedestalBlockEntity pedestal, float partialTicks, PoseStack poseStack, MultiBufferSource buffers, int light, int overlay) {
         if (Minecraft.getInstance().isPaused()) return;

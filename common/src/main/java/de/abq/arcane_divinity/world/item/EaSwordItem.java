@@ -2,6 +2,8 @@ package de.abq.arcane_divinity.world.item;
 
 import de.abq.arcane_divinity.ArcaneDivinity;
 import de.abq.arcane_divinity.client.defaulted.renderer.DefaultedItemRenderer;
+import de.abq.arcane_divinity.world.entity.ZEntityType;
+import de.abq.arcane_divinity.world.entity.vfx.RuptureBeamEntity;
 import de.abq.arcane_divinity.world.item.catalyst.ISpecialCatalystItem;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.server.level.ServerLevel;
@@ -11,11 +13,8 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
-import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoItem;
 import software.bernie.geckolib.animatable.SingletonGeoAnimatable;
@@ -25,6 +24,8 @@ import software.bernie.geckolib.animation.*;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.function.Consumer;
+
+import static de.abq.arcane_divinity.util.SimpleVec.vec3f;
 
 public class EaSwordItem extends GeoSwordItem implements ISpecialCatalystItem {
     public static final String IDENTIFIER = "ea_sword";
@@ -93,7 +94,6 @@ public class EaSwordItem extends GeoSwordItem implements ISpecialCatalystItem {
 
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        ArcaneDivinity.LOG.debug("hurtEnemy");
         if (attacker.level() instanceof ServerLevel serverLevel)
             triggerAnim(attacker, GeoItem.getOrAssignId(attacker.getItemInHand(InteractionHand.MAIN_HAND), serverLevel), "Use", "use");
         return super.hurtEnemy(stack, target, attacker);
@@ -101,11 +101,15 @@ public class EaSwordItem extends GeoSwordItem implements ISpecialCatalystItem {
 
     @Override
     public void postHurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        ArcaneDivinity.LOG.debug("postHurtEnemy");
         if (attacker.level() instanceof ServerLevel serverLevel)
             triggerAnim(attacker, GeoItem.getOrAssignId(attacker.getItemInHand(InteractionHand.MAIN_HAND), serverLevel), "Use", "use");
         super.postHurtEnemy(stack, target, attacker);
     }
-    protected void shootProjectile(ServerLevel level, LivingEntity player) {
+    protected void shootProjectile(ServerLevel level, LivingEntity caster) {
+        RuptureBeamEntity entity = new RuptureBeamEntity(ZEntityType.RUPTURE_BEAM.get(), level);
+        entity.setPos(caster.getX(), caster.getEyeY(), caster.getZ());
+        entity.changeHitBoxAndRotation(caster.getXRot(), caster.getYHeadRot());
+        entity.setSize(vec3f(.25f,.25f,.25f));
+        level.addFreshEntity(entity);
     }
 }

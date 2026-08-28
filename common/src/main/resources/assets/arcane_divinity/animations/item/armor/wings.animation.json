@@ -3,18 +3,17 @@
 	"animations": {
 		"misc.idle": {
 			"loop": true,
-			"animation_length": 1,
-			"loop_delay": "6",
+			"animation_length": 2,
 			"bones": {
 				"left": {
 					"rotation": {
 						"0.0": {
 							"vector": [27.5, 0, 0]
 						},
-						"0.5": {
+						"1.0": {
 							"vector": [28.3411, 4.351, -6.1679]
 						},
-						"1.0": {
+						"2.0": {
 							"vector": [27.5, 0, 0]
 						}
 					}
@@ -29,11 +28,11 @@
 						"0.0": {
 							"vector": [27.5, 0, 0]
 						},
-						"0.5": {
+						"1.0": {
 							"vector": [28.3411, -4.35104, 6.16791],
 							"easing": "linear"
 						},
-						"1.0": {
+						"2.0": {
 							"vector": [27.5, 0, 0]
 						}
 					}
