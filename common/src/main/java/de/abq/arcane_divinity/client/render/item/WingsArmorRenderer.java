@@ -1,4 +1,4 @@
-package de.abq.arcane_divinity.client.renderer.item;
+package de.abq.arcane_divinity.client.render.item;
 
 import de.abq.arcane_divinity.ArcaneDivinity;
 import de.abq.arcane_divinity.world.item.armor.WingsArmorItem;

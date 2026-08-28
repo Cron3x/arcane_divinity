@@ -1,6 +1,6 @@
 package de.abq.arcane_divinity.world.item.armor;
 
-import de.abq.arcane_divinity.client.renderer.item.WingsArmorRenderer;
+import de.abq.arcane_divinity.client.render.item.WingsArmorRenderer;
 import de.abq.arcane_divinity.util.VelocityUtil;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.player.LocalPlayer;

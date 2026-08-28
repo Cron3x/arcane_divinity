@@ -1,10 +1,9 @@
-package de.abq.arcane_divinity.client.renderer;
+package de.abq.arcane_divinity.client.render;
 
-import de.abq.arcane_divinity.client.renderer.block.entity.ArcaneShrineBlockEntityRenderer;
-import de.abq.arcane_divinity.client.renderer.block.entity.PedestalBlockEntityRenderer;
-import de.abq.arcane_divinity.client.renderer.entity.vfx.RuptureBeamRenderer;
+import de.abq.arcane_divinity.client.render.block.entity.ArcaneShrineBlockEntityRenderer;
+import de.abq.arcane_divinity.client.render.block.entity.PedestalBlockEntityRenderer;
+import de.abq.arcane_divinity.client.render.entity.vfx.RuptureBeamRenderer;
 import de.abq.arcane_divinity.world.entity.ZEntityType;
-import de.abq.arcane_divinity.world.level.block.entity.PedestalBlockEntity;
 import de.abq.arcane_divinity.world.level.block.entity.ZBlockEntities;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

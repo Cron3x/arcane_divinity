@@ -1,4 +1,4 @@
-package de.abq.arcane_divinity.client.renderer.block.entity;
+package de.abq.arcane_divinity.client.render.block.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import de.abq.arcane_divinity.client.model.block.entity.ArcaneShrineBlockEntityModel;
